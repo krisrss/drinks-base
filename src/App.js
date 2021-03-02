@@ -3,7 +3,7 @@ import SearchBar from './components/SearchBar';
 import DrinkList from './components/DrinkList';
 
 const App = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState('drinks');
 
     const getInput = (input) => {
         setSearchTerm(input);
@@ -11,9 +11,8 @@ const App = () => {
 
     return (
         <div>
-            {searchTerm}
             <SearchBar getInput={getInput} />
-            <DrinkList />
+            <DrinkList searchTerm={searchTerm} />
         </div>
     );
 };

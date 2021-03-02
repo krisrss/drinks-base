@@ -1,22 +1,39 @@
 import React from 'react';
 
-const drinkData = [
-    {
-        name: 'Drink 1',
-        imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
-    },
-    {
-        name: 'Drink 2',
-        imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
-    },
-    {
-        name: 'Drink 3',
-        imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
-    }
-]
+const drinkData = {
+    drinks: [
+        {
+            name: 'Drink 1',
+            imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
+        },
+        {
+            name: 'Drink 2',
+            imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
+        },
+        {
+            name: 'Drink 3',
+            imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
+        }
+    ],
+    cocktails: [
+        {
+            name: 'Cocktail 1',
+            imgUrl: 'https://www.mom4real.com/wp-content/uploads/2018/04/belmont-jewel-drink-1-200x200.jpg'
+        },
+        {
+            name: 'Cocktail 2',
+            imgUrl: 'https://www.mom4real.com/wp-content/uploads/2018/04/belmont-jewel-drink-1-200x200.jpg'
+        },
+        {
+            name: 'Cocktail 3',
+            imgUrl: 'https://www.mom4real.com/wp-content/uploads/2018/04/belmont-jewel-drink-1-200x200.jpg'
+        }
+    ]
+};
 
-const DrinkList = () => {
-    const drinks = drinkData.map((drink) => {
+const DrinkList = ({ searchTerm }) => {
+
+    const drinks = drinkData[searchTerm].map((drink) => {
         return (
             <div style={{ display: 'inline-block' }}>
                 <h3>{drink.name}</h3>
