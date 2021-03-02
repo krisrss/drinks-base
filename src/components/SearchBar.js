@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({ getInput }) => {
+
+    const [input, setInput] = useState('');
+
     return (
         <div>
             <label>Enter term:</label>
             <br />
-            <input type='text' />
-            <button>Search</button>
+            <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
+            <button onClick={() => getInput(input)}>Search</button>
         </div>
     );
 };
