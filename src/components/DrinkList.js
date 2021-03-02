@@ -33,14 +33,18 @@ const drinkData = {
 
 const DrinkList = ({ searchTerm }) => {
 
-    const drinks = drinkData[searchTerm].map((drink) => {
-        return (
-            <div style={{ display: 'inline-block' }}>
-                <h3>{drink.name}</h3>
-                <img alt='Drink' src={drink.imgUrl} />
-            </div>
-        )
-    });
+    let drinks = null;
+
+    if (searchTerm) {
+        drinks = drinkData[searchTerm].map((drink) => {
+            return (
+                <div style={{ display: 'inline-block' }}>
+                    <h3>{drink.name}</h3>
+                    <img alt='Drink' src={drink.imgUrl} />
+                </div>
+            )
+        });
+    }
 
     return (
         <div>
