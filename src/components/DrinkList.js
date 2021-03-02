@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 const drinkData = {
     drinks: [
@@ -38,7 +39,7 @@ const DrinkList = ({ searchTerm }) => {
     if (searchTerm) {
         drinks = drinkData[searchTerm].map((drink) => {
             return (
-                <div style={{ display: 'inline-block' }}>
+                <div key={drink.name} style={{ display: 'inline-block' }}>
                     <h3>{drink.name}</h3>
                     <img alt='Drink' src={drink.imgUrl} />
                 </div>
