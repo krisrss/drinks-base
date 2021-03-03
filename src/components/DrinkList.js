@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const drinkData = {
@@ -32,7 +32,13 @@ const drinkData = {
     ]
 };
 
-const DrinkList = ({ searchTerm }) => {
+const DrinkList = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const { urlTerm } = useParams();
+
+    useEffect(() => {
+        setSearchTerm(urlTerm);
+    }, [urlTerm]);
 
     let drinks = null;
 

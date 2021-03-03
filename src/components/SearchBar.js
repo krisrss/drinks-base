@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const SearchBar = ({ getInput }) => {
+const SearchBar = () => {
 
     const [input, setInput] = useState('');
 
@@ -9,7 +10,10 @@ const SearchBar = ({ getInput }) => {
             <label>Enter term:</label>
             <br />
             <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
-            <button onClick={() => getInput(input)}>Search</button>
+
+            <Link to={`/${input}`}>
+                <button>Search</button>
+            </Link>
         </div>
     );
 };
