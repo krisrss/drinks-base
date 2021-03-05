@@ -53,7 +53,9 @@ const DrinkList = () => {
 
     return (
         <div>
-            {drinks}
+            <div className='ui centered cards'>
+                {drinks}
+            </div>
         </div>
     );
 };

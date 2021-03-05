@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SearchBar.css';
 import { Link } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -6,13 +7,15 @@ const SearchBar = () => {
     const [input, setInput] = useState('');
 
     return (
-        <div>
-            <label>Enter term:</label>
-            <br />
-            <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
-
+        <div className='searchbar'>
+            <div className='ui left icon input'>
+                <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
+                <i className='search icon'></i>
+            </div>
             <Link to={`/${input}`}>
-                <button>Search</button>
+                <button className='ui button'>
+                    Find
+            </button>
             </Link>
         </div>
     );

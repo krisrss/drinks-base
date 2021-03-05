@@ -1,0 +1,8 @@
+.searchbar{
+    padding: 2em;
+    text-align: center;
+}
+
+.searchbar input {
+    width: 30em;
+}
