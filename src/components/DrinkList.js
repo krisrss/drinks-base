@@ -15,7 +15,7 @@ const DrinkList = () => {
                     s: urlTerm
                 }
             });
-            setDrinksData(data.drinks);
+            data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
         };
         getDrinks();
     }, [urlTerm]);
