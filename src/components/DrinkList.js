@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import DrinkThumbnail from './DrinkThumbnail';
 
-
 const DrinkList = () => {
     const { urlTerm } = useParams();
     const [drinksData, setDrinksData] = useState([]);

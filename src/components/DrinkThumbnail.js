@@ -1,16 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const DrinkThumbnail = ({ drink }) => {
     return (
         <div style={{ padding: '2em' }}>
-            <div className='ui card'>
-                <div className='image'>
-                    <img alt='Drink' src={drink.strDrinkThumb} />
+            <Link to={`details/${drink.idDrink}`}>
+                <div className='ui card'>
+                    <div className='image'>
+                        <img alt='Drink' src={drink.strDrinkThumb} />
+                    </div>
+                    <div className='content'>
+                        <span className='header'>{drink.strDrink}</span>
+                    </div>
                 </div>
-                <div className='content'>
-                    <a href='/' className='header'>{drink.strDrink}</a>
-                </div>
-            </div>
+            </Link>
         </div>
     );
 };
