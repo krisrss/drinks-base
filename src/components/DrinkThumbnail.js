@@ -5,10 +5,10 @@ const DrinkThumbnail = ({ drink }) => {
         <div style={{ padding: '2em' }}>
             <div className='ui card'>
                 <div className='image'>
-                    <img alt='Drink' src={drink.imgUrl} />
+                    <img alt='Drink' src={drink.strDrinkThumb} />
                 </div>
                 <div className='content'>
-                    <a href='/' className='header'>{drink.name}</a>
+                    <a href='/' className='header'>{drink.strDrink}</a>
                 </div>
             </div>
         </div>

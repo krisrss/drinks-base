@@ -1,58 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import DrinkThumbnail from './DrinkThumbnail';
 
-const drinkData = {
-    drinks: [
-        {
-            name: 'Drink 1',
-            imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
-        },
-        {
-            name: 'Drink 2',
-            imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
-        },
-        {
-            name: 'Drink 3',
-            imgUrl: 'https://www.jocooks.com/wp-content/uploads/2020/03/manhattan-drink-1-200x200.jpg'
-        }
-    ],
-    cocktails: [
-        {
-            name: 'Cocktail 1',
-            imgUrl: 'https://www.mom4real.com/wp-content/uploads/2018/04/belmont-jewel-drink-1-200x200.jpg'
-        },
-        {
-            name: 'Cocktail 2',
-            imgUrl: 'https://www.mom4real.com/wp-content/uploads/2018/04/belmont-jewel-drink-1-200x200.jpg'
-        },
-        {
-            name: 'Cocktail 3',
-            imgUrl: 'https://www.mom4real.com/wp-content/uploads/2018/04/belmont-jewel-drink-1-200x200.jpg'
-        }
-    ]
-};
 
 const DrinkList = () => {
-    const [searchTerm, setSearchTerm] = useState('');
     const { urlTerm } = useParams();
+    const [drinksData, setDrinksData] = useState([]);
 
     useEffect(() => {
-        setSearchTerm(urlTerm);
+        const getDrinks = async () => {
+            const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
+                params: {
+                    s: urlTerm
+                }
+            });
+            setDrinksData(data.drinks);
+        };
+        getDrinks();
     }, [urlTerm]);
 
     let drinks = null;
 
-    if (searchTerm) {
-        drinks = drinkData[searchTerm].map((drink) => {
+    if (urlTerm) {
+        drinks = drinksData.map((drink) => {
             return (
-                <DrinkThumbnail key={drink.name} drink={drink} />
+                <DrinkThumbnail key={drink.idDrink} drink={drink} />
             )
         });
     }
 
     return (
         <div>
+            {console.log(drinksData)}
             <div className='ui centered cards'>
                 {drinks}
             </div>
