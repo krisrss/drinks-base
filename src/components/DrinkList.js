@@ -31,7 +31,6 @@ const DrinkList = () => {
 
     return (
         <div>
-            {console.log(drinksData)}
             <div className='ui centered cards'>
                 {drinks}
             </div>
