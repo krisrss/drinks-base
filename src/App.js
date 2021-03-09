@@ -4,6 +4,7 @@ import SearchBar from './components/SearchBar';
 import DrinkList from './components/DrinkList';
 import DrinkDetails from './components/DrinkDetails';
 import IngredientsSearchBar from './components/IngredientsSearchBar';
+import IngredientsDisplay from './components/IngredientsDrinkList';
 
 const App = () => {
     return (
@@ -11,21 +12,22 @@ const App = () => {
             <Switch>
                 <Route path="/ingredients/:ing1/:ing2/:ing3/:ing4">
                     <IngredientsSearchBar />
-                    <h1>ACTIVATED 4</h1>
+                    <IngredientsDisplay />
                 </Route>
+
                 <Route path="/ingredients/:ing1/:ing2/:ing3">
                     <IngredientsSearchBar />
-                    <h1>ACTIVATED 3</h1>
+                    <IngredientsDisplay />
                 </Route>
 
                 <Route path="/ingredients/:ing1/:ing2">
                     <IngredientsSearchBar />
-                    <h1>ACTIVATED 2</h1>
+                    <IngredientsDisplay />
                 </Route>
 
                 <Route path="/ingredients/:ing1">
                     <IngredientsSearchBar />
-                    <h1>ACTIVATED 1</h1>
+                    <IngredientsDisplay />
                 </Route>
 
 
