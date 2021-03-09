@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const IngredientsSearchBar = () => {
 
     const [input, setInput] = useState('');
-    const [path, setPath] = useState('/ingredients');
+    const [path, setPath] = useState(window.location.pathname);
 
     const onChangeHandler = (e) => {
         setInput(e.target.value);
