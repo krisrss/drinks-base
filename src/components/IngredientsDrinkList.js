@@ -4,44 +4,25 @@ import axios from 'axios';
 import IngredientsList from './IngredientsDisplay';
 
 const IngredientsDrinkList = () => {
-    const [drinksData, setDrinksData] = useState([]);
     const ingredients = useParams();
-    const firstIngrItem = ingredients[Object.keys(ingredients)[0]];
-    const [filteredDrinksData, setFilteredDrinksData] = useState([]);
+    const [drinksData, setDrinksData] = useState([]);
 
     useEffect(() => {
         const getDrinks = async () => {
             const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php', {
                 params: {
-                    i: firstIngrItem
+                    i: Object.values(ingredients)[0]
                 }
             });
             setDrinksData(data.drinks);
         };
         getDrinks();
 
-    }, [firstIngrItem]);
-
-    useEffect(() => {
-        let filteredDrinks = [];
-        const getDrinks = async () => {
-            for (let i = 0; i < drinksData.length; i++) {
-                const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', {
-                    params: {
-                        i: drinksData[i].idDrink
-                    }
-                });
-                filteredDrinks.push(data.drinks[0]);
-            };
-            setFilteredDrinksData(filteredDrinks);
-        }
-        getDrinks();
-
-    }, [drinksData]);
+    }, [ingredients]);
 
     return (
         <div>
-            {console.log(filteredDrinksData)}
+            {console.log(drinksData)}
             <IngredientsList ingredients={ingredients} />
         </div>
     );
