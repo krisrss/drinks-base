@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const DrinkThumbnail = ({ drink }) => {
     return (
         <div style={{ padding: '2em' }}>
-            <Link to={`details/${drink.idDrink}`}>
+            <Link to={`/details/${drink.idDrink}`}>
                 <div className='ui card'>
                     <div className='image'>
                         <img alt='Drink' src={drink.strDrinkThumb} />
