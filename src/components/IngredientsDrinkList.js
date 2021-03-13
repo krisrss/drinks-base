@@ -73,7 +73,7 @@ const IngredientsDrinkList = () => {
     return (
         <div>
             <IngredientsList ingredients={ingredients} />
-            <div className='ui centered cards'>
+            <div>
                 {drinks}
             </div>
         </div>

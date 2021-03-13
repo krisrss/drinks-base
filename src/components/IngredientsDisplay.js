@@ -1,5 +1,4 @@
 import React from 'react';
-import './IngredientsDisplay.css';
 
 const IngredientsDisplay = ({ ingredients }) => {
 
@@ -12,7 +11,7 @@ const IngredientsDisplay = ({ ingredients }) => {
     })
 
     return (
-        <ul id='ingredientsDisplay'>
+        <ul>
             {ingList}
         </ul>
     );

@@ -16,16 +16,15 @@ const IngredientsSearchBar = () => {
     };
 
     return (
-        <div className='searchbar'>
-            <div className='ui left icon input'>
+        <div>
+            <div>
                 <input value={input} onChange={(e) => onChangeHandler(e)} type='text' />
-                <i className='search icon'></i>
+                <Link to={`${path}/${input}`} onClick={onClickHandler}>
+                    <button>
+                        Find
+                    </button>
+                </Link>
             </div>
-            <Link to={`${path}/${input}`} onClick={onClickHandler}>
-                <button className='ui button'>
-                    Find
-                </button>
-            </Link>
         </div>
     );
 };
