@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import DrinkThumbnail from './DrinkThumbnail';
 
-const DrinkList = () => {
+const DrinkList = ({ drinksData, getData }) => {
     const { urlTerm } = useParams();
-    const [drinksData, setDrinksData] = useState([]);
 
     useEffect(() => {
         const getDrinks = async () => {
@@ -14,10 +13,10 @@ const DrinkList = () => {
                     s: urlTerm
                 }
             });
-            data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
+            data.drinks ? getData(data.drinks) : getData([]);
         };
         getDrinks();
-    }, [urlTerm]);
+    }, [urlTerm, getData]);
 
     let drinks = null;
 

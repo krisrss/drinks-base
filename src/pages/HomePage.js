@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
 import SideBar from '../components/SideBar';
 
 const HomePage = () => {
+
+    const [drinksData, setDrinksData] = useState([]);
+
+    const getData = (data) => {
+        setDrinksData(data);
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -19,7 +26,7 @@ const HomePage = () => {
                         <SideBar />
                     </div>
                     <div className="col-md-10 text-center">
-                        <DrinkList />
+                        <DrinkList drinksData={drinksData} getData={getData} />
                     </div>
                 </div>
             </Route>
