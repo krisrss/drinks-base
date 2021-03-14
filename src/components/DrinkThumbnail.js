@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const DrinkThumbnail = ({ drink }) => {
     return (
-        <div class="col-3" style={{ paddingBottom: '2em' }}>
-            <div class="card" style={{ width: '13em' }}>
+        <div className="col-3" style={{ paddingBottom: '2em' }}>
+            <div className="card" style={{ width: '13em' }}>
                 <Link to={`/details/${drink.idDrink}`}>
-                    <img class="card-img-top" src={drink.strDrinkThumb} alt="Drink" />
+                    <img className="card-img-top" src={drink.strDrinkThumb} alt="Drink" />
                 </Link>
-                <div class="card-body">
-                    <h5 class="card-title">{drink.strDrink}</h5>
+                <div className="card-body">
+                    <h5 className="card-title">{drink.strDrink}</h5>
                 </div>
             </div>
         </div>

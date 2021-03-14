@@ -1,7 +1,8 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
 import { Route } from 'react-router-dom';
+import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
+import SideBar from '../components/SideBar';
 
 const HomePage = () => {
     return (
@@ -15,7 +16,7 @@ const HomePage = () => {
             <Route path="/:urlTerm">
                 <div className="row">
                     <div className="col-md-2 text-center">
-                        <h1>Side Bar</h1>
+                        <SideBar />
                     </div>
                     <div className="col-md-10 text-center">
                         <DrinkList />

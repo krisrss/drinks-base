@@ -31,7 +31,7 @@ const DrinkList = () => {
 
     return (
         <div className='row'>
-            <div class='card-deck'>
+            <div className='card-deck'>
                 {drinks}
             </div>
         </div>
