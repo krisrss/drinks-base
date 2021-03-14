@@ -30,11 +30,12 @@ const DrinkList = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className='row'>
+            <div class='card-deck'>
                 {drinks}
             </div>
         </div>
+
     );
 };
 

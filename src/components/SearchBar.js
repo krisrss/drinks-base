@@ -7,13 +7,14 @@ const SearchBar = () => {
 
     return (
         <div>
-            <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
-            <Link to={`/${input}`}>
-                <button >
-                    Find
-            </button>
-            </Link>
-
+            <div>
+                <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
+                <Link to={`/${input}`}>
+                    <button >
+                        Find
+                    </button>
+                </Link>
+            </div>
         </div>
     );
 };
