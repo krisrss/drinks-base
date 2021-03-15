@@ -1,31 +1,22 @@
 import React from 'react';
+import FilterBlock from './FilterBlock';
+
+const filterTypes = ['strAlcoholic', 'strCategory', 'strGlass'];
 
 const SideBar = ({ drinksData }) => {
 
-    const countDistintByType = (searchType) => {
-        let alcoholList = [];
-        const counts = {};
-
-        for (var i = 0; i < drinksData.length; i++) {
-            alcoholList.push(drinksData[i][searchType])
-        }
-
-        for (var x = 0; x < alcoholList.length; x++) {
-            counts[alcoholList[x]] = 1 + (counts[alcoholList[x]] || 0);
-        };
-        return counts;
-    };
+    let filters = filterTypes.map((type) => {
+        return (
+            <FilterBlock type={type} drinksData={drinksData} />
+        )
+    })
 
     return (
         <div>
-            {console.log(countDistintByType('strAlcoholic'))}
-            {console.log(countDistintByType('strCategory'))}
-            {console.log(countDistintByType('strGlass'))}
-
-            <h1>{drinksData.length}</h1>
-            <h1>Side Bar</h1>
+            {filters}
         </div>
     );
+
 };
 
 export default SideBar;
