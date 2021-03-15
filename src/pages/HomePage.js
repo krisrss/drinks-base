@@ -7,7 +7,7 @@ import SideBar from '../components/SideBar';
 
 const HomePage = () => {
     const [drinksData, setDrinksData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState();
 
     const getSearchTerm = (term) => {
         setSearchTerm(term);
@@ -36,7 +36,7 @@ const HomePage = () => {
             <Route path="/:urlTerm">
                 <div className="row">
                     <div className="col-md-2 text-center">
-                        <SideBar />
+                        <SideBar drinksData={drinksData} />
                     </div>
                     <div className="col-md-10 text-center">
                         <DrinkList drinksData={drinksData} getSearchTerm={getSearchTerm} />
