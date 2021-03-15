@@ -5,9 +5,12 @@ const filterTypes = ['strAlcoholic', 'strCategory', 'strGlass'];
 
 const SideBar = ({ drinksData }) => {
 
-    let filters = filterTypes.map((type) => {
+    let filters = filterTypes.map((type, index) => {
         return (
-            <FilterBlock type={type} drinksData={drinksData} />
+            <div key={index}>
+                ============
+                <FilterBlock type={type} drinksData={drinksData} />
+            </div>
         )
     })
 

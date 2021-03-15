@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
@@ -7,23 +7,19 @@ import SideBar from '../components/SideBar';
 
 const HomePage = () => {
     const [drinksData, setDrinksData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState();
-
-    const getSearchTerm = (term) => {
-        setSearchTerm(term);
-    }
+    const { urlTerm } = useParams();
 
     useEffect(() => {
         const getDrinks = async () => {
             const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
                 params: {
-                    s: searchTerm
+                    s: urlTerm
                 }
             });
             data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
         };
         getDrinks();
-    }, [searchTerm]);
+    }, [urlTerm]);
 
     return (
         <div className="container">
@@ -33,16 +29,14 @@ const HomePage = () => {
                 </div>
             </div>
 
-            <Route path="/:urlTerm">
-                <div className="row">
-                    <div className="col-md-2 text-center">
-                        <SideBar drinksData={drinksData} />
-                    </div>
-                    <div className="col-md-10 text-center">
-                        <DrinkList drinksData={drinksData} getSearchTerm={getSearchTerm} />
-                    </div>
+            <div className="row">
+                <div className="col-md-2 text-center">
+                    {drinksData.length !== 0 ? <SideBar drinksData={drinksData} /> : null}
                 </div>
-            </Route>
+                <div className="col-md-10 text-center">
+                    <DrinkList drinksData={drinksData} urlTerm={urlTerm} />
+                </div>
+            </div>
 
         </div>
     )

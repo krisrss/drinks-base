@@ -18,7 +18,7 @@ const FilterBlock = ({ type, drinksData }) => {
 
     const filters = Object.entries(countDistintByType(drinksData, type)).map((item, index) => {
         return (
-            <label>
+            <label key={index}>
                 <input type="checkbox" />
                 <span>{`${item[0]} ${item[1]}`}</span>
             </label>

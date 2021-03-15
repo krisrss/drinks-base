@@ -1,13 +1,7 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import DrinkThumbnail from './DrinkThumbnail';
 
-const DrinkList = ({ drinksData, getSearchTerm }) => {
-    const { urlTerm } = useParams();
-
-    useEffect(() => {
-        getSearchTerm(urlTerm);
-    }, [urlTerm, getSearchTerm]);
+const DrinkList = ({ drinksData, urlTerm }) => {
 
     let drinks = null;
 

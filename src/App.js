@@ -17,6 +17,10 @@ const App = () => {
                     <DrinkDetails />
                 </Route>
 
+                <Route path="/:urlTerm">
+                    <HomePage />
+                </Route>
+
                 <Route path="/">
                     <HomePage />
                 </Route>
