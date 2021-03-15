@@ -1,22 +1,13 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import DrinkThumbnail from './DrinkThumbnail';
 
-const DrinkList = ({ drinksData, getData }) => {
+const DrinkList = ({ drinksData, getSearchTerm }) => {
     const { urlTerm } = useParams();
 
     useEffect(() => {
-        const getDrinks = async () => {
-            const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
-                params: {
-                    s: urlTerm
-                }
-            });
-            data.drinks ? getData(data.drinks) : getData([]);
-        };
-        getDrinks();
-    }, [urlTerm, getData]);
+        getSearchTerm(urlTerm);
+    }, [urlTerm, getSearchTerm]);
 
     let drinks = null;
 
