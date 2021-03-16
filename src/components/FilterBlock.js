@@ -1,4 +1,5 @@
 import React from 'react';
+import Checkbox from './Checkbox';
 
 const FilterBlock = ({ type, drinksData }) => {
 
@@ -16,12 +17,9 @@ const FilterBlock = ({ type, drinksData }) => {
         return counts;
     };
 
-    const filters = Object.entries(countDistintByType(drinksData, type)).map((item, index) => {
+    const filters = Object.entries(countDistintByType(drinksData, type)).map((filterData, index) => {
         return (
-            <label key={index}>
-                <input type="checkbox" />
-                <span>{`${item[0]} ${item[1]}`}</span>
-            </label>
+            <Checkbox filterData={filterData} />
         )
     });
 
