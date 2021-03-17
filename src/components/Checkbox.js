@@ -1,16 +1,27 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 
 const Checkbox = ({ filterData }) => {
-    const search = useLocation();
+    const urlStats = useLocation();
     const history = useHistory();
+    const queryList = queryString.parse(urlStats.search);
 
     const getChckeboxValue = (event) => {
         const value = event.target.value;
         const removeSpace = value.split(' ').join('').toLowerCase();
         const filterType = removeSpace.split('/').join('');
-        const mainPath = search.pathname;
-        history.push(`${mainPath}?filter=${filterType}`);
+        const mainPath = urlStats.pathname;
+        const currentQuery = urlStats.search;
+
+        if (urlStats.search == "") {
+            history.push(`${mainPath}?filter=${filterType}`);
+        }
+        else {
+            history.push(`${currentQuery}&filter=${filterType}`);
+        }
+
+        console.log(queryList.filter);
     }
 
     return (
