@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 
@@ -11,6 +11,19 @@ const Checkbox = ({ filterData, filterCategory }) => {
     const currentQuery = urlStats.search;
     const queryList = queryString.parse(urlStats.search);
 
+    useEffect(() => {
+        const mergeArr = Object.values(queryList).flat(1);
+        const boxChecked = mergeArr.includes(cleanCategoryName(filterData[0]));
+        setBoxClicked(!boxChecked);
+    }, [queryList]);
+
+    const cleanCategoryName = (category) => {
+        const removeSpace = filterData[0].split(' ').join('').toLowerCase();
+        const filterType = removeSpace.split('/').join('');
+
+        return filterType;
+    }
+
     const cleanQueryAtIndex = (arr, position, amount) => {
         let array = arr.split('');
         array.splice(position, amount);
@@ -21,14 +34,12 @@ const Checkbox = ({ filterData, filterCategory }) => {
     const getChckeboxValue = (event) => {
         setBoxClicked(!boxClicked);
         const value = event.target.value;
-        const removeSpace = value.split(' ').join('').toLowerCase();
-        const filterType = removeSpace.split('/').join('');
 
-        const intitialQuery = `${mainPath}?${filterCategory}=${filterType}`;
-        const fullPathQuery = `${currentQuery}&${filterCategory}=${filterType}`
+        const intitialQuery = `${mainPath}?${filterCategory}=${cleanCategoryName(value)}`;
+        const fullPathQuery = `${currentQuery}&${filterCategory}=${cleanCategoryName(value)}`
 
         if (boxClicked === true) {
-            if (currentQuery == "") {
+            if (currentQuery === "") {
                 history.push(intitialQuery);
             }
             else {
@@ -36,7 +47,7 @@ const Checkbox = ({ filterData, filterCategory }) => {
             }
         }
         else {
-            var queryValue = currentQuery.replace(`${filterCategory}=${filterType}`, '');
+            var queryValue = currentQuery.replace(`${filterCategory}=${cleanCategoryName(value)}`, '');
 
             if (queryValue[1] === '&') {
                 history.push(cleanQueryAtIndex(queryValue, 1, 1));
@@ -53,7 +64,7 @@ const Checkbox = ({ filterData, filterCategory }) => {
 
     return (
         <label>
-            <input type="checkbox" value={filterData[0]} onClick={getChckeboxValue} />
+            <input type="checkbox" checked={!boxClicked} value={filterData[0]} onChange={getChckeboxValue} />
             <span>{`${filterData[0]} ${filterData[1]}`}</span>
         </label>
     );
