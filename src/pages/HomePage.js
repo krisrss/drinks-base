@@ -39,14 +39,18 @@ const HomePage = () => {
         if (queryArray.length !== 0) {
 
             drinks.forEach(drink => {
-                var matchAlcoholic = queryArray.includes(cleanFilterName(drink.strAlcoholic));
-                var matchCategory = queryArray.includes(cleanFilterName(drink.strCategory));
-                var matchGlass = queryArray.includes(cleanFilterName(drink.strGlass));
+                const drinkFilters = [];
 
-                if (matchAlcoholic || matchCategory || matchGlass) {
+                drinkFilters.push(cleanFilterName(drink.strAlcoholic));
+                drinkFilters.push(cleanFilterName(drink.strCategory));
+                drinkFilters.push(cleanFilterName(drink.strGlass));
+
+                const filterApplied = queryArray.every(v => drinkFilters.includes(v));
+                if (filterApplied === true) {
                     resultArr.push(drink);
                 }
             });
+
             return resultArr;
         }
         else {
