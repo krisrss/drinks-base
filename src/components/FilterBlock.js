@@ -19,7 +19,7 @@ const FilterBlock = ({ type, drinksData }) => {
 
     const filters = Object.entries(countDistintByType(drinksData, type)).map((filterData, index) => {
         return (
-            <Checkbox filterData={filterData} filterCategory={type} />
+            <Checkbox key={index} filterData={filterData} filterCategory={type} />
         )
     });
 
