@@ -11,7 +11,7 @@ const HomePage = () => {
     const { urlTerm } = useParams();
     const urlStats = useLocation();
     const queryList = queryString.parse(urlStats.search);
-    const queryArray = Object.values(queryList);
+    const queryArray = Object.values(queryList).flat(1);
 
     useEffect(() => {
         const getDrinks = async () => {
