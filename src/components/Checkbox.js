@@ -17,7 +17,7 @@ const Checkbox = ({ filterData, filterCategory }) => {
         setBoxClicked(!boxChecked);
     }, [queryList]);
 
-    const cleanCategoryName = (category) => {
+    const cleanCategoryName = () => {
         const removeSpace = filterData[0].split(' ').join('').toLowerCase();
         const filterType = removeSpace.split('/').join('');
 
@@ -35,8 +35,8 @@ const Checkbox = ({ filterData, filterCategory }) => {
         setBoxClicked(!boxClicked);
         const value = event.target.value;
 
-        const intitialQuery = `${mainPath}?${filterCategory}=${cleanCategoryName(value)}`;
-        const fullPathQuery = `${currentQuery}&${filterCategory}=${cleanCategoryName(value)}`
+        const intitialQuery = `${mainPath}?${filterCategory}=${cleanCategoryName()}`;
+        const fullPathQuery = `${currentQuery}&${filterCategory}=${cleanCategoryName()}`
 
         if (boxClicked === true) {
             if (currentQuery === "") {
@@ -47,7 +47,7 @@ const Checkbox = ({ filterData, filterCategory }) => {
             }
         }
         else {
-            var queryValue = currentQuery.replace(`${filterCategory}=${cleanCategoryName(value)}`, '');
+            var queryValue = currentQuery.replace(`${filterCategory}=${cleanCategoryName()}`, '');
 
             if (queryValue[1] === '&') {
                 history.push(cleanQueryAtIndex(queryValue, 1, 1));

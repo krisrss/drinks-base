@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
@@ -8,6 +9,9 @@ import SideBar from '../components/SideBar';
 const HomePage = () => {
     const [drinksData, setDrinksData] = useState([]);
     const { urlTerm } = useParams();
+    const urlStats = useLocation();
+    const queryList = queryString.parse(urlStats.search);
+    const queryArray = Object.values(queryList);
 
     useEffect(() => {
         const getDrinks = async () => {
@@ -20,6 +24,35 @@ const HomePage = () => {
         };
         getDrinks();
     }, [urlTerm]);
+
+    const cleanFilterName = (category) => {
+        const removeSpace = category.split(' ').join('').toLowerCase();
+        const filterType = removeSpace.split('/').join('');
+
+        return filterType;
+    }
+
+    const filterByQuery = () => {
+        const drinks = [...drinksData];
+        const resultArr = [];
+
+        if (queryArray.length !== 0) {
+
+            drinks.forEach(drink => {
+                var matchAlcoholic = queryArray.includes(cleanFilterName(drink.strAlcoholic));
+                var matchCategory = queryArray.includes(cleanFilterName(drink.strCategory));
+                var matchGlass = queryArray.includes(cleanFilterName(drink.strGlass));
+
+                if (matchAlcoholic || matchCategory || matchGlass) {
+                    resultArr.push(drink);
+                }
+            });
+            return resultArr;
+        }
+        else {
+            return drinks;
+        }
+    }
 
     return (
         <div className="container">
@@ -34,7 +67,7 @@ const HomePage = () => {
                     {drinksData.length !== 0 ? <SideBar drinksData={drinksData} /> : null}
                 </div>
                 <div className="col-md-10 text-center">
-                    <DrinkList drinksData={drinksData} urlTerm={urlTerm} />
+                    <DrinkList drinksData={filterByQuery()} urlTerm={urlTerm} />
                 </div>
             </div>
 
