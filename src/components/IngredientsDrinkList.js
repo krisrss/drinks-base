@@ -1,42 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React from 'react';
 import IngredientsList from './IngredientsDisplay';
 import DrinkThumbnail from './DrinkThumbnail';
 
-const IngredientsDrinkList = () => {
-    const ingredients = useParams();
-    const [drinksData, setDrinksData] = useState([]);
-
-    useEffect(() => {
-        if (drinksData.length === 0) {
-            const getDrinks = async () => {
-                const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php', {
-                    params: {
-                        i: Object.values(ingredients)[0]
-                    }
-                });
-
-                let drinkList = [];
-                let promises = [];
-                for (let i = 0; i < data.drinks.length; i++) {
-                    promises.push(
-                        axios.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', {
-                            params: {
-                                i: data.drinks[i].idDrink
-                            }
-                        }).then(response => {
-                            drinkList.push(response.data.drinks[0]);
-                        })
-                    )
-                }
-                Promise.all(promises).then(() => setDrinksData(drinkList));
-            }
-            getDrinks();
-        }
-    }, [ingredients, drinksData]);
-
-
+const IngredientsDrinkList = ({ drinksData, ingredients }) => {
 
     const filteredData = () => {
         let tempDrinkStore = [];
