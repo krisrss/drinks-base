@@ -72,11 +72,16 @@ const IngredientsDrinkList = () => {
 
     return (
         <div>
-            <IngredientsList ingredients={ingredients} />
-            <div>
-                {drinks}
+            <div className='row' style={{ paddingLeft: '200px' }}>
+                <IngredientsList ingredients={ingredients} />
+            </div>
+            <div className='row'>
+                <div className='card-deck'>
+                    {drinks}
+                </div>
             </div>
         </div>
+
     );
 };
 

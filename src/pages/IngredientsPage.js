@@ -5,22 +5,35 @@ import IngredientsDrinkList from '../components/IngredientsDrinkList';
 
 const IngredientsPage = () => {
     return (
-        <div>
-            <IngredientsSearchBar />
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
+                    <IngredientsSearchBar />
+                </div>
+            </div>
 
-            <Switch>
-                <Route path="/ingredients/:ing1/:ing2/:ing3">
-                    <IngredientsDrinkList />
-                </Route>
+            <div className="row">
+                <div className="col-md-2 text-center">
+                    Side Bar
+                </div>
 
-                <Route path="/ingredients/:ing1/:ing2">
-                    <IngredientsDrinkList />
-                </Route>
+                <div className="col-md-10 text-center">
+                    <Switch>
+                        <Route path="/ingredients/:ing1/:ing2/:ing3">
+                            <IngredientsDrinkList />
+                        </Route>
 
-                <Route path="/ingredients/:ing1">
-                    <IngredientsDrinkList />
-                </Route>
-            </ Switch>
+                        <Route path="/ingredients/:ing1/:ing2">
+                            <IngredientsDrinkList />
+                        </Route>
+
+                        <Route path="/ingredients/:ing1">
+                            <IngredientsDrinkList />
+                        </Route>
+                    </ Switch>
+                </div>
+            </div>
+
         </div>
     )
 };
