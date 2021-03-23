@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from './Checkbox';
 
-const FilterBlock = ({ type, drinksData }) => {
+const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
 
     const countDistintByType = (arr, searchType) => {
         let alcoholList = [];
@@ -17,9 +17,12 @@ const FilterBlock = ({ type, drinksData }) => {
         return counts;
     };
 
-    const filters = Object.entries(countDistintByType(drinksData, type)).map((filterData, index) => {
+    const prefilteredData = Object.entries(countDistintByType(drinksData, type));
+
+    const filters = Object.entries(countDistintByType(unfilteredDrinksData, type)).map((filterData, index) => {
+        const unlockCheckbox = !prefilteredData.flat().includes(filterData[0]);
         return (
-            <Checkbox key={index} filterData={filterData} filterCategory={type} />
+            <Checkbox key={index} filterData={filterData} filterCategory={type} unlockCheckbox={unlockCheckbox} prefilteredData={prefilteredData} />
         )
     });
 

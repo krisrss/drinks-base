@@ -68,7 +68,7 @@ const HomePage = () => {
 
             <div className="row">
                 <div className="col-md-2 text-center">
-                    {drinksData.length !== 0 ? <SideBar drinksData={filterByQuery()} /> : null}
+                    {drinksData.length !== 0 ? <SideBar drinksData={filterByQuery()} unfilteredDrinksData={drinksData} /> : null}
                 </div>
                 <div className="col-md-10 text-center">
                     <DrinkList drinksData={filterByQuery()} urlTerm={urlTerm} />

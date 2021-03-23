@@ -3,13 +3,13 @@ import FilterBlock from './FilterBlock';
 
 const filterTypes = ['strAlcoholic', 'strCategory', 'strGlass'];
 
-const SideBar = ({ drinksData }) => {
+const SideBar = ({ drinksData, unfilteredDrinksData }) => {
 
     let filters = filterTypes.map((type, index) => {
         return (
             <div key={index}>
                 ============
-                <FilterBlock type={type} drinksData={drinksData} />
+                <FilterBlock type={type} drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} />
             </div>
         )
     })

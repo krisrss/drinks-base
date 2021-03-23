@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 
-const Checkbox = ({ filterData, filterCategory }) => {
+const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData }) => {
     const [boxClicked, setBoxClicked] = useState(true);
 
     const urlStats = useLocation();
@@ -31,7 +31,7 @@ const Checkbox = ({ filterData, filterCategory }) => {
         return array;
     };
 
-    const getChckeboxValue = (event) => {
+    const getCheckboxQuery = (event) => {
         setBoxClicked(!boxClicked);
         const value = event.target.value;
 
@@ -60,13 +60,22 @@ const Checkbox = ({ filterData, filterCategory }) => {
                 history.push(`${mainPath}${cleanedQuery}`);
             }
         }
-    }
+    };
+
+    let setFilterQuantity = '';
+    prefilteredData.forEach(drink => {
+        if (filterData[0] === drink[0]) {
+            setFilterQuantity = drink[1]
+        }
+    });
 
     return (
-        <label>
-            <input type="checkbox" checked={!boxClicked} value={filterData[0]} onChange={getChckeboxValue} />
-            <span>{`${filterData[0]} ${filterData[1]}`}</span>
-        </label>
+        <div>
+            <label>
+                <input type="checkbox" checked={!boxClicked} value={filterData[0]} onChange={getCheckboxQuery} disabled={unlockCheckbox} />
+                <span>{`${filterData[0]} ${setFilterQuantity}`}</span>
+            </label>
+        </div>
     );
 };
 
