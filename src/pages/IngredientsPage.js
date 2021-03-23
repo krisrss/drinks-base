@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from 'axios';
-import { filterByQuery } from '../functions/Utils';
+import { filterByQuery, filterByUrlTerms } from '../functions/Utils';
 import IngredientsSearchBar from '../components/IngredientsSearchBar';
 import IngredientsDrinkList from '../components/IngredientsDrinkList';
 import SideBar from '../components/SideBar';
@@ -57,14 +57,13 @@ const IngredientsPage = () => {
 
             <div className="row">
                 <div className="col-md-2 text-center">
-                    {drinksData.length !== 0 ? <SideBar drinksData={filterByQuery(drinksData, queryArray)} unfilteredDrinksData={drinksData} /> : null}
+                    {drinksData.length !== 0 ? <SideBar drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)} unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)} /> : null}
                 </div>
 
                 <div className="col-md-10 text-center">
-                    <IngredientsDrinkList drinksData={filterByQuery(drinksData, queryArray)} ingredients={ingredients} />
+                    <IngredientsDrinkList drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)} ingredients={ingredients} />
                 </div>
             </div>
-
         </div>
     )
 };
