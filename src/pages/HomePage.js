@@ -43,7 +43,7 @@ const HomePage = () => {
                     {drinksData.length !== 0 ? <SideBar drinksData={filterByQuery(drinksData, queryArray)} unfilteredDrinksData={drinksData} /> : null}
                 </div>
                 <div className="col-md-10 text-center">
-                    <DrinkList drinksData={filterByQuery(drinksData, queryArray)} urlTerm={urlTerm} />
+                    <DrinkList drinksData={filterByQuery(drinksData, queryArray)} urlParams={urlTerm} />
                 </div>
             </div>
 
