@@ -25,20 +25,24 @@ const IngredientsPage = () => {
                         }
                     });
 
-                    let drinkList = [];
-                    let promises = [];
-                    for (let i = 0; i < data.drinks.length; i++) {
-                        promises.push(
-                            axios.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', {
-                                params: {
-                                    i: data.drinks[i].idDrink
-                                }
-                            }).then(response => {
-                                drinkList.push(response.data.drinks[0]);
-                            })
-                        )
+                    if (data) {
+                        let drinkList = [];
+                        let promises = [];
+                        for (let i = 0; i < data.drinks.length; i++) {
+                            promises.push(
+                                axios.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', {
+                                    params: {
+                                        i: data.drinks[i].idDrink
+                                    }
+                                }).then(response => {
+                                    drinkList.push(response.data.drinks[0]);
+                                })
+                            )
+                        }
+                        Promise.all(promises).then(() => setDrinksData(drinkList));
                     }
-                    Promise.all(promises).then(() => setDrinksData(drinkList));
+
+
                 }
                 getDrinks();
             }
