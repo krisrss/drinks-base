@@ -3,12 +3,11 @@ import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from 'axios';
 import { filterByQuery, filterByUrlTerms } from '../functions/Utils';
-import IngredientsSearchBar from '../components/IngredientsSearchBar';
 import SideBar from '../components/SideBar';
 import SearchSelector from '../components/SearchSelector';
 import IngredientsList from '../components/IngredientsDisplay';
 import DrinkList from '../components/DrinkList';
-
+import SearchBar from '../components/SearchBar';
 
 const IngredientsPage = () => {
     const [drinksData, setDrinksData] = useState([]);
@@ -50,11 +49,12 @@ const IngredientsPage = () => {
         }
     }, [ingredients]);
 
+
     return (
         <div className="container">
             <div className="row">
                 <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
-                    <IngredientsSearchBar />
+                    <SearchBar />
                 </div>
             </div>
 
