@@ -5,10 +5,14 @@ const SearchBar = () => {
 
     const [input, setInput] = useState('');
 
+    const onChangeHandler = (e) => {
+        setInput(e.target.value);
+    };
+
     return (
         <div>
             <div>
-                <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
+                <input value={input} onChange={onChangeHandler} type='text' />
                 <Link to={`/${input}`}>
                     <button >
                         Find
