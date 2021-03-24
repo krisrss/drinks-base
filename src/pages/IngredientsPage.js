@@ -4,9 +4,11 @@ import queryString from 'query-string';
 import axios from 'axios';
 import { filterByQuery, filterByUrlTerms } from '../functions/Utils';
 import IngredientsSearchBar from '../components/IngredientsSearchBar';
-import IngredientsDrinkList from '../components/IngredientsDrinkList';
 import SideBar from '../components/SideBar';
 import SearchSelector from '../components/SearchSelector';
+import IngredientsList from '../components/IngredientsDisplay';
+import DrinkList from '../components/DrinkList';
+
 
 const IngredientsPage = () => {
     const [drinksData, setDrinksData] = useState([]);
@@ -25,24 +27,20 @@ const IngredientsPage = () => {
                         }
                     });
 
-                    if (data) {
-                        let drinkList = [];
-                        let promises = [];
-                        for (let i = 0; i < data.drinks.length; i++) {
-                            promises.push(
-                                axios.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', {
-                                    params: {
-                                        i: data.drinks[i].idDrink
-                                    }
-                                }).then(response => {
-                                    drinkList.push(response.data.drinks[0]);
-                                })
-                            )
-                        }
-                        Promise.all(promises).then(() => setDrinksData(drinkList));
+                    let drinkList = [];
+                    let promises = [];
+                    for (let i = 0; i < data.drinks.length; i++) {
+                        promises.push(
+                            axios.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', {
+                                params: {
+                                    i: data.drinks[i].idDrink
+                                }
+                            }).then(response => {
+                                drinkList.push(response.data.drinks[0]);
+                            })
+                        )
                     }
-
-
+                    Promise.all(promises).then(() => setDrinksData(drinkList));
                 }
                 getDrinks();
             }
@@ -59,6 +57,11 @@ const IngredientsPage = () => {
                     <IngredientsSearchBar />
                 </div>
             </div>
+
+            <div className='row' style={{ paddingLeft: '200px' }}>
+                <IngredientsList ingredients={ingredients} />
+            </div>
+
             <div className='text-center' style={{ paddingBottom: '40px' }}>
                 <SearchSelector />
             </div>
@@ -71,7 +74,7 @@ const IngredientsPage = () => {
                 </div>
 
                 <div className="col-md-10 text-center">
-                    <IngredientsDrinkList drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)} ingredients={ingredients} />
+                    <DrinkList drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)} urlParams={ingredients} />
                 </div>
             </div>
         </div>
