@@ -5,7 +5,7 @@ import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
 import SideBar from '../components/SideBar';
-import SearchSelector from '../components/SearchSelector';
+import NavigationBar from '../components/NavigationBar';
 import { filterByQuery } from '../functions/Utils';
 
 const HomePage = () => {
@@ -35,7 +35,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className='text-center' style={{ paddingBottom: '40px' }}>
-                <SearchSelector />
+                <NavigationBar />
             </div>
 
             <div className="row">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SearchSelector = () => {
+const NavigationBar = () => {
     return (
         <div>
             <Link to={'/'}>
@@ -16,4 +16,4 @@ const SearchSelector = () => {
     )
 };
 
-export default SearchSelector;
+export default NavigationBar;

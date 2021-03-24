@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import axios from 'axios';
 import { filterByQuery, filterByUrlTerms } from '../functions/Utils';
 import SideBar from '../components/SideBar';
-import SearchSelector from '../components/SearchSelector';
+import NavigationBar from '../components/NavigationBar';
 import IngredientsList from '../components/IngredientsDisplay';
 import DrinkList from '../components/DrinkList';
 import SearchBar from '../components/SearchBar';
@@ -63,7 +63,7 @@ const IngredientsPage = () => {
             </div>
 
             <div className='text-center' style={{ paddingBottom: '40px' }}>
-                <SearchSelector />
+                <NavigationBar />
             </div>
 
             <div className="row">
