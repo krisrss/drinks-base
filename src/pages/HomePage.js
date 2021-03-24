@@ -5,6 +5,7 @@ import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
 import SideBar from '../components/SideBar';
+import SearchSelector from '../components/SearchSelector';
 import { filterByQuery } from '../functions/Utils';
 
 const HomePage = () => {
@@ -32,6 +33,9 @@ const HomePage = () => {
                 <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
                     <SearchBar />
                 </div>
+            </div>
+            <div className='text-center' style={{ paddingBottom: '40px' }}>
+                <SearchSelector />
             </div>
 
             <div className="row">

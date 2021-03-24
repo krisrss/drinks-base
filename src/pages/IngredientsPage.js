@@ -6,6 +6,7 @@ import { filterByQuery, filterByUrlTerms } from '../functions/Utils';
 import IngredientsSearchBar from '../components/IngredientsSearchBar';
 import IngredientsDrinkList from '../components/IngredientsDrinkList';
 import SideBar from '../components/SideBar';
+import SearchSelector from '../components/SearchSelector';
 
 const IngredientsPage = () => {
     const [drinksData, setDrinksData] = useState([]);
@@ -53,6 +54,9 @@ const IngredientsPage = () => {
                 <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
                     <IngredientsSearchBar />
                 </div>
+            </div>
+            <div className='text-center' style={{ paddingBottom: '40px' }}>
+                <SearchSelector />
             </div>
 
             <div className="row">
