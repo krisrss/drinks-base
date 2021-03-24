@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const IngredientsSearchBar = () => {
+
     const [input, setInput] = useState('');
     const history = useHistory();
     const currentPath = history.location.pathname;
@@ -13,16 +14,17 @@ const IngredientsSearchBar = () => {
     const onClickHandler = () => {
         let verb = currentPath;
         verb += `/${input}`;
-        history.push(`${currentPath}/${input}`);
     };
 
     return (
         <div>
             <div>
                 <input value={input} onChange={(e) => onChangeHandler(e)} type='text' />
-                <button onClick={onClickHandler}>
-                    Find
-                </button>
+                <Link to={`${currentPath}/${input}`} onClick={onClickHandler}>
+                    <button>
+                        Find
+                    </button>
+                </Link>
             </div>
         </div>
     );
