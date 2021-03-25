@@ -39,6 +39,9 @@ const IngredientsPage = () => {
                 getDrinks();
             };
         }
+        else {
+            setDrinksData([]);
+        }
     }, [ingredients]);
 
 
