@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
 import SideBar from '../components/SideBar';
 import NavigationBar from '../components/NavigationBar';
 import { filterByQuery } from '../functions/Utils';
+import { getDrinksbyName } from '../api/thecocktaildb';
 
 const HomePage = () => {
     const [drinksData, setDrinksData] = useState([]);
@@ -17,11 +17,7 @@ const HomePage = () => {
 
     useEffect(() => {
         const getDrinks = async () => {
-            const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
-                params: {
-                    s: urlTerm
-                }
-            });
+            const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
             data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
         };
         getDrinks();
