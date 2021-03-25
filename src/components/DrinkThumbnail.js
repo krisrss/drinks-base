@@ -6,7 +6,7 @@ const DrinkThumbnail = ({ drink }) => {
         <div className="col-3" style={{ paddingBottom: '2em' }}>
             <div className="card" style={{ width: '13em' }}>
                 <Link to={`/details/${drink.idDrink}`}>
-                    <img className="card-img-top" src={drink.strDrinkThumb} alt="Drink" />
+                    <img className="card-img-top" src={`${drink.strDrinkThumb}/preview`} alt="Drink" />
                 </Link>
                 <div className="card-body">
                     <h5 className="card-title">{drink.strDrink}</h5>
