@@ -18,24 +18,26 @@ const IngredientsPage = () => {
 
     useEffect(() => {
         if (Object.keys(ingredients).length !== 0) {
-            const getDrinks = async () => {
-                const searchTerm = Object.values(ingredients)[0];
-                const data = await getDrinksbyIngredient('https://www.thecocktaildb.com/api/json/v1/1/filter.php', searchTerm);
+            if (drinksData.length === 0) {
+                const getDrinks = async () => {
+                    const searchTerm = Object.values(ingredients)[0];
+                    const data = await getDrinksbyIngredient('https://www.thecocktaildb.com/api/json/v1/1/filter.php', searchTerm);
 
-                let drinkList = [];
-                let promises = [];
-                for (let i = 0; i < data.drinks.length; i++) {
-                    const searchTermEach = data.drinks[i].idDrink;
-                    promises.push(
-                        getDrinksbyIngredient('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', searchTermEach).then(response => {
-                            drinkList.push(response.drinks[0]);
-                        })
-                    )
-                }
-                Promise.all(promises).then(() => setDrinksData(drinkList));
+                    let drinkList = [];
+                    let promises = [];
+                    for (let i = 0; i < data.drinks.length; i++) {
+                        const searchTermEach = data.drinks[i].idDrink;
+                        promises.push(
+                            getDrinksbyIngredient('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', searchTermEach).then(response => {
+                                drinkList.push(response.drinks[0]);
+                            })
+                        )
+                    }
+                    Promise.all(promises).then(() => setDrinksData(drinkList));
 
+                };
+                getDrinks();
             };
-            getDrinks();
         }
     }, [ingredients]);
 
