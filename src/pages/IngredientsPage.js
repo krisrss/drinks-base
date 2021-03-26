@@ -35,7 +35,7 @@ const IngredientsPage = () => {
                     Promise.all(promises).then(() => {
 
                         Object.keys(drinkList).forEach(function (index) {
-                            drinkList[index].ingredientCount = ingredientCount(drinkList, index).length;
+                            drinkList[index].ingredientCount = `items-${ingredientCount(drinkList, index).length}`;
                         });
 
                         setDrinksData(drinkList)

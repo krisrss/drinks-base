@@ -17,6 +17,7 @@ export const filterByQuery = (drinksData, queryArray) => {
             drinkFilters.push(cleanFilterName(drink.strAlcoholic));
             drinkFilters.push(cleanFilterName(drink.strCategory));
             drinkFilters.push(cleanFilterName(drink.strGlass));
+            drinkFilters.push(cleanFilterName(drink.ingredientCount));
 
             const filterApplied = queryArray.every(v => drinkFilters.includes(v));
             if (filterApplied === true) {

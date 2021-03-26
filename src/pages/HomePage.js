@@ -19,7 +19,7 @@ const HomePage = () => {
             const getDrinks = async () => {
                 const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
                 Object.keys(data.drinks).forEach(function (index) {
-                    data.drinks[index].ingredientCount = ingredientCount(data.drinks, index).length;
+                    data.drinks[index].ingredientCount = `items-${ingredientCount(data.drinks, index).length}`;
                 });
 
                 data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
