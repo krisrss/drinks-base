@@ -1,34 +1,24 @@
 import React from 'react';
-import DrinkThumbnail from './DrinkThumbnail';
 import SideBar from './SideBar';
-
-const DrinkList = ({ drinksData, urlParams, unfilteredDrinksData }) => {
-
-    let drinks = null;
-
-    if (urlParams) {
-        drinks = drinksData.map((drink) => {
-            return (
-                <DrinkThumbnail key={drink.idDrink} drink={drink} />
-            )
-        });
-    }
-
+import DrinksList from './DrinksList';
+const DrinksDisplay = ({ drinksData, urlParams, unfilteredDrinksData }) => {
     return (
         <>
             <div className="col-md-2 text-center">
-                {drinksData.length !== 0 ? <SideBar drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} /> : null}
+                {drinksData.length !== 0 ?
+                    <SideBar drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} />
+                    : null
+                }
             </div>
 
             <div className="col-md-10 text-center">
                 <div className='card-deck'>
-                    {drinks}
+                    <DrinksList drinksData={drinksData} urlParams={urlParams} />
                 </div>
             </div>
-
         </>
 
     );
 };
 
-export default DrinkList;
+export default DrinksDisplay;
