@@ -1,6 +1,6 @@
 import React from 'react';
 import DrinkThumbnail from './DrinkThumbnail';
-import SideBar from '../components/SideBar';
+import SideBar from './SideBar';
 
 const DrinkList = ({ drinksData, urlParams, unfilteredDrinksData }) => {
 

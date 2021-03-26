@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { filterByQuery, filterByUrlTerms } from '../functions/Utils';
-import SideBar from '../components/SideBar';
 import NavigationBar from '../components/NavigationBar';
 import IngredientsList from '../components/IngredientsDisplay';
-import DrinkList from '../components/DrinkList';
+import DrinksDisplay from '../components/DrinksDisplay';
 import SearchBar from '../components/SearchBar';
 import { getDrinksbyIngredient } from '../api/thecocktaildb';
 
@@ -62,7 +61,7 @@ const IngredientsPage = () => {
             </div>
 
             <div className="row">
-                <DrinkList
+                <DrinksDisplay
                     drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)}
                     urlParams={ingredients}
                     unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)}
