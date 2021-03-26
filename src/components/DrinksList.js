@@ -1,11 +1,15 @@
 import React from 'react';
 import DrinkThumbnail from './DrinkThumbnail';
 
-const DrinksList = ({ drinksData }) => {
+const DrinksList = ({ drinksData, imageLoaded }) => {
 
     const drinks = drinksData.map((drink) => {
         return (
-            <DrinkThumbnail key={drink.idDrink} drink={drink} />
+            <DrinkThumbnail
+                key={drink.idDrink}
+                drink={drink}
+                imageLoaded={imageLoaded}
+            />
         )
     });
 

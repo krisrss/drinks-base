@@ -60,12 +60,19 @@ const IngredientsPage = () => {
                 <NavigationBar />
             </div>
 
-            <div className="row">
-                <DrinksDisplay
-                    drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)}
-                    unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)}
-                />
-            </div>
+            {Object.values(ingredients).length !== 0 ?
+                <div className="row">
+                    <DrinksDisplay
+                        drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)}
+                        unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)}
+                    />
+                </div>
+                : null
+            }
+
+
+
+
         </div>
     )
 };
