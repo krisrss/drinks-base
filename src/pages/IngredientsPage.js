@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { filterByQuery, filterByUrlTerms } from '../functions/Utils';
+import { filterByQuery, filterByUrlTerms, ingredientCount } from '../functions/Utils';
 import NavigationBar from '../components/NavigationBar';
 import IngredientsList from '../components/IngredientsDisplay';
 import DrinksDisplay from '../components/DrinksDisplay';
@@ -32,7 +32,15 @@ const IngredientsPage = () => {
                             })
                         )
                     }
-                    Promise.all(promises).then(() => setDrinksData(drinkList));
+                    Promise.all(promises).then(() => {
+
+                        Object.keys(drinkList).forEach(function (index) {
+                            drinkList[index].ingredientCount = ingredientCount(drinkList, index).length;
+                        });
+
+                        setDrinksData(drinkList)
+
+                    });
 
                 };
                 getDrinks();

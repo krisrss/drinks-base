@@ -29,7 +29,21 @@ export const filterByQuery = (drinksData, queryArray) => {
     else {
         return drinks;
     }
-}
+};
+
+export const ingredientCount = (data, drinkIndex) => {
+    let ingList = [];
+
+    for (let x = 1; x <= 15; x++) {
+        let ing = data[drinkIndex]['strIngredient' + x];
+
+        if (ing !== null && ing !== '') {
+            ingList.push(ing.toLowerCase());
+        }
+    }
+
+    return ingList;
+};
 
 export const filterByUrlTerms = (drinksData, ingredients) => {
     let tempDrinkStore = [];
@@ -37,16 +51,7 @@ export const filterByUrlTerms = (drinksData, ingredients) => {
 
     if (ingrList.length > 1) {
         for (let i = 0; i < drinksData.length; i++) {
-            let ingList = [];
-
-            for (let x = 1; x <= 15; x++) {
-                let ing = drinksData[i]['strIngredient' + x];
-
-                if (ing !== null && ing !== '') {
-                    ingList.push(ing.toLowerCase());
-                }
-            }
-            if (ingrList.every(elem => ingList.includes(elem))) {
+            if (ingrList.every(elem => ingredientCount(drinksData, i).includes(elem))) {
                 tempDrinkStore.push(drinksData[i])
             }
         };

@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import SearchBar from '../components/SearchBar';
 import DrinksDisplay from '../components/DrinksDisplay';
 import NavigationBar from '../components/NavigationBar';
-import { filterByQuery } from '../functions/Utils';
+import { filterByQuery, ingredientCount } from '../functions/Utils';
 import { getDrinksbyName } from '../api/thecocktaildb';
 
 const HomePage = () => {
@@ -15,11 +15,20 @@ const HomePage = () => {
     const queryArray = Object.values(queryList).flat(1);
 
     useEffect(() => {
-        const getDrinks = async () => {
-            const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
-            data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
-        };
-        getDrinks();
+        if (urlTerm) {
+            const getDrinks = async () => {
+                const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
+                Object.keys(data.drinks).forEach(function (index) {
+                    data.drinks[index].ingredientCount = ingredientCount(data.drinks, index).length;
+                });
+
+                data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
+            };
+            getDrinks();
+        }
+        else {
+            setDrinksData([]);
+        }
     }, [urlTerm]);
 
     return (
