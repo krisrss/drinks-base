@@ -3,7 +3,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import SearchBar from '../components/SearchBar';
 import DrinkList from '../components/DrinkList';
-import SideBar from '../components/SideBar';
 import NavigationBar from '../components/NavigationBar';
 import { filterByQuery } from '../functions/Utils';
 import { getDrinksbyName } from '../api/thecocktaildb';
@@ -35,14 +34,12 @@ const HomePage = () => {
             </div>
 
             <div className="row">
-                <div className="col-md-2 text-center">
-                    {drinksData.length !== 0 ? <SideBar drinksData={filterByQuery(drinksData, queryArray)} unfilteredDrinksData={drinksData} /> : null}
-                </div>
-                <div className="col-md-10 text-center">
-                    <DrinkList drinksData={filterByQuery(drinksData, queryArray)} urlParams={urlTerm} />
-                </div>
+                <DrinkList
+                    drinksData={filterByQuery(drinksData, queryArray)}
+                    urlParams={urlTerm}
+                    unfilteredDrinksData={drinksData}
+                />
             </div>
-
         </div>
     )
 };

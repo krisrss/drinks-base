@@ -62,15 +62,11 @@ const IngredientsPage = () => {
             </div>
 
             <div className="row">
-                <div className="col-md-2 text-center">
-                    {filterByUrlTerms(drinksData, ingredients).length !== 0 ?
-                        <SideBar drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)} unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)} />
-                        : null}
-                </div>
-
-                <div className="col-md-10 text-center">
-                    <DrinkList drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)} urlParams={ingredients} />
-                </div>
+                <DrinkList
+                    drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)}
+                    urlParams={ingredients}
+                    unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)}
+                />
             </div>
         </div>
     )

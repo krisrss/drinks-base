@@ -1,7 +1,8 @@
 import React from 'react';
 import DrinkThumbnail from './DrinkThumbnail';
+import SideBar from '../components/SideBar';
 
-const DrinkList = ({ drinksData, urlParams }) => {
+const DrinkList = ({ drinksData, urlParams, unfilteredDrinksData }) => {
 
     let drinks = null;
 
@@ -14,11 +15,18 @@ const DrinkList = ({ drinksData, urlParams }) => {
     }
 
     return (
-        <div className='row'>
-            <div className='card-deck'>
-                {drinks}
+        <>
+            <div className="col-md-2 text-center">
+                {drinksData.length !== 0 ? <SideBar drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} /> : null}
             </div>
-        </div>
+
+            <div className="col-md-10 text-center">
+                <div className='card-deck'>
+                    {drinks}
+                </div>
+            </div>
+
+        </>
 
     );
 };
