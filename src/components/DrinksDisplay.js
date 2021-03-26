@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react';
 import SideBar from './SideBar';
 import DrinksList from './DrinksList';
+import Spinner from './Spinner';
+
+
 const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
     const [loading, setLoading] = useState(true);
     const counter = useRef(0);
@@ -15,7 +18,7 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
     return (
         <>
             <div style={{ display: loading ? "block" : "none" }}>
-                Loading Drinks......
+                <Spinner />
             </div>
 
             <div style={{ display: loading ? "none" : "block" }}>
