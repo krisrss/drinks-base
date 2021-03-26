@@ -63,7 +63,6 @@ const IngredientsPage = () => {
             <div className="row">
                 <DrinksDisplay
                     drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)}
-                    urlParams={ingredients}
                     unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)}
                 />
             </div>

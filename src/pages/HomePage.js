@@ -36,7 +36,6 @@ const HomePage = () => {
             <div className="row">
                 <DrinksDisplay
                     drinksData={filterByQuery(drinksData, queryArray)}
-                    urlParams={urlTerm}
                     unfilteredDrinksData={drinksData}
                 />
             </div>

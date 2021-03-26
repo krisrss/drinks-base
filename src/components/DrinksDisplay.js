@@ -1,7 +1,7 @@
 import React from 'react';
 import SideBar from './SideBar';
 import DrinksList from './DrinksList';
-const DrinksDisplay = ({ drinksData, urlParams, unfilteredDrinksData }) => {
+const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
     return (
         <>
             <div className="col-md-2 text-center">
@@ -13,7 +13,7 @@ const DrinksDisplay = ({ drinksData, urlParams, unfilteredDrinksData }) => {
 
             <div className="col-md-10 text-center">
                 <div className='card-deck'>
-                    <DrinksList drinksData={drinksData} urlParams={urlParams} />
+                    <DrinksList drinksData={drinksData} />
                 </div>
             </div>
         </>

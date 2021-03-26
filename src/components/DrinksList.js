@@ -1,17 +1,13 @@
 import React from 'react';
 import DrinkThumbnail from './DrinkThumbnail';
 
-const DrinksList = ({ drinksData, urlParams }) => {
+const DrinksList = ({ drinksData }) => {
 
-    let drinks = null;
-
-    if (urlParams) {
-        drinks = drinksData.map((drink) => {
-            return (
-                <DrinkThumbnail key={drink.idDrink} drink={drink} />
-            )
-        });
-    };
+    const drinks = drinksData.map((drink) => {
+        return (
+            <DrinkThumbnail key={drink.idDrink} drink={drink} />
+        )
+    });
 
     return (
         <>
