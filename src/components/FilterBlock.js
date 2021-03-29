@@ -19,11 +19,24 @@ const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
     };
 
     const prefilteredData = Object.entries(countDistintByType(drinksData, type));
+    const unFilteredDataList = Object.entries(countDistintByType(unfilteredDrinksData, type));
 
-    const filters = Object.entries(countDistintByType(unfilteredDrinksData, type)).map((filterData, index) => {
+    const sortedArray = unFilteredDataList.sort(function (a, b) {
+        return b[1] - a[1];
+    });
+
+    console.log(sortedArray)
+
+    const filters = sortedArray.map((filterData, index) => {
         const unlockCheckbox = !prefilteredData.flat().includes(filterData[0]);
         return (
-            <Checkbox key={index} filterData={filterData} filterCategory={type} unlockCheckbox={unlockCheckbox} prefilteredData={prefilteredData} />
+            <Checkbox
+                key={index}
+                filterData={filterData}
+                filterCategory={type}
+                unlockCheckbox={unlockCheckbox}
+                prefilteredData={prefilteredData}
+            />
         )
     });
 
