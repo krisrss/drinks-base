@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Checkbox from './Checkbox';
 
 const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
+    const [filterStatus, setFilterStatus] = useState(true);
 
     const countDistintByType = (arr, searchType) => {
         let alcoholList = [];
@@ -26,9 +27,31 @@ const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
         )
     });
 
+    let buttonName = null;
+    const setFilter = () => {
+        if (filterStatus === false) {
+            buttonName = 'Hide';
+            return filters;
+        }
+        else {
+            buttonName = 'Show';
+            return filters.slice(0, 3);
+        };
+    };
+
+    const setButton = () => {
+        if (filters.length > 3) {
+            return <button onClick={() => setFilterStatus(!filterStatus)}>{buttonName}</button>
+        }
+        else {
+            return null;
+        };
+    };
+
     return (
         <div>
-            {filters}
+            {setFilter()}
+            {setButton()}
         </div>
     );
 };
