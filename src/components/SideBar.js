@@ -1,7 +1,7 @@
 import React from 'react';
 import FilterBlock from './FilterBlock';
 
-const filterTypes = ['ingredientCount', 'strAlcoholic', 'strCategory', 'strGlass'];
+const filterTypes = ['makeDifficulty', 'strAlcoholic', 'strCategory', 'strGlass'];
 
 const SideBar = ({ drinksData, unfilteredDrinksData }) => {
 

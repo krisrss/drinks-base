@@ -19,7 +19,23 @@ const HomePage = () => {
             const getDrinks = async () => {
                 const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
                 Object.keys(data.drinks).forEach(function (index) {
-                    data.drinks[index].ingredientCount = `items-${ingredientCount(data.drinks, index).length}`;
+
+                    const ingredientQuantity = ingredientCount(data.drinks, index).length;
+                    data.drinks[index].ingredientCount = `items-${ingredientQuantity}`;
+
+                    let difficulty = null;
+
+                    if (ingredientQuantity <= 3) {
+                        difficulty = 'easy';
+                    }
+                    else if (ingredientQuantity <= 6) {
+                        difficulty = 'medium';
+                    }
+                    else {
+                        difficulty = 'hard';
+                    }
+
+                    data.drinks[index].makeDifficulty = difficulty;
                 });
 
                 data.drinks ? setDrinksData(data.drinks) : setDrinksData([]);
