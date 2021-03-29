@@ -63,6 +63,38 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
         }
     });
 
+    const setStars = (nr) => {
+        const stars = [];
+        for (var i = 0; i < nr; i++) {
+            stars.push(<i key={i} className="far fa-star"></i>);
+        };
+
+        return (
+            <span>
+                {stars.map((item) => {
+                    return (
+                        item
+                    )
+                })}
+            </span>
+        )
+    }
+
+    const setFilterName = (term) => {
+        if (term === 'easy') {
+            return setStars(1)
+        }
+        else if (term === 'medium') {
+            return setStars(2)
+        }
+        else if (term === 'hard') {
+            return setStars(3)
+        }
+        else {
+            return filterData[0]
+        }
+    }
+
     return (
         <div>
             <label>
@@ -72,7 +104,10 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
                     onChange={setCheckboxQuery}
                     disabled={unlockCheckbox}
                 />
-                <span>{`${filterData[0]} ${setFilterQuantity}`}</span>
+                <span>
+                    {setFilterName(filterData[0])}
+                    {` ${setFilterQuantity}`}
+                </span>
             </label>
         </div>
     );

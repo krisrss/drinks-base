@@ -62,3 +62,27 @@ export const filterByUrlTerms = (drinksData, ingredients) => {
         return drinksData;
     }
 };
+
+
+
+export const setDifficultyAndIngredients = (dataSource) => {
+    Object.keys(dataSource).forEach(function (index) {
+
+        const ingredientQuantity = ingredientCount(dataSource, index).length;
+        dataSource[index].ingredientCount = `items-${ingredientQuantity}`;
+
+        let difficulty = null;
+
+        if (ingredientQuantity <= 3) {
+            difficulty = 'easy';
+        }
+        else if (ingredientQuantity <= 6) {
+            difficulty = 'medium';
+        }
+        else {
+            difficulty = 'hard';
+        }
+
+        dataSource[index].makeDifficulty = difficulty;
+    });
+}
