@@ -15,19 +15,29 @@ const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
         for (var x = 0; x < alcoholList.length; x++) {
             counts[alcoholList[x]] = 1 + (counts[alcoholList[x]] || 0);
         };
-        return counts;
+
+        const sortedArray = Object.entries(counts).sort(function (a, b) {
+            return b[1] - a[1];
+        });
+
+        if (type === 'makeDifficulty') {
+            const countCopy = { ...counts };
+
+            const sortedStars = Object.entries(countCopy).sort(function (a, b) {
+                return b[0][0] - a[0][0];
+            });
+
+            return sortedStars;
+        }
+        else {
+            return sortedArray;
+        }
     };
 
-    const prefilteredData = Object.entries(countDistintByType(drinksData, type));
-    const unFilteredDataList = Object.entries(countDistintByType(unfilteredDrinksData, type));
+    const prefilteredData = countDistintByType(drinksData, type);
+    const unFilteredDataList = countDistintByType(unfilteredDrinksData, type);
 
-    const sortedArray = unFilteredDataList.sort(function (a, b) {
-        return b[1] - a[1];
-    });
-
-    console.log(sortedArray)
-
-    const filters = sortedArray.map((filterData, index) => {
+    const filters = unFilteredDataList.map((filterData, index) => {
         const unlockCheckbox = !prefilteredData.flat().includes(filterData[0]);
         return (
             <Checkbox

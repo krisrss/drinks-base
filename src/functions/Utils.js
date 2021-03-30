@@ -74,13 +74,13 @@ export const setDifficultyAndIngredients = (dataSource) => {
         let difficulty = null;
 
         if (ingredientQuantity <= 3) {
-            difficulty = 'easy';
+            difficulty = '1-easy';
         }
         else if (ingredientQuantity <= 6) {
-            difficulty = 'medium';
+            difficulty = '2-medium';
         }
         else {
-            difficulty = 'hard';
+            difficulty = '3-hard';
         }
 
         dataSource[index].makeDifficulty = difficulty;

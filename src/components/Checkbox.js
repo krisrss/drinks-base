@@ -81,13 +81,13 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
     }
 
     const setFilterName = (term) => {
-        if (term === 'easy') {
+        if (term === '1-easy') {
             return setStars(1)
         }
-        else if (term === 'medium') {
+        else if (term === '2-medium') {
             return setStars(2)
         }
-        else if (term === 'hard') {
+        else if (term === '3-hard') {
             return setStars(3)
         }
         else {
