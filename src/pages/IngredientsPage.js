@@ -9,16 +9,16 @@ import { getDrinksbyIngredient } from '../api/thecocktaildb';
 
 const IngredientsPage = () => {
     const [drinksData, setDrinksData] = useState([]);
-    const ingredients = useParams();
+    const urlTerm = useParams();
     const urlStats = useLocation();
     const queryList = queryString.parse(urlStats.search);
     const queryArray = Object.values(queryList).flat(1);
 
     useEffect(() => {
-        if (Object.keys(ingredients).length !== 0) {
+        if (Object.keys(urlTerm).length !== 0) {
             if (drinksData.length === 0) {
                 const getDrinks = async () => {
-                    const searchTerm = Object.values(ingredients)[0];
+                    const searchTerm = Object.values(urlTerm)[0];
                     const data = await getDrinksbyIngredient('https://www.thecocktaildb.com/api/json/v1/1/filter.php', searchTerm);
 
                     let drinkList = [];
@@ -44,7 +44,7 @@ const IngredientsPage = () => {
         else {
             setDrinksData([]);
         }
-    }, [ingredients]);
+    }, [urlTerm]);
 
 
     return (
@@ -59,19 +59,14 @@ const IngredientsPage = () => {
                 <NavigationBar />
             </div>
 
-            {Object.values(ingredients).length !== 0 ?
+            {drinksData.length ?
                 <div className="row">
                     <DrinksDisplay
-                        drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), ingredients)}
-                        unfilteredDrinksData={filterByUrlTerms(drinksData, ingredients)}
+                        drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), urlTerm)}
+                        unfilteredDrinksData={filterByUrlTerms(drinksData, urlTerm)}
                     />
                 </div>
-                : null
-            }
-
-
-
-
+                : null}
         </div>
     )
 };

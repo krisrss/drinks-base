@@ -39,15 +39,16 @@ const HomePage = () => {
                 <NavigationBar />
             </div>
 
-            {urlTerm ?
+            {drinksData.length ?
                 <div className="row">
                     <DrinksDisplay
                         drinksData={filterByQuery(drinksData, queryArray)}
                         unfilteredDrinksData={drinksData}
                     />
                 </div>
-                : null
-            }
+                : null}
+
+
         </div>
     )
 };
