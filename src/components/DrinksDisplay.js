@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import SideBar from './SideBar';
 import DrinksList from './DrinksList';
 import Spinner from './Spinner';
-
+import InformationTab from '../components/InformationTab';
 
 const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
     const [loading, setLoading] = useState(true);
@@ -22,6 +22,11 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
             </div>
 
             <div style={{ display: loading ? "none" : "block" }}>
+
+                <div className='text-center'>
+                    <InformationTab drinksQuantity={drinksData.length} />
+                </div>
+
                 <div className="row">
                     <div className="col-md-2 text-center">
                         {drinksData.length !== 0 ?

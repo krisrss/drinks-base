@@ -17,12 +17,10 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm }) => {
             </div>
 
             {Object.values(urlTerm).length !== 0 ?
-                <div className="row">
-                    <DrinksDisplay
-                        drinksData={drinksData}
-                        unfilteredDrinksData={unfilteredDrinksData}
-                    />
-                </div>
+                <DrinksDisplay
+                    drinksData={drinksData}
+                    unfilteredDrinksData={unfilteredDrinksData}
+                />
                 : null}
         </div>
     );

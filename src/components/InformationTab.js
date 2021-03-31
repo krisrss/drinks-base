@@ -1,9 +1,12 @@
 import React from 'react';
 
-const InformationTab = () => {
+const InformationTab = ({ drinksQuantity }) => {
     return (
         <div>
-            Information Tab
+            {drinksQuantity} drinks found
+            <br />
+            <br />
+            <br />
         </div>
     )
 };
