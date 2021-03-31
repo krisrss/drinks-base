@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { filterByQuery, filterByUrlTerms, setDifficultyAndIngredients } from '../functions/Utils';
-import NavigationBar from '../components/NavigationBar';
-import DrinksDisplay from '../components/DrinksDisplay';
-import SearchBar from '../components/SearchBar';
 import { getDrinksbyIngredient } from '../api/thecocktaildb';
+import ApplicationPage from './ApplicationPage';
 
 const IngredientsPage = () => {
     const [drinksData, setDrinksData] = useState([]);
@@ -13,6 +11,9 @@ const IngredientsPage = () => {
     const urlStats = useLocation();
     const queryList = queryString.parse(urlStats.search);
     const queryArray = Object.values(queryList).flat(1);
+
+    const filteredDrinksData = filterByUrlTerms(filterByQuery(drinksData, queryArray), urlTerm);
+    const unfilteredDrinksData = filterByUrlTerms(drinksData, urlTerm)
 
     useEffect(() => {
         if (Object.keys(urlTerm).length !== 0) {
@@ -46,28 +47,8 @@ const IngredientsPage = () => {
         }
     }, [urlTerm]);
 
-
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
-                    <SearchBar />
-                </div>
-            </div>
-
-            <div className='text-center' style={{ paddingBottom: '40px' }}>
-                <NavigationBar />
-            </div>
-
-            {drinksData.length ?
-                <div className="row">
-                    <DrinksDisplay
-                        drinksData={filterByUrlTerms(filterByQuery(drinksData, queryArray), urlTerm)}
-                        unfilteredDrinksData={filterByUrlTerms(drinksData, urlTerm)}
-                    />
-                </div>
-                : null}
-        </div>
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} />
     )
 };
 

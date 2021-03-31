@@ -1,9 +1,29 @@
 import React from 'react';
+import NavigationBar from '../components/NavigationBar';
+import DrinksDisplay from '../components/DrinksDisplay';
+import SearchBar from '../components/SearchBar';
 
-const ApplicationPage = () => {
+const ApplicationPage = ({ drinksData, unfilteredDrinksData }) => {
     return (
-        <div>
-            Front page
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
+                    <SearchBar />
+                </div>
+            </div>
+
+            <div className='text-center' style={{ paddingBottom: '40px' }}>
+                <NavigationBar />
+            </div>
+
+            {drinksData.length ?
+                <div className="row">
+                    <DrinksDisplay
+                        drinksData={drinksData}
+                        unfilteredDrinksData={unfilteredDrinksData}
+                    />
+                </div>
+                : null}
         </div>
     );
 };

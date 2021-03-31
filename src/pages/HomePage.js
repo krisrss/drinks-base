@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import SearchBar from '../components/SearchBar';
-import DrinksDisplay from '../components/DrinksDisplay';
-import NavigationBar from '../components/NavigationBar';
 import { filterByQuery, setDifficultyAndIngredients } from '../functions/Utils';
 import { getDrinksbyName } from '../api/thecocktaildb';
+import ApplicationPage from './ApplicationPage';
 
 const HomePage = () => {
     const [drinksData, setDrinksData] = useState([]);
@@ -13,6 +11,8 @@ const HomePage = () => {
     const urlStats = useLocation();
     const queryList = queryString.parse(urlStats.search);
     const queryArray = Object.values(queryList).flat(1);
+
+    const filteredDrinksData = filterByQuery(drinksData, queryArray)
 
     useEffect(() => {
         if (urlTerm) {
@@ -29,27 +29,7 @@ const HomePage = () => {
     }, [urlTerm]);
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
-                    <SearchBar />
-                </div>
-            </div>
-            <div className='text-center' style={{ paddingBottom: '40px' }}>
-                <NavigationBar />
-            </div>
-
-            {drinksData.length ?
-                <div className="row">
-                    <DrinksDisplay
-                        drinksData={filterByQuery(drinksData, queryArray)}
-                        unfilteredDrinksData={drinksData}
-                    />
-                </div>
-                : null}
-
-
-        </div>
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} />
     )
 };
 
