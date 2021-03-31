@@ -29,7 +29,7 @@ const HomePage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={{ ...urlTerm }} />
     )
 };
 

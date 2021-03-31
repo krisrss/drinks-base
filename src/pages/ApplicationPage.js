@@ -3,7 +3,7 @@ import NavigationBar from '../components/NavigationBar';
 import DrinksDisplay from '../components/DrinksDisplay';
 import SearchBar from '../components/SearchBar';
 
-const ApplicationPage = ({ drinksData, unfilteredDrinksData }) => {
+const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm }) => {
     return (
         <div className="container">
             <div className="row">
@@ -16,7 +16,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData }) => {
                 <NavigationBar />
             </div>
 
-            {drinksData.length ?
+            {Object.values(urlTerm).length !== 0 ?
                 <div className="row">
                     <DrinksDisplay
                         drinksData={drinksData}

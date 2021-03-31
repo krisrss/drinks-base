@@ -48,7 +48,7 @@ const IngredientsPage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} />
     )
 };
 
