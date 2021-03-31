@@ -3,7 +3,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { filterByQuery, filterByUrlTerms, setDifficultyAndIngredients } from '../functions/Utils';
 import NavigationBar from '../components/NavigationBar';
-import IngredientsList from '../components/IngredientsDisplay';
 import DrinksDisplay from '../components/DrinksDisplay';
 import SearchBar from '../components/SearchBar';
 import { getDrinksbyIngredient } from '../api/thecocktaildb';
@@ -54,10 +53,6 @@ const IngredientsPage = () => {
                 <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
                     <SearchBar />
                 </div>
-            </div>
-
-            <div className='row' style={{ paddingLeft: '200px' }}>
-                <IngredientsList ingredients={ingredients} />
             </div>
 
             <div className='text-center' style={{ paddingBottom: '40px' }}>
