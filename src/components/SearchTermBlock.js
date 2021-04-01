@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 
 const SearchTermBlock = ({ searchTerm, resetSpinner, resetDrinkList }) => {
     const history = useHistory();
-
     const onClickHandler = (term) => {
         const currentPath = history.location.pathname;
         const currentUrl = currentPath;
