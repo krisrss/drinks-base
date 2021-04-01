@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 
 const InformationTab = ({ drinksQuantity }) => {
     const searchTerm = useParams();
-    console.log(searchTerm)
-
     return (
         <div>
             {drinksQuantity} drinks found<SearchTermBlock searchTerm={searchTerm} />
