@@ -9,7 +9,7 @@ const SearchTermBlock = ({ searchTerm }) => {
         const currentUrl = currentPath;
         const updatedUrl = currentUrl.replaceAll(`/${term}`, "");
 
-        history.push(updatedUrl, { state: updatedUrl });
+        history.push(updatedUrl, { state: currentUrl });
     }
 
     const test = Object.values(searchTerm).map((term, index) => {
