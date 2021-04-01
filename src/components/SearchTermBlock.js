@@ -1,15 +1,17 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const SearchTermBlock = ({ searchTerm }) => {
+const SearchTermBlock = ({ searchTerm, resetSpinner, resetDrinkList }) => {
     const history = useHistory();
 
     const onClickHandler = (term) => {
         const currentPath = history.location.pathname;
         const currentUrl = currentPath;
         const updatedUrl = currentUrl.replaceAll(`/${term}`, "");
-
+        resetSpinner();
+        resetDrinkList();
         history.push(updatedUrl, { state: currentUrl });
+
     }
 
     const test = Object.values(searchTerm).map((term, index) => {

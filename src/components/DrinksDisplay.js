@@ -4,7 +4,7 @@ import DrinksList from './DrinksList';
 import Spinner from './Spinner';
 import InformationTab from '../components/InformationTab';
 
-const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
+const DrinksDisplay = ({ drinksData, unfilteredDrinksData, resetDrinkList }) => {
     const [loading, setLoading] = useState(true);
     const counter = useRef(0);
 
@@ -13,6 +13,10 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
         if (counter.current >= drinksData.length) {
             setLoading(false);
         }
+    }
+
+    const resetSpinner = () => {
+        setLoading(true);
     }
 
     return (
@@ -24,7 +28,7 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData }) => {
             <div style={{ display: loading ? "none" : "block" }}>
 
                 <div className='text-center'>
-                    <InformationTab drinksQuantity={drinksData.length} />
+                    <InformationTab drinksQuantity={drinksData.length} resetSpinner={resetSpinner} resetDrinkList={resetDrinkList} />
                 </div>
 
                 <div className="row">

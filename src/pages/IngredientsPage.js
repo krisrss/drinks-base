@@ -11,12 +11,14 @@ const IngredientsPage = () => {
     const urlStats = useLocation();
     const queryList = queryString.parse(urlStats.search);
     const queryArray = Object.values(queryList).flat(1);
-
     const history = useHistory();
-
 
     const filteredDrinksData = filterByUrlTerms(filterByQuery(drinksData, queryArray), urlTerm);
     const unfilteredDrinksData = filterByUrlTerms(drinksData, urlTerm)
+
+    const resetDrinkList = () => {
+        setDrinksData([]);
+    }
 
     useEffect(() => {
         let renderData = false;
@@ -26,7 +28,6 @@ const IngredientsPage = () => {
             var currentUrlCore = history.location.pathname.split('/');
 
             if (previousUrlCore[2] !== currentUrlCore[2]) {
-                console.log('RE-RENDER!')
                 renderData = true;
             }
         }
@@ -64,7 +65,7 @@ const IngredientsPage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} resetDrinkList={resetDrinkList} />
     )
 };
 
