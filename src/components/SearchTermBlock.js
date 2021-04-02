@@ -14,25 +14,26 @@ const SearchTermBlock = ({ searchTerm, resetSpinner, resetDrinkList }) => {
             queryWords.splice(index, 1);
         }
 
+        const firstPathPart = currentPath.split('/')[1] === 'ingredients' ? '/ingredients' : '/';
         const finalQuery = queryWords.join('/');
 
         resetSpinner();
         resetDrinkList();
 
-        history.push(`/ingredients${finalQuery}`, { state: currentPath });
+        history.push(`${firstPathPart}${finalQuery}`, { state: currentPath });
 
     }
 
     const searchTerms = Object.values(searchTerm).map((term, index) => {
         return (
             <span key={index} onClick={() => onClickHandler(term)} style={{ border: '1px solid black', padding: '4px' }}>
-                {`${searchTerms}`}
+                {`${term}`}
             </span>
         )
     })
 
     return (
-        <>, with keywords {test}</>
+        <>, with keywords {searchTerms}</>
     )
 };
 
