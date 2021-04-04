@@ -27,6 +27,7 @@ const IngredientsPage = () => {
             setCurrentTerm(Object.values(urlTerm)[0])
             if (drinksData.length === 0 || currentTerm === clickedTerm) {
                 setDrinksData([]);
+                setClickedTerm(null);
                 const getDrinks = async () => {
                     const searchTerm = Object.values(urlTerm)[0];
                     const data = await getDrinksbyIngredient('https://www.thecocktaildb.com/api/json/v1/1/filter.php', searchTerm);
