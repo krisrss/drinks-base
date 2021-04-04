@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { filterByQuery, filterByUrlTerms, setDifficultyAndIngredients } from '../functions/Utils';
+import { filterByQuery, filterByUrlTerms, updateDrinkDataValues } from '../functions/Utils';
 import { getDrinksbyIngredient } from '../api/thecocktaildb';
 import ApplicationPage from './ApplicationPage';
 
@@ -43,7 +43,7 @@ const IngredientsPage = () => {
                         )
                     }
                     Promise.all(promises).then(() => {
-                        setDifficultyAndIngredients(drinkList);
+                        updateDrinkDataValues(drinkList);
                         setDrinksData(drinkList)
 
                     });

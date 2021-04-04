@@ -65,7 +65,7 @@ export const filterByUrlTerms = (drinksData, ingredients) => {
 
 
 
-export const setDifficultyAndIngredients = (dataSource) => {
+export const updateDrinkDataValues = (dataSource) => {
     Object.keys(dataSource).forEach(function (index) {
 
         const ingredientQuantity = ingredientCount(dataSource, index).length;
@@ -84,5 +84,16 @@ export const setDifficultyAndIngredients = (dataSource) => {
         }
 
         dataSource[index].makeDifficulty = difficulty;
+
+        const secondGlassWord = dataSource[index].strGlass.split(' ')[1];
+
+        if (secondGlassWord !== undefined) {
+            const lowerCaseWord = secondGlassWord.toLowerCase();
+            let glassArray = dataSource[index].strGlass.split(' ');
+            glassArray[1] = lowerCaseWord;
+            const fixedGlassText = glassArray.join(' ')
+            dataSource[index].strGlass = fixedGlassText;
+        }
+
     });
 }

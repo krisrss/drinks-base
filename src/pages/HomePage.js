@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { filterByQuery, setDifficultyAndIngredients } from '../functions/Utils';
+import { filterByQuery, updateDrinkDataValues } from '../functions/Utils';
 import { getDrinksbyName } from '../api/thecocktaildb';
 import ApplicationPage from './ApplicationPage';
 
@@ -22,7 +22,7 @@ const HomePage = () => {
         if (urlTerm) {
             const getDrinks = async () => {
                 const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
-                setDifficultyAndIngredients(data.drinks);
+                updateDrinkDataValues(data.drinks);
                 data.drinks ? setDrinksData(data.drinks) : resetDrinkList();
             };
             getDrinks();
