@@ -1,15 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const SearchTermBlock = ({ searchTerm, resetSpinner, resetDrinkList }) => {
+const SearchTermBlock = ({ searchTerm, resetSpinner, getClicketTerm }) => {
     const history = useHistory();
 
     const onClickHandler = (term) => {
         const currentPath = history.location.pathname;
         const cleanedPath = currentPath.replaceAll(`/ingredients`, "");
         const queryWords = cleanedPath.split('/');
-
         var index = queryWords.indexOf(term);
+
         if (index >= 0) {
             queryWords.splice(index, 1);
         }
@@ -17,8 +17,10 @@ const SearchTermBlock = ({ searchTerm, resetSpinner, resetDrinkList }) => {
         const firstPathPart = currentPath.split('/')[1] === 'ingredients' ? '/ingredients' : '/';
         const finalQuery = queryWords.join('/');
 
+        if (currentPath.includes('ingredients')) {
+            getClicketTerm(term);
+        }
         resetSpinner();
-        resetDrinkList();
 
         history.push(`${firstPathPart}${finalQuery}`, { state: currentPath });
 

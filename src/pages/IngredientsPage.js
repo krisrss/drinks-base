@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, useHistory } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { filterByQuery, filterByUrlTerms, setDifficultyAndIngredients } from '../functions/Utils';
 import { getDrinksbyIngredient } from '../api/thecocktaildb';
@@ -11,30 +11,22 @@ const IngredientsPage = () => {
     const urlStats = useLocation();
     const queryList = queryString.parse(urlStats.search);
     const queryArray = Object.values(queryList).flat(1);
-    const history = useHistory();
 
     const filteredDrinksData = filterByUrlTerms(filterByQuery(drinksData, queryArray), urlTerm);
     const unfilteredDrinksData = filterByUrlTerms(drinksData, urlTerm)
 
-    const resetDrinkList = () => {
-        setDrinksData([]);
+    const [clickedTerm, setClickedTerm] = useState(null);
+    const [currentTerm, setCurrentTerm] = useState(null);
+
+    const getClicketTerm = (term) => {
+        setClickedTerm(term)
     }
 
     useEffect(() => {
-        let renderData = false;
-
-        if (history.location.state !== undefined) {
-            var previousUrlCore = history.location.state.state.split('/');
-            var currentUrlCore = history.location.pathname.split('/');
-
-            if (previousUrlCore[2] !== currentUrlCore[2]) {
-                renderData = true;
-            }
-        }
-
         if (Object.keys(urlTerm).length !== 0) {
-            if (drinksData.length === 0 || renderData === true) {
-
+            setCurrentTerm(Object.values(urlTerm)[0])
+            if (drinksData.length === 0 || currentTerm === clickedTerm) {
+                setDrinksData([]);
                 const getDrinks = async () => {
                     const searchTerm = Object.values(urlTerm)[0];
                     const data = await getDrinksbyIngredient('https://www.thecocktaildb.com/api/json/v1/1/filter.php', searchTerm);
@@ -59,13 +51,10 @@ const IngredientsPage = () => {
                 getDrinks();
             };
         }
-        else {
-            setDrinksData([]);
-        }
     }, [urlTerm]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} resetDrinkList={resetDrinkList} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} getClicketTerm={getClicketTerm} initialData={drinksData} />
     )
 };
 

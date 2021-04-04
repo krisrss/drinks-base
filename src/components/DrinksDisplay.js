@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import SideBar from './SideBar';
 import DrinksList from './DrinksList';
 import Spinner from './Spinner';
 import InformationTab from '../components/InformationTab';
 
-const DrinksDisplay = ({ drinksData, unfilteredDrinksData, resetDrinkList }) => {
+const DrinksDisplay = ({ drinksData, unfilteredDrinksData, getClicketTerm, initialData }) => {
     const [loading, setLoading] = useState(true);
     const counter = useRef(0);
 
@@ -14,6 +14,12 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData, resetDrinkList }) => 
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        if (drinksData.length === 0 && initialData.length !== 0) {
+            setLoading(false);
+        }
+    });
 
     const resetSpinner = () => {
         setLoading(true);
@@ -26,9 +32,8 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData, resetDrinkList }) => 
             </div>
 
             <div style={{ display: loading ? "none" : "block" }}>
-
                 <div className='text-center'>
-                    <InformationTab drinksQuantity={drinksData.length} resetSpinner={resetSpinner} resetDrinkList={resetDrinkList} />
+                    <InformationTab drinksQuantity={drinksData.length} resetSpinner={resetSpinner} getClicketTerm={getClicketTerm} />
                 </div>
 
                 <div className="row">

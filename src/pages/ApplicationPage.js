@@ -3,7 +3,7 @@ import NavigationBar from '../components/NavigationBar';
 import DrinksDisplay from '../components/DrinksDisplay';
 import SearchBar from '../components/SearchBar';
 
-const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, resetDrinkList }) => {
+const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicketTerm, initialData }) => {
     return (
         <div className="container">
             <div className="row">
@@ -20,7 +20,8 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, resetDrink
                 <DrinksDisplay
                     drinksData={drinksData}
                     unfilteredDrinksData={unfilteredDrinksData}
-                    resetDrinkList={resetDrinkList}
+                    getClicketTerm={getClicketTerm}
+                    initialData={initialData}
                 />
                 : null}
         </div>
