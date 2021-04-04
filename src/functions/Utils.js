@@ -1,6 +1,6 @@
 export const cleanFilterName = (category) => {
-    const removeSpace = category.split(' ').join('').toLowerCase();
-    const filterType = removeSpace.split('/').join('');
+    //const removeSpace = category.split(' ').join('').toLowerCase();
+    const filterType = category.split('/').join('');
 
     return filterType;
 }
