@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { cleanFilterName } from '../functions/Utils';
+import { cleanFilterName, removeQueryTerm } from '../functions/Utils';
 
 const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData }) => {
     const [boxClicked, setBoxClicked] = useState(true);
@@ -17,13 +17,6 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
         const boxChecked = mergeArr.includes(cleanFilterName(filterData[0]));
         setBoxClicked(!boxChecked);
     }, [queryList]);
-
-    const cleanQueryAtIndex = (arr, position, amount) => {
-        let array = arr.split('');
-        array.splice(position, amount);
-        array = array.join('');
-        return array;
-    };
 
     const setCheckboxQuery = (event) => {
         setBoxClicked(!boxClicked);
@@ -42,17 +35,7 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
         }
         else {
             var queryValue = currentQuery.replace(`${filterCategory}=${cleanFilterName(filterData[0])}`, '');
-
-            if (queryValue[1] === '&') {
-                history.push(cleanQueryAtIndex(queryValue, 1, 1));
-            }
-            else if (queryValue[queryValue.length - 1] === '&') {
-                history.push(cleanQueryAtIndex(queryValue, queryValue.length - 1, 1));
-            }
-            else {
-                var cleanedQuery = queryValue.replace("&&", "&");
-                history.push(`${mainPath}${cleanedQuery}`);
-            }
+            removeQueryTerm(history, queryValue, mainPath);
         }
     };
 

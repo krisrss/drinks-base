@@ -96,4 +96,24 @@ export const updateDrinkDataValues = (dataSource) => {
         }
 
     });
+};
+
+export const cleanQueryAtIndex = (arr, position, amount) => {
+    let array = arr.split('');
+    array.splice(position, amount);
+    array = array.join('');
+    return array;
+};
+
+export const removeQueryTerm = (history, queryValue, mainPath) => {
+    if (queryValue[1] === '&') {
+        history.push(cleanQueryAtIndex(queryValue, 1, 1));
+    }
+    else if (queryValue[queryValue.length - 1] === '&') {
+        history.push(cleanQueryAtIndex(queryValue, queryValue.length - 1, 1));
+    }
+    else {
+        var cleanedQuery = queryValue.replace("&&", "&");
+        history.push(`${mainPath}${cleanedQuery}`);
+    }
 }
