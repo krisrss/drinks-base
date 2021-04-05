@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
-import { removeQueryTerm } from '../functions/Utils';
+import { removeQueryTerm, setStars } from '../functions/Utils';
 
 const QueryTermBlock = () => {
     const history = useHistory();
@@ -19,7 +19,7 @@ const QueryTermBlock = () => {
     const queryTerms = queryArray.map((term, index) => {
         return (
             <span key={index} onClick={() => onClickHandler(term)} style={{ border: '1px solid black', padding: '4px' }}>
-                {` ${term[1]} `}
+                {term[0] === 'makeDifficulty' ? setStars(term[1][0]) : `${term[1]}`}
             </span>
         )
     })
