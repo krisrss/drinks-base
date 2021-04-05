@@ -44,7 +44,7 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData, getClicketTerm, initi
                         }
                     </div>
 
-                    <div className="col-md-10 text-center">
+                    <div className="col-md-10">
                         <div className='card-deck'>
                             <DrinksList drinksData={drinksData} imageLoaded={imageLoaded} />
                         </div>
