@@ -2,6 +2,7 @@ import React from 'react';
 import NavigationBar from '../components/NavigationBar';
 import DrinksDisplay from '../components/DrinksDisplay';
 import SearchBar from '../components/SearchBar';
+import WelcomePage from './WelcomePage';
 
 const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicketTerm, initialData }) => {
     return (
@@ -23,7 +24,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicket
                     getClicketTerm={getClicketTerm}
                     initialData={initialData}
                 />
-                : null}
+                : <WelcomePage />}
         </div>
     );
 };
