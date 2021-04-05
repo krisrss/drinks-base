@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { cleanFilterName, removeQueryTerm } from '../functions/Utils';
+import { cleanFilterName, removeQueryTerm, setStars } from '../functions/Utils';
 
 const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData }) => {
     const [boxClicked, setBoxClicked] = useState(true);
@@ -45,23 +45,6 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
             setFilterQuantity = drink[1]
         }
     });
-
-    const setStars = (nr) => {
-        const stars = [];
-        for (var i = 0; i < nr; i++) {
-            stars.push(<i key={i} className="far fa-star"></i>);
-        };
-
-        return (
-            <span>
-                {stars.map((item) => {
-                    return (
-                        item
-                    )
-                })}
-            </span>
-        )
-    }
 
     const setFilterName = (term) => {
         if (term === '1-easy') {

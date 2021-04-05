@@ -116,4 +116,21 @@ export const removeQueryTerm = (history, queryValue, mainPath) => {
         var cleanedQuery = queryValue.replace("&&", "&");
         history.push(`${mainPath}${cleanedQuery}`);
     }
-}
+};
+
+export const setStars = (nr) => {
+    const stars = [];
+    for (var i = 0; i < nr; i++) {
+        stars.push(<i key={i} className="far fa-star"></i>);
+    };
+
+    return (
+        <span>
+            {stars.map((item) => {
+                return (
+                    item
+                )
+            })}
+        </span>
+    )
+};
