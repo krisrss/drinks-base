@@ -18,5 +18,10 @@ export const getDrinksbyIngredient = async (url, searchTerm) => {
     return data;
 };
 
+export const getRandomDrink = async () => {
+    const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+    return data;
+};
+
 
 
