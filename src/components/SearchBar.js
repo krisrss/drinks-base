@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import '../css/SearchBar.css';
 
 const SearchBar = () => {
 
@@ -27,15 +28,11 @@ const SearchBar = () => {
     }
 
     return (
-        <div>
-            <div>
-                <input value={input} onChange={onChangeHandler} type='text' />
-                <Link to={setPath} onClick={onClickHandler}>
-                    <button >
-                        Find
-                    </button>
-                </Link>
-            </div>
+        <div className='SearchBar'>
+            <input value={input} onChange={onChangeHandler} type='text' placeholder='Search drink by keyword...' />
+            <Link to={setPath} onClick={onClickHandler} className='button'>
+                SEARCH
+            </Link>
         </div>
     );
 };

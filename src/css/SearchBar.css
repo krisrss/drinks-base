@@ -1,0 +1,21 @@
+
+.SearchBar{
+    width: 39.5em; 
+    margin: 0 auto;
+}
+
+
+.SearchBar input{
+    width: 34em;
+    padding: 0.6em;
+
+}
+
+.SearchBar .button{
+    padding: 0.66em;
+    border: 1px solid grey;
+    display: inline-block;  
+    width: 5.5em;
+    text-decoration: none;
+    color: inherit;
+}
