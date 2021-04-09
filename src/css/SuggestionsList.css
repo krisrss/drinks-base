@@ -1,0 +1,16 @@
+.SuggestionsList{
+    padding-top: 1em;
+    width: 20em;
+    margin: 0 auto;
+}
+
+
+.SuggestionsList .suggestion{
+    border: 1px solid black;
+    display: inline-block;
+    margin: 0.3em;
+    padding: 0.3em 0.8em;
+    background: whitesmoke;
+    text-decoration: none;
+    color: inherit;
+}

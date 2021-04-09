@@ -9,10 +9,8 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicket
         <>
             {Object.values(urlTerm).length !== 0 ?
                 <div className='container'>
-                    <div className="row">
-                        <div className="col-md-4 offset-md-4 text-center" style={{ padding: '2em 2em' }}>
-                            <SearchBar />
-                        </div>
+                    <div style={{ margin: '1em' }} >
+                        <SearchBar />
                     </div>
 
                     <NavigationBar />
