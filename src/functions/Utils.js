@@ -49,10 +49,12 @@ export const ingredientCount = (data, drinkIndex) => {
 export const filterByUrlTerms = (drinksData, ingredients) => {
     let tempDrinkStore = [];
     const ingrList = Object.values(ingredients);
+    const ingrListLowerCase = ingrList.map(v => v.toLowerCase());
 
-    if (ingrList.length > 1) {
+
+    if (ingrListLowerCase.length > 1) {
         for (let i = 0; i < drinksData.length; i++) {
-            if (ingrList.every(elem => ingredientCount(drinksData, i).includes(elem))) {
+            if (ingrListLowerCase.every(elem => ingredientCount(drinksData, i).includes(elem))) {
                 tempDrinkStore.push(drinksData[i])
             }
         };
