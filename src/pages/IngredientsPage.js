@@ -52,6 +52,9 @@ const IngredientsPage = () => {
                 getDrinks();
             };
         }
+        else {
+            setDrinksData([]);
+        }
     }, [urlTerm]);
 
     return (
