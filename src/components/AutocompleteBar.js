@@ -24,6 +24,7 @@ const AutocompleteBar = () => {
             <div className="SearchBar">
                 <Autocomplete
                     value={ingredient}
+                    inputProps={{ placeholder: 'Search drinks by ONE ingredient at a time...' }}
                     items={tempData()}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
