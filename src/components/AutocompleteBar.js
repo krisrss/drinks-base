@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Autocomplete from 'react-autocomplete';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
 
 const AutocompleteBar = () => {
     const [ingredient, setIngredient] = useState('');
+    const history = useHistory();
+    const currentPath = history.location.pathname;
+
     const renderIngredients = (data, val) => {
         return (
             data.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
@@ -12,7 +15,7 @@ const AutocompleteBar = () => {
     };
 
     const setPath = () => {
-        return `/ingredients/${ingredient}`;
+        return `${currentPath}/${ingredient}`;
     };
 
     return (
