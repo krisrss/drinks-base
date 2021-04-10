@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Autocomplete from 'react-autocomplete';
+import { Link } from 'react-router-dom';
 
 const AutocompleteBar = () => {
     const [ingredient, setIngredient] = useState('');
@@ -18,6 +19,10 @@ const AutocompleteBar = () => {
             { "title": "Ingredient 4" }
         ];
     };
+
+    const setPath = () => {
+        return `/ingredients/${ingredient}`;
+    }
 
     return (
         <div>
@@ -41,7 +46,9 @@ const AutocompleteBar = () => {
                     onChange={(event, val) => setIngredient(val)}
                     onSelect={val => setIngredient(val)}
                 />
-                <a className='button'>SEARCH</a>
+                <Link to={setPath} className='button'>
+                    SEARCH
+                </Link>
             </div>
         </div>
     );

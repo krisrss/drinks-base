@@ -19,12 +19,7 @@ const SearchBar = () => {
         }
     };
     const setPath = () => {
-        if (currentPath.includes('/ingredients')) {
-            return `${currentPath}/${input}`
-        }
-        else {
-            return `/${input}`
-        }
+        return `/${input}`;
     }
 
     return (
