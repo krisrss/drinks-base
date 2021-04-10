@@ -1,28 +1,19 @@
 import React, { useState } from 'react';
 import Autocomplete from 'react-autocomplete';
 import { Link } from 'react-router-dom';
+import { ingredientsList } from '../functions/IngredientsList';
 
 const AutocompleteBar = () => {
     const [ingredient, setIngredient] = useState('');
-
     const renderIngredients = (data, val) => {
         return (
             data.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
         );
     };
 
-    const tempData = () => {
-        return [
-            { "title": "Ingredient 1" },
-            { "title": "Ingredient 2" },
-            { "title": "Ingredient 3" },
-            { "title": "Ingredient 4" }
-        ];
-    };
-
     const setPath = () => {
         return `/ingredients/${ingredient}`;
-    }
+    };
 
     return (
         <div>
@@ -30,7 +21,7 @@ const AutocompleteBar = () => {
                 <Autocomplete
                     value={ingredient}
                     inputProps={{ placeholder: 'Search drinks by ONE ingredient at a time...' }}
-                    items={tempData()}
+                    items={ingredientsList()}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
                     renderMenu={item => (
