@@ -1,0 +1,11 @@
+.InputTags{
+    position: absolute;
+    top: 6.45em;
+    left: 0.55em;
+}
+
+.InputTags .Tag{
+    border: 1px solid red;
+    margin: 0.3em;
+    padding: 0.3em;
+}

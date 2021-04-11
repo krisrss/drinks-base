@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Autocomplete from 'react-autocomplete';
 import { Link, useHistory } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
+import InputTags from './InputTags';
 
 const AutocompleteBar = () => {
     const [ingredient, setIngredient] = useState('');
+    const [selectedItems, setSelectedItems] = useState([]);
+
     const history = useHistory();
     const currentPath = history.location.pathname;
 
@@ -20,10 +23,11 @@ const AutocompleteBar = () => {
 
     return (
         <div>
+            <InputTags selectedItems={selectedItems} />
             <div className="SearchBar">
                 <Autocomplete
                     value={ingredient}
-                    inputProps={{ placeholder: 'Search drinks by ONE ingredient at a time...' }}
+                    inputProps={{ placeholder: '' }}
                     items={ingredientsList()}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
@@ -38,7 +42,12 @@ const AutocompleteBar = () => {
                         </div>
                     }
                     onChange={(event, val) => setIngredient(val)}
-                    onSelect={val => setIngredient(val)}
+                    onSelect={val => {
+                        const arr = [...selectedItems];
+                        arr.push(val);
+                        setSelectedItems(arr);
+                        setIngredient('');
+                    }}
                 />
                 <Link to={setPath} className='button'>
                     SEARCH
