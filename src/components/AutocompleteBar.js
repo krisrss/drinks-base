@@ -27,7 +27,17 @@ const AutocompleteBar = () => {
         let getValue = inputIndent;
         const setIndentSize = item.length * 0.6;
         setInputIndent(getValue += setIndentSize);
-    }
+    };
+
+    const setPlaceholder = () => {
+        if (selectedItems.length === 0) {
+            return 'Select an ingredient from list...'
+        }
+        else {
+            return '';
+        }
+    };
+
 
     return (
         <div>
@@ -35,7 +45,7 @@ const AutocompleteBar = () => {
             <div className="SearchBar">
                 <Autocomplete
                     value={ingredient}
-                    inputProps={{ placeholder: '', style: { textIndent: `${inputIndent}em` } }}
+                    inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent}em` } }}
                     items={ingredientsList()}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
