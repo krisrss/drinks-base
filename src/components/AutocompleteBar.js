@@ -7,7 +7,7 @@ import InputTags from './InputTags';
 const AutocompleteBar = () => {
     const [ingredient, setIngredient] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
-    const [inputIndent, setInputIndent] = useState(0.5);
+    const [inputIndent, setInputIndent] = useState(0);
 
     const history = useHistory();
     const currentPath = history.location.pathname;
@@ -25,7 +25,7 @@ const AutocompleteBar = () => {
 
     const setIndent = (item) => {
         let getValue = inputIndent;
-        const setIndentSize = item.length * 0.6;
+        const setIndentSize = 35 + (item.length * 7);
         setInputIndent(getValue += setIndentSize);
     };
 
@@ -45,7 +45,7 @@ const AutocompleteBar = () => {
             <div className="SearchBar">
                 <Autocomplete
                     value={ingredient}
-                    inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent}em` } }}
+                    inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent}px` } }}
                     items={ingredientsList()}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
