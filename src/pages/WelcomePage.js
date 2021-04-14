@@ -26,12 +26,15 @@ const WelcomePage = () => {
                 Drink Base Logo Place holder
             </div>
             <div className='jumbotron'>
-            <div className='WelcomePage'>
-                <div className='title'>What would you like to drink?</div>
-                {setSearchBar()}
-                <NavigationBar />
-                <SuggestionsList />
-            </div>
+                <div className='WelcomePage'>
+                    <div className='title'>What would you like to drink?</div>
+                    <div className='SearchBarWrapper'>
+                        {setSearchBar()}
+                    </div>
+
+                    <NavigationBar />
+                    <SuggestionsList />
+                </div>
             </div>
 
         </>

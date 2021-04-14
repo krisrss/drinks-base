@@ -23,7 +23,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicket
         <>
             {Object.values(urlTerm).length !== 0 ?
                 <div className='container'>
-                    <div style={{ margin: '1em' }} >
+                    <div className='SearchBarWrapper' >
                         {setSearchBar()}
                     </div>
 

@@ -1,3 +1,9 @@
+.SearchBarWrapper{
+    width: 40em;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+}
 
 .SearchBar{
     width: 39.5em; 
