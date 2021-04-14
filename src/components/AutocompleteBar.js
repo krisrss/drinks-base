@@ -19,9 +19,9 @@ const AutocompleteBar = () => {
     };
 
     const setPath = () => {
-        return `${currentPath}/${ingredient}`;
+        const constructedPath = selectedItems.join('/');
+        return `${currentPath}/${constructedPath}`;
     };
-
 
     const setIndent = (item) => {
         let getValue = inputIndent;
