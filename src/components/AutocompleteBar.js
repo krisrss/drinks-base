@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Autocomplete from 'react-autocomplete';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
 import InputTags from './InputTags';
 
@@ -8,9 +8,10 @@ const AutocompleteBar = () => {
     const [ingredient, setIngredient] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
     const [inputIndent, setInputIndent] = useState(0);
-
+    const urlTerm = useParams();
     const history = useHistory();
     const currentPath = history.location.pathname;
+    const urlTermsArr = Object.values(urlTerm);
 
     const renderIngredients = (data, val) => {
         return (
@@ -23,6 +24,16 @@ const AutocompleteBar = () => {
         return `${currentPath}/${constructedPath}`;
     };
 
+    useEffect(() => {
+        let initialIndent = 0;
+        if (urlTermsArr.length !== 0) {
+            initialIndent += urlTermsArr.join('').length * 7;
+            initialIndent += urlTermsArr.length * 35;
+            setInputIndent(initialIndent);
+            setSelectedItems([...urlTermsArr]);
+        }
+    }, [])
+
     const setIndent = (item) => {
         let getValue = inputIndent;
         const setIndentSize = 35 + (item.length * 7);
@@ -30,7 +41,7 @@ const AutocompleteBar = () => {
     };
 
     const setPlaceholder = () => {
-        if (selectedItems.length === 0) {
+        if (selectedItems.length === 0 && urlTermsArr.length === 0) {
             return 'Select an ingredient from list...'
         }
         else {
