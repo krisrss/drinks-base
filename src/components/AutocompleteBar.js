@@ -30,7 +30,6 @@ const AutocompleteBar = () => {
             initialIndent += urlTermsArr.join('').length * 7;
             initialIndent += urlTermsArr.length * 35;
             setInputIndent(initialIndent);
-            setSelectedItems([...urlTermsArr]);
         }
     }, [])
 
@@ -79,7 +78,7 @@ const AutocompleteBar = () => {
                         setIngredient('');
                     }}
                 />
-                <Link to={setPath} className='button'>
+                <Link to={setPath} className='button' onClick={() => setSelectedItems([])}>
                     SEARCH
                 </Link>
             </div>
