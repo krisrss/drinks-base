@@ -10,8 +10,19 @@ const AutocompleteBar = () => {
     const [inputIndent, setInputIndent] = useState(0);
     const urlTerm = useParams();
     const history = useHistory();
-    const currentPath = history.location.pathname;
     const urlTermsArr = Object.values(urlTerm);
+
+    useEffect(() => {
+        const urlTerms = [...urlTermsArr];
+        setSelectedItems(urlTerms);
+    }, [urlTerm]);
+
+    const deleteTags = (item) => {
+        const tags = [...selectedItems];
+        const index = tags.indexOf(item);
+        tags.splice(index, 1);
+        setSelectedItems(tags);
+    };
 
     const renderIngredients = (data, val) => {
         return (
@@ -21,7 +32,7 @@ const AutocompleteBar = () => {
 
     const setPath = () => {
         const constructedPath = selectedItems.join('/');
-        return `${currentPath}/${constructedPath}`;
+        history.push(`/ingredients/${constructedPath}`);
     };
 
     useEffect(() => {
@@ -48,10 +59,15 @@ const AutocompleteBar = () => {
         }
     };
 
+    const onClickHandler = () => {
+        setSelectedItems([]);
+        setPath();
+    };
+
 
     return (
         <div>
-            <InputTags selectedItems={selectedItems} />
+            <InputTags selectedItems={selectedItems} deleteTags={deleteTags} />
             <div className="SearchBar">
                 <Autocomplete
                     value={ingredient}
@@ -78,9 +94,9 @@ const AutocompleteBar = () => {
                         setIngredient('');
                     }}
                 />
-                <Link to={setPath} className='button' onClick={() => setSelectedItems([])}>
+                <a className='button' onClick={onClickHandler}>
                     SEARCH
-                </Link>
+                </a>
             </div>
         </div>
     );

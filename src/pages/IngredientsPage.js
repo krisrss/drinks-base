@@ -25,8 +25,8 @@ const IngredientsPage = () => {
     useEffect(() => {
         if (Object.keys(urlTerm).length !== 0) {
             setCurrentTerm(Object.values(urlTerm)[0])
-            if (drinksData.length === 0 || currentTerm === clickedTerm) {
-                setDrinksData([]);
+            setDrinksData([]);
+            if (drinksData.length === 0 || currentTerm === clickedTerm || Object.values(urlTerm)[0] !== currentTerm) {
                 setClickedTerm(null);
                 const getDrinks = async () => {
                     const searchTerm = Object.values(urlTerm)[0];
@@ -58,7 +58,7 @@ const IngredientsPage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} getClicketTerm={getClicketTerm} initialData={drinksData} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} getClicketTerm={getClicketTerm} initialData={drinksData} currentTerm={currentTerm} />
     )
 };
 

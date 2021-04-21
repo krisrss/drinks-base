@@ -1,15 +1,14 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import '../css/InputTags.css';
 
-const InputTags = ({ selectedItems }) => {
-    const urlTerm = useParams();
-    const urlTermsArr = Object.values(urlTerm);
+const InputTags = ({ selectedItems, deleteTags }) => {
 
-    const combinedTags = [...urlTermsArr, ...selectedItems];
+    const onClickHandler = (item) => {
+        deleteTags(item);
+    };
 
-    const setTags = combinedTags.map(item => (
-        <span className='Tag'>{item}</span>
+    const setTags = selectedItems.map(item => (
+        <span onClick={() => onClickHandler(item)} className='Tag'>{item}</span>
     ));
     return (
         <div className='InputTags'>
