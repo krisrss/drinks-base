@@ -3,12 +3,13 @@ import SideBar from './SideBar';
 import DrinksList from './DrinksList';
 import Spinner from './Spinner';
 import InformationTab from '../components/InformationTab';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 const DrinksDisplay = ({ drinksData, unfilteredDrinksData, getClicketTerm, initialData, currentTerm }) => {
     const [loading, setLoading] = useState(true);
     const counter = useRef(0);
-    const urlTerm = useParams();
+    const history = useHistory();
+    const currentPath = history.location.pathname;
 
     const imageLoaded = () => {
         counter.current += 1;
@@ -18,10 +19,8 @@ const DrinksDisplay = ({ drinksData, unfilteredDrinksData, getClicketTerm, initi
     };
 
     useEffect(() => {
-        if (currentTerm !== Object.values(urlTerm)[0]) {
-            setLoading(true);
-        }
-    }, [urlTerm]);
+        setLoading(true);
+    }, [currentPath]);
 
     useEffect(() => {
         if (drinksData.length === 0 && initialData.length !== 0) {
