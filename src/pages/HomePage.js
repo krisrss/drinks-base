@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { filterByQuery, updateDrinkDataValues } from '../functions/Utils';
 import { getDrinksbyName } from '../api/thecocktaildb';
@@ -14,23 +14,24 @@ const HomePage = () => {
 
     const filteredDrinksData = filterByQuery(drinksData, queryArray)
 
+    const history = useHistory();
+
     const resetDrinkList = () => {
         setDrinksData([]);
     }
 
     useEffect(() => {
-        if (urlTerm) {
-            const getDrinks = async () => {
-                const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
-                updateDrinkDataValues(data.drinks);
-                data.drinks ? setDrinksData(data.drinks) : resetDrinkList();
-            };
-            getDrinks();
+        if (history.location.pathname !== '/') {
+            if (drinksData.length === 0) {
+                const getDrinks = async () => {
+                    const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
+                    updateDrinkDataValues(data.drinks);
+                    data.drinks ? setDrinksData(data.drinks) : resetDrinkList();
+                };
+                getDrinks();
+            }
         }
-        else {
-            setDrinksData([]);
-        }
-    }, [urlTerm]);
+    }, [history.location.pathname, drinksData]);
 
     return (
         <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={{ ...urlTerm }} resetDrinkList={resetDrinkList} initialData={drinksData} />
