@@ -6,8 +6,7 @@ import AutocompleteBar from '../components/AutocompleteBar';
 import { useHistory } from 'react-router-dom';
 import '../css/WelcomePage.css';
 
-
-const WelcomePage = () => {
+const WelcomePage = ({ resetDrinkList }) => {
     const history = useHistory();
     const currentPath = history.location.pathname;
 
@@ -16,7 +15,7 @@ const WelcomePage = () => {
             return <AutocompleteBar />
         }
         else {
-            return <SearchBar />
+            return <SearchBar resetDrinkList={resetDrinkList} />
         };
     };
 

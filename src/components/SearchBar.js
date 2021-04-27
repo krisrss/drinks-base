@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/SearchBar.css';
 
-const SearchBar = () => {
+const SearchBar = ({ resetDrinkList }) => {
 
     const [input, setInput] = useState('');
     const history = useHistory();
@@ -11,12 +11,9 @@ const SearchBar = () => {
     const onChangeHandler = (e) => {
         setInput(e.target.value);
     };
-
+    
     const onClickHandler = () => {
-        if (currentPath.includes('/ingredients')) {
-            let verb = currentPath;
-            verb += `/${input}`;
-        }
+        resetDrinkList();
     };
     const setPath = () => {
         return `/${input}`;

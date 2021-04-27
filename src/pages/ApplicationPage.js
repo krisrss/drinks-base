@@ -6,7 +6,7 @@ import SearchBar from '../components/SearchBar';
 import AutocompleteBar from '../components/AutocompleteBar';
 import WelcomePage from './WelcomePage';
 
-const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicketTerm, initialData, currentTerm }) => {
+const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, getClicketTerm, initialData, currentTerm }) => {
     const history = useHistory();
     const currentPath = history.location.pathname;
 
@@ -15,7 +15,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicket
             return <AutocompleteBar />
         }
         else {
-            return <SearchBar />
+            return <SearchBar resetDrinkList={resetDrinkList} />
         };
     };
 
@@ -36,7 +36,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, getClicket
                         currentTerm={currentTerm}
                     />
                 </div>
-                : <WelcomePage />}
+                : <WelcomePage resetDrinkList={resetDrinkList} />}
         </>
     );
 };
