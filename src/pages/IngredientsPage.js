@@ -20,7 +20,13 @@ const IngredientsPage = () => {
 
     const getClicketTerm = (term) => {
         setClickedTerm(term)
-    }
+    };
+
+    const resetDrinkList = (urlData) => {
+        if (urlData.length <= 1) {
+            setDrinksData([]);
+        }
+    };
 
     useEffect(() => {
         if (Object.keys(urlTerm).length !== 0) {
@@ -58,7 +64,7 @@ const IngredientsPage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} getClicketTerm={getClicketTerm} initialData={drinksData} currentTerm={currentTerm} />
+        <ApplicationPage resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} getClicketTerm={getClicketTerm} initialData={drinksData} currentTerm={currentTerm} />
     )
 };
 

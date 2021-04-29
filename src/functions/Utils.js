@@ -8,28 +8,22 @@ export const cleanFilterName = (category) => {
 export const filterByQuery = (drinksData, queryArray) => {
     const drinks = [...drinksData];
     const resultArr = [];
+    drinks.forEach(drink => {
+        const drinkFilters = [];
 
-    if (queryArray.length !== 0) {
+        drinkFilters.push(cleanFilterName(drink.strAlcoholic));
+        drinkFilters.push(cleanFilterName(drink.strCategory));
+        drinkFilters.push(cleanFilterName(drink.strGlass));
+        drinkFilters.push(cleanFilterName(drink.makeDifficulty));
 
-        drinks.forEach(drink => {
-            const drinkFilters = [];
+        const filterApplied = queryArray.every(v => drinkFilters.includes(v));
+        if (filterApplied === true) {
+            resultArr.push(drink);
+        }
+    });
 
-            drinkFilters.push(cleanFilterName(drink.strAlcoholic));
-            drinkFilters.push(cleanFilterName(drink.strCategory));
-            drinkFilters.push(cleanFilterName(drink.strGlass));
-            drinkFilters.push(cleanFilterName(drink.makeDifficulty));
+    return resultArr;
 
-            const filterApplied = queryArray.every(v => drinkFilters.includes(v));
-            if (filterApplied === true) {
-                resultArr.push(drink);
-            }
-        });
-
-        return resultArr;
-    }
-    else {
-        return drinks;
-    }
 };
 
 export const ingredientCount = (data, drinkIndex) => {

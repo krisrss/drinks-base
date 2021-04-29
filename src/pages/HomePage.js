@@ -16,6 +16,19 @@ const HomePage = () => {
 
     const history = useHistory();
 
+    const setUrlTerm = () => {
+        let term = null;
+
+        if (urlTerm === undefined) {
+            term = {};
+        }
+        else {
+            term = { ...urlTerm }
+        }
+
+        return term;
+    }
+
     const resetDrinkList = () => {
         setDrinksData([]);
     }
@@ -34,7 +47,7 @@ const HomePage = () => {
     }, [history.location.pathname, drinksData]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={{ ...urlTerm }} resetDrinkList={resetDrinkList} initialData={drinksData} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={setUrlTerm()} resetDrinkList={resetDrinkList} initialData={drinksData} />
     )
 };
 

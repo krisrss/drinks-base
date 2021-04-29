@@ -20,7 +20,9 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
     };
 
     useEffect(() => {
-        setLoading(true);
+        if (Object.keys(urlTerm).length <= 1 || currentTerm !== urlTerm.ing1) {
+            setLoading(true);
+        }
     }, [currentPath]);
 
     useEffect(() => {
@@ -29,13 +31,18 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
         }
     });
 
-    const resetSpinner = () => {
-        setLoading(true);
-    }
+    const resetSpinner = (selectedItems) => {
+        if (selectedItems === undefined || selectedItems.length <= 1) {
+            setLoading(true);
+        }
+        else {
+            setLoading(false);
+        }
+    };
 
     const setSearchBar = () => {
         if (currentPath.includes('/ingredients')) {
-            return <AutocompleteBar />
+            return <AutocompleteBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
         }
         else {
             return <SearchBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />

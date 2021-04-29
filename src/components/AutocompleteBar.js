@@ -4,7 +4,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
 import InputTags from './InputTags';
 
-const AutocompleteBar = () => {
+const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
     const [inputIndent, setInputIndent] = useState(0);
@@ -32,7 +32,10 @@ const AutocompleteBar = () => {
 
     const setPath = () => {
         const constructedPath = selectedItems.join('/');
-        history.push(`/ingredients/${constructedPath}`);
+        history.push({
+            pathname: `/ingredients/${constructedPath}`,
+            state: { data: selectedItems }
+        });
     };
 
     useEffect(() => {
@@ -60,10 +63,11 @@ const AutocompleteBar = () => {
     };
 
     const onClickHandler = () => {
+        resetDrinkList(selectedItems);
+        resetSpinner(selectedItems);
         setSelectedItems([]);
         setPath();
     };
-
 
     return (
         <div>

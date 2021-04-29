@@ -12,7 +12,7 @@ const WelcomePage = ({ resetDrinkList, resetSpinner }) => {
 
     const setSearchBar = () => {
         if (currentPath.includes('/ingredients')) {
-            return <AutocompleteBar />
+            return <AutocompleteBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
         }
         else {
             return <SearchBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
