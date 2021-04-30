@@ -24,6 +24,12 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         setSelectedItems(tags);
     };
 
+    const resetTextIndent = (item) => {
+        let getValue = inputIndent;
+        const setIndentSize = 35 + (item.length * 7);
+        setInputIndent(getValue + - setIndentSize);
+    };
+
     const renderIngredients = (data, val) => {
         return (
             data.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
@@ -71,7 +77,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
 
     return (
         <div>
-            <InputTags selectedItems={selectedItems} deleteTags={deleteTags} />
+            <InputTags selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
             <div className="SearchBar">
                 <Autocomplete
                     value={ingredient}
