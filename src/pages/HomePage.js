@@ -24,14 +24,18 @@ const HomePage = () => {
         }
         else {
             term = { ...urlTerm }
-        }
+        };
 
         return term;
-    }
+    };
 
     const resetDrinkList = () => {
         setDrinksData([]);
-    }
+    };
+
+    useEffect(() => {
+        setDrinksData([]);
+    }, [urlTerm])
 
     useEffect(() => {
         if (history.location.pathname !== '/') {

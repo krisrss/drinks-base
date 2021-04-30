@@ -20,9 +20,18 @@ const SuggestionsList = () => {
         };
     };
 
+    const setPath = (termCheck, suggestion) => {
+        if (termCheck === false) {
+            return `${history.location.pathname}${suggestion}`
+        }
+        else {
+            return `${history.location.pathname}/${suggestion}`
+        };
+    }
+
     const suggestions = setSuggestions(termPresent).map((suggestion) => {
         return (
-            <Link to={`${history.location.pathname}/${suggestion}`} className='suggestion'>
+            <Link to={setPath(termPresent, suggestion)} className='suggestion'>
                 {suggestion}
             </Link>
         )
