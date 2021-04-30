@@ -4,7 +4,7 @@ import '../css/SuggestionsList.css';
 
 const SuggestionsConfig = {
     byName: ['Martini', 'Punch', 'Margarita', 'Tea', 'Mojito', 'Daiquiri'],
-    byIngredients: ['Rum', 'Coffee', 'Lemon', 'Tequila', 'Ice', 'Amaretto']
+    byIngredients: ['Cider', 'Coffee', 'Beer and 7-up', 'Rum, Vodka and Tequila', 'Mint',]
 }
 
 const SuggestionsList = () => {
@@ -25,7 +25,12 @@ const SuggestionsList = () => {
             return `${history.location.pathname}${suggestion}`
         }
         else {
-            return `${history.location.pathname}/${suggestion}`
+            const removeSpaces = suggestion.replaceAll(' ', '');
+            const removeAnds = removeSpaces.replaceAll('and', '/');
+            const removeComma = removeAnds.replaceAll(',', '/');
+            const strPath = removeComma;
+
+            return `${history.location.pathname}/${strPath}`
         };
     }
 
