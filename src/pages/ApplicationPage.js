@@ -5,6 +5,7 @@ import DrinksDisplay from '../components/DrinksDisplay';
 import SearchBar from '../components/SearchBar';
 import AutocompleteBar from '../components/AutocompleteBar';
 import WelcomePage from './WelcomePage';
+import Logo from '../components/Logo';
 
 const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, getClicketTerm, initialData, currentTerm }) => {
     const history = useHistory();
@@ -51,6 +52,7 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
 
     return (
         <>
+            <Logo />
             {Object.values(urlTerm).length !== 0 ?
                 <div className='container'>
                     <div className='SearchBarWrapper' >
