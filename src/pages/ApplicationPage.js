@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import AutocompleteBar from '../components/AutocompleteBar';
 import WelcomePage from './WelcomePage';
 import Logo from '../components/Logo';
+import '../css/ApplicationPage.css';
 
 const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, getClicketTerm, initialData, currentTerm }) => {
     const history = useHistory();
@@ -54,23 +55,28 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
         <>
             <Logo />
             {Object.values(urlTerm).length !== 0 ?
-                <div className='container'>
+                <>
                     <div className='SearchBarWrapper' >
                         {setSearchBar()}
                     </div>
 
                     <NavigationBar />
-                    <DrinksDisplay
-                        drinksData={drinksData}
-                        unfilteredDrinksData={unfilteredDrinksData}
-                        getClicketTerm={getClicketTerm}
-                        initialData={initialData}
-                        currentTerm={currentTerm}
-                        loading={loading}
-                        resetSpinner={resetSpinner}
-                        imageLoaded={imageLoaded}
-                    />
-                </div>
+
+                    <div className='whitespace'></div>
+
+                    <div style={{ background: '#F4F9FE' }}>
+                        <DrinksDisplay
+                            drinksData={drinksData}
+                            unfilteredDrinksData={unfilteredDrinksData}
+                            getClicketTerm={getClicketTerm}
+                            initialData={initialData}
+                            currentTerm={currentTerm}
+                            loading={loading}
+                            resetSpinner={resetSpinner}
+                            imageLoaded={imageLoaded}
+                        />
+                    </div>
+                </>
                 : <WelcomePage resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />}
         </>
     );

@@ -3,38 +3,28 @@ import SideBar from './SideBar';
 import DrinksList from './DrinksList';
 import Spinner from './Spinner';
 import InformationTab from '../components/InformationTab';
+import '../css/DrinksDisplay.css'
 
 const DrinksDisplay = ({ imageLoaded, loading, resetSpinner, drinksData, unfilteredDrinksData, getClicketTerm }) => {
 
     return (
-        <>
+        <div className='DrinksDisplay'>
             <div style={{ display: loading ? "block" : "none" }}>
                 <Spinner />
             </div>
-
+            
             <div style={{ display: loading ? "none" : "block" }}>
-                <div className='text-center'>
-                    <InformationTab drinksQuantity={drinksData.length} resetSpinner={resetSpinner} getClicketTerm={getClicketTerm} />
+                <InformationTab drinksQuantity={drinksData.length} resetSpinner={resetSpinner} getClicketTerm={getClicketTerm} />
+
+                <div style={{ display: 'flex' }}>
+                    {drinksData.length !== 0 ?
+                        <SideBar drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} />
+                        : null
+                    }
+                    <DrinksList drinksData={drinksData} imageLoaded={imageLoaded} />
                 </div>
-
-                <div className="row">
-                    <div className="col-md-2 text-center">
-                        {drinksData.length !== 0 ?
-                            <SideBar drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} />
-                            : null
-                        }
-                    </div>
-
-                    <div className="col-md-10">
-                        <div className='card-deck'>
-                            <DrinksList drinksData={drinksData} imageLoaded={imageLoaded} />
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
-        </>
+        </div>
 
     );
 };

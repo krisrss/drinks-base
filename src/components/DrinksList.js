@@ -1,5 +1,7 @@
 import React from 'react';
 import DrinkThumbnail from './DrinkThumbnail';
+import '../css/DrinksList.css';
+
 
 const DrinksList = ({ drinksData, imageLoaded }) => {
 
@@ -14,9 +16,9 @@ const DrinksList = ({ drinksData, imageLoaded }) => {
     });
 
     return (
-        <>
+        <div className='DrinksList'>
             {drinks}
-        </>
+        </div>
     );
 };
 

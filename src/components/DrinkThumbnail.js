@@ -4,7 +4,7 @@ import { setStars } from '../functions/Utils';
 
 const DrinkThumbnail = ({ drink, imageLoaded }) => {
     return (
-        <div className="col-3" style={{ paddingBottom: '2em' }}>
+        <div style={{ paddingBottom: '2em' }} style={{ display: 'inline-block' }}>
             <div className="card" style={{ width: '13em' }}>
                 <Link to={`/details/${drink.idDrink}`}>
                     <img className="card-img-top" onLoad={imageLoaded} src={`${drink.strDrinkThumb}/preview`} alt="Drink" />
