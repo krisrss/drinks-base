@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { cleanFilterName, removeQueryTerm, setStars } from '../functions/Utils';
+import '../css/CheckBox.css';
 
 const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData }) => {
     const [boxClicked, setBoxClicked] = useState(true);
@@ -62,19 +63,17 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
     }
 
     return (
-        <div>
-            <label>
-                <input type="checkbox"
-                    checked={!boxClicked}
-                    value={filterData[0]}
-                    onChange={setCheckboxQuery}
-                    disabled={unlockCheckbox}
-                />
-                <span>
-                    {setFilterName(filterData[0])}
-                    {` ${setFilterQuantity}`}
-                </span>
-            </label>
+        <div className='CheckBox'>
+            <input type="checkbox"
+                checked={!boxClicked}
+                value={filterData[0]}
+                onChange={setCheckboxQuery}
+                disabled={unlockCheckbox}
+            />
+            <span>
+                {setFilterName(filterData[0])}
+                {` (${setFilterQuantity})`}
+            </span>
         </div>
     );
 };

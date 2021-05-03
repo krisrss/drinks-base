@@ -1,0 +1,10 @@
+.FilterBlock {
+    border-bottom: 0.13em dashed #DDD;
+    padding-bottom: 0.5em;
+    margin-right: 2em;
+}
+
+.FilterBlock .button {
+    color: #749FC8;
+    cursor: pointer;
+}

@@ -1,0 +1,15 @@
+.CheckBox{
+    padding: 0.1em 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.CheckBox input{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    color: red;
+}
+
+input[type=checkbox] {
+    transform: scale(1.4);
+}

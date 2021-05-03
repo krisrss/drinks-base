@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Checkbox from './Checkbox';
+import '../css/FilterBlock.css';
 
 const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
     const [filterStatus, setFilterStatus] = useState(true);
@@ -53,18 +54,18 @@ const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
     let buttonName = null;
     const setFilter = () => {
         if (filterStatus === false) {
-            buttonName = 'Hide';
+            buttonName = 'show less -';
             return filters;
         }
         else {
-            buttonName = 'Show';
+            buttonName = 'view all +';
             return filters.slice(0, 3);
         };
     };
 
     const setButton = () => {
         if (filters.length > 3) {
-            return <button onClick={() => setFilterStatus(!filterStatus)}>{buttonName}</button>
+            return <a onClick={() => setFilterStatus(!filterStatus)}>{buttonName}</a>
         }
         else {
             return null;
@@ -72,9 +73,14 @@ const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
     };
 
     return (
-        <div>
-            {setFilter()}
-            {setButton()}
+        <div className='FilterBlock'>
+            <div className='block'>
+                {setFilter()}
+            </div>
+
+            <div className='button'>
+                {setButton()}
+            </div>
         </div>
     );
 };

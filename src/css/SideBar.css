@@ -1,5 +1,5 @@
 .SideBar {
-    width: 25em;
+    width: 30%;
 }
 
 .SideBar .frontText {
@@ -11,4 +11,12 @@
 
 .SideBar .sections {
     padding-left: 4em;
+}
+
+.SideBar .header {
+    font-weight: 500;
+    padding: 0.5em 0;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.1em;
 }

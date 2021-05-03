@@ -4,12 +4,30 @@ import '../css/SideBar.css';
 
 const filterTypes = ['makeDifficulty', 'strAlcoholic', 'strCategory', 'strGlass'];
 
+const setFilterHeader = (header) => {
+    if (header === 'makeDifficulty') {
+        return 'Difficulty'
+    }
+    else if (header === 'strAlcoholic') {
+        return 'Drink Type'
+    }
+    else if (header === 'strCategory') {
+        return 'Category'
+    }
+    else if (header === 'strGlass') {
+        return 'Glass Type'
+    }
+}
+
 const SideBar = ({ drinksData, unfilteredDrinksData }) => {
 
     let filters = filterTypes.map((type, index) => {
         return (
             <div key={index}>
-                ____________________________
+                <div className='header'>
+                    {setFilterHeader(type)}
+                </div>
+
                 <FilterBlock type={type} drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} />
             </div>
         )
@@ -18,7 +36,7 @@ const SideBar = ({ drinksData, unfilteredDrinksData }) => {
     return (
         <div className='SideBar'>
             <div className='frontText'>
-                Refine your search:
+                Refine your search: <a>clear all</a>
             </div>
             <div className='sections'>
                 {filters}
