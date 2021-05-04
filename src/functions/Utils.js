@@ -117,7 +117,7 @@ export const removeQueryTerm = (history, queryValue, mainPath) => {
 export const setStars = (nr) => {
     const stars = [];
     for (var i = 0; i < nr; i++) {
-        stars.push(<i key={i} style={{ color: 'khaki', textShadow: '0 0 3px #000' }} className="fas fa-star"></i>);
+        stars.push(<i key={i} style={{ color: '#F9E990', textShadow: '0 0 1px #000' }} className="fas fa-star"></i>);
     };
 
     return (

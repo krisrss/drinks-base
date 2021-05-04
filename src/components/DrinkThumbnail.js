@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { setStars } from '../functions/Utils';
+import '../css/DrinkThumbnail.css';
 
 const DrinkThumbnail = ({ drink, imageLoaded }) => {
     return (
-        <div style={{ paddingBottom: '2em' }} style={{ display: 'inline-block' }}>
+        <div className='DrinkThumbnail'>
             <div className="card" style={{ width: '13em' }}>
                 <Link to={`/details/${drink.idDrink}`}>
                     <img className="card-img-top" onLoad={imageLoaded} src={`${drink.strDrinkThumb}/preview`} alt="Drink" />
