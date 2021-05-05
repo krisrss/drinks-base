@@ -1,6 +1,6 @@
 .DrinkThumbnail {
     display: inline-block;
-    margin: 1em;
+    margin: 0.7em;
     width: 13em;
     box-shadow: 1px 1px 6px 0 rgb(0 0 0 / 9%);
 }
@@ -8,8 +8,6 @@
 .DrinkThumbnail:hover {
     transform: translateY(-0.3em);
 }
-
-.image-wrapper {}
 
 .DrinkThumbnail .image-wrapper img {
     width: 100%;
@@ -21,11 +19,12 @@
 }
 
 .DrinkThumbnail .title {
-    width: 100%;
-    font-size: 1.2em;
-    height: 4em;
+    width: 90%;
+    font-size: 1.15em;
+    height: 4.5em;
     padding-top: 0.9em;
     color: #333;
+    margin: 0 auto;
 }
 
 .DrinkThumbnail .info {
