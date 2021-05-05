@@ -1,5 +1,49 @@
 .DrinkThumbnail {
     display: inline-block;
     margin: 1em;
+    width: 13em;
     box-shadow: 1px 1px 6px 0 rgb(0 0 0 / 9%);
+}
+
+.image-wrapper {}
+
+.DrinkThumbnail .image-wrapper img {
+    width: 100%;
+}
+
+.DrinkThumbnail .info-wrapper {
+    text-align: center;
+    background: white;
+}
+
+.DrinkThumbnail .title {
+    width: 100%;
+    font-size: 1.2em;
+    height: 4em;
+    padding-top: 0.9em;
+    color: #333;
+}
+
+.DrinkThumbnail .info {
+    height: 4em;
+}
+
+.DrinkThumbnail .info .ingredients-tab {
+    color: #888;
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.DrinkThumbnail .info .stars-tab {
+    display: inline-block;
+    color: #888;
+    margin-left: 1em;
+}
+
+.DrinkThumbnail .info .stars-text {
+    font-size: 0.8em;
+}
+
+.DrinkThumbnail .info .ing-text {
+    font-size: 0.8em;
 }

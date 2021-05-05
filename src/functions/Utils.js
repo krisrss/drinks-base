@@ -130,3 +130,25 @@ export const setStars = (nr) => {
         </span>
     )
 };
+
+export const setStarsFull = (nr) => {
+    const stars = [];
+    const maxStars = 3;
+    for (var i = 0; i < nr; i++) {
+        stars.push(<i key={i} style={{ color: '#F9E990', textShadow: '0 0 0.5px #000' }} className="fas fa-star"></i>);
+    };
+
+    for (var x = 0; x < maxStars - nr; x++) {
+        stars.push(<i key={i} style={{ color: '#F9E990', textShadow: '0 0 0.5px #000' }} className="far fa-star"></i>);
+    }
+
+    return (
+        <span>
+            {stars.map((item) => {
+                return (
+                    item
+                )
+            })}
+        </span>
+    )
+};

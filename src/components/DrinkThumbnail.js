@@ -1,31 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { setStars } from '../functions/Utils';
+import { setStarsFull } from '../functions/Utils';
 import '../css/DrinkThumbnail.css';
 
 const DrinkThumbnail = ({ drink, imageLoaded }) => {
     return (
         <div className='DrinkThumbnail'>
-            <div className="card" style={{ width: '13em' }}>
-                <Link to={`/details/${drink.idDrink}`}>
-                    <img className="card-img-top" onLoad={imageLoaded} src={`${drink.strDrinkThumb}/preview`} alt="Drink" />
-                </Link>
-                <div className="card-body">
-                    <h5 className="card-title">{drink.strDrink}</h5>
+            <Link to={`/details/${drink.idDrink}`}>
+                <div className='image-wrapper'>
+                    <img onLoad={imageLoaded} src={`${drink.strDrinkThumb}/preview`} alt="Drink" />
                 </div>
-                <div className='container'>
-                    <span className="float-left">
-                        Ingredients : {drink.ingredientCount[6]}
-                    </span>
-                    <span className="float-right">
-                        {setStars(drink.makeDifficulty[0])}
-                    </span>
+            </Link>
+
+            <div className='info-wrapper'>
+                <div className='title'>
+                    {drink.strDrink}
                 </div>
-                <br />
+
+                <div className='info'>
+                    <div className='ingredients-tab'>
+                        <i class="fas fa-cocktail"></i>
+                        {` ${drink.ingredientCount[6]}`}
+                        <div className='ing-text'>ingredients</div>
+                    </div>
+
+                    <div className='stars-tab'>
+                        <div className='stars'>{setStarsFull(drink.makeDifficulty[0])}</div>
+                        <div className='stars-text'>difficulty</div>
+                    </div>
+                </div>
             </div>
         </div>
-
-
     );
 };
 
