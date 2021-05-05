@@ -40,12 +40,23 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
         }
     };
 
-    let setFilterQuantity = '';
-    prefilteredData.forEach(drink => {
-        if (filterData[0] === drink[0]) {
-            setFilterQuantity = drink[1]
+    const drinkQuantity = () => {
+        let filterQuantity = '';
+        prefilteredData.forEach(drink => {
+            if (filterData[0] === drink[0]) {
+                filterQuantity = drink[1]
+            }
+        });
+
+        if (filterQuantity === '') {
+            return ''
         }
-    });
+        else {
+            return `(${filterQuantity})`;
+        }
+    };
+
+
 
     const setFilterName = (term) => {
         if (term === '1-easy') {
@@ -72,7 +83,7 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
             />
             <span>
                 {setFilterName(filterData[0])}
-                {` (${setFilterQuantity})`}
+                {` ${drinkQuantity()}`}
             </span>
         </div>
     );
