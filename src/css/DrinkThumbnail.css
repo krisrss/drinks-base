@@ -5,6 +5,10 @@
     box-shadow: 1px 1px 6px 0 rgb(0 0 0 / 9%);
 }
 
+.DrinkThumbnail:hover {
+    transform: translateY(-0.3em);
+}
+
 .image-wrapper {}
 
 .DrinkThumbnail .image-wrapper img {
