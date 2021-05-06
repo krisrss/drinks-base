@@ -3,16 +3,21 @@ import SideBar from './SideBar';
 import DrinksList from './DrinksList';
 import Spinner from './Spinner';
 import InformationTab from '../components/InformationTab';
-import '../css/DrinksDisplay.css'
+import '../css/DrinksDisplay.css';
+import QueryTermBlock from '../components/QueryTermBlock';
+
 
 const DrinksDisplay = ({ imageLoaded, loading, resetSpinner, drinksData, unfilteredDrinksData, getClicketTerm }) => {
 
     return (
         <div className='DrinksDisplay'>
+            <QueryTermBlock />
+
+
             <div style={{ display: loading ? "block" : "none" }}>
                 <Spinner />
             </div>
-            
+
             <div style={{ display: loading ? "none" : "block" }}>
                 <InformationTab drinksQuantity={drinksData.length} resetSpinner={resetSpinner} getClicketTerm={getClicketTerm} />
 
