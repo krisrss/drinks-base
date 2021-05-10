@@ -6,13 +6,6 @@
     width: 18em;
 }
 
-.QueryTermBlock .query-term {
-    margin: 0.4em 0.4em 0 0;
-    border: 1px solid black;
-    display: inline-block;
-    padding: 0.1em; 
-}
-
 .QueryTermBlock .title {
     width: 5em;
     padding-top: -1em;

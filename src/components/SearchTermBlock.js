@@ -1,5 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import '../css/SearchTermBlock.css';
+import '../css/Tag.css';
+
 
 const SearchTermBlock = ({ searchTerm, resetSpinner, getClicketTerm }) => {
     const history = useHistory();
@@ -28,14 +31,16 @@ const SearchTermBlock = ({ searchTerm, resetSpinner, getClicketTerm }) => {
 
     const searchTerms = Object.values(searchTerm).map((term, index) => {
         return (
-            <span key={index} onClick={() => onClickHandler(term)} style={{ border: '1px solid black', padding: '4px' }}>
+            <span className='Tag' key={index} onClick={() => onClickHandler(term)}>
                 {`${term}`}
             </span>
         )
     })
 
     return (
-        <>, with keywords {searchTerms}</>
+        <div className='SearchTermBlock'>
+            {searchTerms}
+        </div>
     )
 };
 

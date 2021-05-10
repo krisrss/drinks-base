@@ -1,0 +1,21 @@
+.Tag {
+    padding: 0.1em 0.6em;
+    background-color: #D4E9FC;
+    color: black;
+    margin: 0.4em 0.4em 0 0;
+    display: inline-block;
+    font-size: 0.9em;
+    border: 1px solid black;
+}
+
+.Tag::after {
+    content: "\f057";
+    font-family: "Font Awesome 5 Free";
+    margin-left: 0.3em;
+    font-size: 0.8em;
+}
+
+.Tag:hover {
+    background-color: #749FC8;
+    cursor: pointer;
+}

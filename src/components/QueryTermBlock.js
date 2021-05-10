@@ -2,7 +2,8 @@ import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { removeQueryTerm, setStars } from '../functions/Utils';
-import '../css/QueryTermBlock.css'
+import '../css/QueryTermBlock.css';
+import '../css/Tag.css';
 
 const QueryTermBlock = () => {
     const history = useHistory();
@@ -19,7 +20,7 @@ const QueryTermBlock = () => {
 
     const queryTerms = queryArray.map((term, index) => {
         return (
-            <span className='query-term' key={index} onClick={() => onClickHandler(term)}>
+            <span className='Tag' key={index} onClick={() => onClickHandler(term)}>
                 {term[0] === 'makeDifficulty' ? setStars(term[1][0]) : `${term[1]}`}
             </span>
         )

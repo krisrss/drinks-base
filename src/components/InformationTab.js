@@ -7,7 +7,7 @@ const InformationTab = ({ drinksQuantity, resetSpinner, getClicketTerm }) => {
     const searchTerm = useParams();
     return (
         <div className='InformationTab'>
-            {drinksQuantity} drinks found<SearchTermBlock searchTerm={searchTerm} resetSpinner={resetSpinner} getClicketTerm={getClicketTerm} />
+            {drinksQuantity} drinks found that match <SearchTermBlock searchTerm={searchTerm} resetSpinner={resetSpinner} getClicketTerm={getClicketTerm} />
         </div>
     )
 };

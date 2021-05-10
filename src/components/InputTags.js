@@ -1,5 +1,7 @@
 import React from 'react';
 import '../css/InputTags.css';
+import '../css/Tag.css';
+
 
 const InputTags = ({ selectedItems, deleteTags, resetTextIndent }) => {
 
