@@ -8,7 +8,7 @@ import WelcomePage from './WelcomePage';
 import Logo from '../components/Logo';
 import '../css/ApplicationPage.css';
 
-const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, initialData, currentTerm }) => {
+const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, initialData, currentTerm }) => {
     const history = useHistory();
     const currentPath = history.location.pathname;
     const [loading, setLoading] = useState(true);
@@ -44,10 +44,10 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
 
     const setSearchBar = () => {
         if (currentPath.includes('/ingredients')) {
-            return <AutocompleteBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
+            return <AutocompleteBar resetSpinner={resetSpinner} />
         }
         else {
-            return <SearchBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
+            return <SearchBar resetSpinner={resetSpinner} />
         };
     };
 
@@ -75,7 +75,7 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
                         />
                     </div>
                 </>
-                : <WelcomePage resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />}
+                : <WelcomePage resetSpinner={resetSpinner} />}
         </>
     );
 };

@@ -51,7 +51,7 @@ const HomePage = () => {
     }, [history.location.pathname, drinksData]);
 
     return (
-        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={setUrlTerm()} resetDrinkList={resetDrinkList} initialData={drinksData} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={setUrlTerm()} initialData={drinksData} />
     )
 };
 

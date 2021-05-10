@@ -17,12 +17,6 @@ const IngredientsPage = () => {
 
     const [currentTerm, setCurrentTerm] = useState(null);
 
-    const resetDrinkList = (urlData) => {
-        if (urlData.length <= 1) {
-            setDrinksData([]);
-        }
-    };
-    
     useEffect(() => {
         if (Object.keys(urlTerm).length !== 0) {
             setCurrentTerm(Object.values(urlTerm)[0])
@@ -58,7 +52,7 @@ const IngredientsPage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} initialData={drinksData} currentTerm={currentTerm} />
+        <ApplicationPage drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} initialData={drinksData} currentTerm={currentTerm} />
     )
 };
 

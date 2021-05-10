@@ -7,16 +7,16 @@ import { useHistory } from 'react-router-dom';
 import '../css/WelcomePage.css';
 import Logo from '../components/Logo';
 
-const WelcomePage = ({ resetDrinkList, resetSpinner }) => {
+const WelcomePage = ({resetSpinner }) => {
     const history = useHistory();
     const currentPath = history.location.pathname;
 
     const setSearchBar = () => {
         if (currentPath.includes('/ingredients')) {
-            return <AutocompleteBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
+            return <AutocompleteBar resetSpinner={resetSpinner} />
         }
         else {
-            return <SearchBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
+            return <SearchBar resetSpinner={resetSpinner} />
         };
     };
 
