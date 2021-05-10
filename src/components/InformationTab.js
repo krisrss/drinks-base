@@ -5,9 +5,19 @@ import '../css/InformationTab.css';
 
 const InformationTab = ({ drinksQuantity }) => {
     const searchTerm = useParams();
+
+    const setDrinksWord = () => {
+        if (drinksQuantity === 1) {
+            return 'drink'
+        }
+        else {
+            return 'drinks'
+        }
+    };
+
     return (
         <div className='InformationTab'>
-            {drinksQuantity} drinks found that match <SearchTermBlock searchTerm={searchTerm} />
+            {drinksQuantity} {setDrinksWord()} found that match <SearchTermBlock searchTerm={searchTerm} />
         </div>
     )
 };

@@ -5,11 +5,27 @@ import '../css/Tag.css';
 
 const SearchTermBlock = ({ searchTerm }) => {
     const searchTerms = Object.values(searchTerm).map((term, index) => {
-        return (
-            <span key={index}>
-                {`${term}`}
-            </span>
-        )
+        if (index === 0) {
+            return (
+                <span key={index}>
+                    {`${term}`}
+                </span>
+            )
+        }
+        else if (index === 1) {
+            return (
+                <span key={index}>
+                    {`, ${term}`}
+                </span>
+            )
+        }
+        else if (index === 2) {
+            return (
+                <span key={index}>
+                    {` and ${term}`}
+                </span>
+            )
+        }
     })
 
     return (
