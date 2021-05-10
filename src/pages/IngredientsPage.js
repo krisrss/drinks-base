@@ -15,24 +15,18 @@ const IngredientsPage = () => {
     const filteredDrinksData = filterByUrlTerms(filterByQuery(drinksData, queryArray), urlTerm);
     const unfilteredDrinksData = filterByUrlTerms(drinksData, urlTerm)
 
-    const [clickedTerm, setClickedTerm] = useState(null);
     const [currentTerm, setCurrentTerm] = useState(null);
-
-    const getClicketTerm = (term) => {
-        setClickedTerm(term)
-    };
 
     const resetDrinkList = (urlData) => {
         if (urlData.length <= 1) {
             setDrinksData([]);
         }
     };
-
+    
     useEffect(() => {
         if (Object.keys(urlTerm).length !== 0) {
             setCurrentTerm(Object.values(urlTerm)[0])
-            if (drinksData.length === 0 || currentTerm === clickedTerm || Object.values(urlTerm)[0] !== currentTerm) {
-                setClickedTerm(null);
+            if (drinksData.length === 0 || Object.values(urlTerm)[0] !== currentTerm) {
                 setDrinksData([]);
                 const getDrinks = async () => {
                     const searchTerm = Object.values(urlTerm)[0];
@@ -64,7 +58,7 @@ const IngredientsPage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} getClicketTerm={getClicketTerm} initialData={drinksData} currentTerm={currentTerm} />
+        <ApplicationPage resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} initialData={drinksData} currentTerm={currentTerm} />
     )
 };
 

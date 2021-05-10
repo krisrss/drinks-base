@@ -7,7 +7,7 @@ import '../css/DrinksDisplay.css';
 import QueryTermBlock from '../components/QueryTermBlock';
 
 
-const DrinksDisplay = ({ imageLoaded, loading, resetSpinner, drinksData, unfilteredDrinksData, getClicketTerm }) => {
+const DrinksDisplay = ({ imageLoaded, loading, drinksData, unfilteredDrinksData }) => {
 
     return (
         <div className='DrinksDisplay'>
@@ -19,7 +19,7 @@ const DrinksDisplay = ({ imageLoaded, loading, resetSpinner, drinksData, unfilte
             </div>
 
             <div style={{ display: loading ? "none" : "block" }}>
-                <InformationTab drinksQuantity={drinksData.length} resetSpinner={resetSpinner} getClicketTerm={getClicketTerm} />
+                <InformationTab drinksQuantity={drinksData.length} />
 
                 <div style={{ display: 'flex' }}>
                     {drinksData.length !== 0 ?

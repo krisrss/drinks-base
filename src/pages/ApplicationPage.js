@@ -8,7 +8,7 @@ import WelcomePage from './WelcomePage';
 import Logo from '../components/Logo';
 import '../css/ApplicationPage.css';
 
-const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, getClicketTerm, initialData, currentTerm }) => {
+const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, initialData, currentTerm }) => {
     const history = useHistory();
     const currentPath = history.location.pathname;
     const [loading, setLoading] = useState(true);
@@ -68,11 +68,9 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
                         <DrinksDisplay
                             drinksData={drinksData}
                             unfilteredDrinksData={unfilteredDrinksData}
-                            getClicketTerm={getClicketTerm}
                             initialData={initialData}
                             currentTerm={currentTerm}
                             loading={loading}
-                            resetSpinner={resetSpinner}
                             imageLoaded={imageLoaded}
                         />
                     </div>
