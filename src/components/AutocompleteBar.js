@@ -26,7 +26,7 @@ const AutocompleteBar = ({ resetSpinner }) => {
 
     const resetTextIndent = (item) => {
         let getValue = inputIndent;
-        const setIndentSize = 35 + (item.length * 7);
+        const setIndentSize = 45 + (item.length * 7);
         setInputIndent(getValue + - setIndentSize);
     };
 
@@ -48,14 +48,14 @@ const AutocompleteBar = ({ resetSpinner }) => {
         let initialIndent = 0;
         if (urlTermsArr.length !== 0) {
             initialIndent += urlTermsArr.join('').length * 7;
-            initialIndent += urlTermsArr.length * 35;
+            initialIndent += urlTermsArr.length * 45;
             setInputIndent(initialIndent);
         }
     }, [])
 
     const setIndent = (item) => {
         let getValue = inputIndent;
-        const setIndentSize = 35 + (item.length * 7);
+        const setIndentSize = 45 + (item.length * 7);
         setInputIndent(getValue += setIndentSize);
     };
 

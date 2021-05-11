@@ -1,6 +1,6 @@
 .Tag {
     padding: 0.1em 0.6em;
-    background-color: #D4E9FC;
+    background-color: whitesmoke;
     color: black;
     margin: 0.4em 0.4em 0 0;
     display: inline-block;
@@ -16,6 +16,6 @@
 }
 
 .Tag:hover {
-    background-color: #749FC8;
+    background-color: #A0C3CC;
     cursor: pointer;
 }
