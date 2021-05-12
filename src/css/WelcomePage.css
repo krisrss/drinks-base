@@ -1,14 +1,17 @@
 .jumbotron {
     padding-top: 4em;
-    padding-bottom: 10em;
+    padding-bottom: 6em;
     text-align: center;
     width: 100%;
+    background-color: #ffffff;
+    background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
 }
 
-.WelcomePage .title{
+.WelcomePage .title {
     color: white;
     font-size: 2.44em;
     font-weight: bold;
     margin-top: 0.6em;
     margin-bottom: 0.25em;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.2);
 }
