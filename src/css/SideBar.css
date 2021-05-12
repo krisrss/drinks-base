@@ -20,3 +20,9 @@
     font-weight: 500;
     font-size: 1.1em;
 }
+
+.SideBar .clearAllButton {
+    color: #749FC8;
+    text-decoration: none;
+    cursor: pointer;
+}

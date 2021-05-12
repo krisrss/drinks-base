@@ -1,6 +1,7 @@
 import React from 'react';
 import FilterBlock from './FilterBlock';
 import '../css/SideBar.css';
+import { useHistory } from 'react-router';
 
 const filterTypes = ['makeDifficulty', 'strAlcoholic', 'strCategory', 'strGlass'];
 
@@ -17,9 +18,14 @@ const setFilterHeader = (header) => {
     else if (header === 'strGlass') {
         return 'Glass Type'
     }
-}
+};
 
 const SideBar = ({ drinksData, unfilteredDrinksData }) => {
+    const history = useHistory();
+
+    const clearAllQueries = () => {
+        history.push(history.location.pathname)
+    };
 
     let filters = filterTypes.map((type, index) => {
         return (
@@ -36,14 +42,13 @@ const SideBar = ({ drinksData, unfilteredDrinksData }) => {
     return (
         <div className='SideBar'>
             <div className='frontText'>
-                Refine your search: <a>clear all</a>
+                Refine your search: <a onClick={clearAllQueries} className='clearAllButton'>clear all</a>
             </div>
             <div className='sections'>
                 {filters}
             </div>
         </div>
     );
-
 };
 
 export default SideBar;
