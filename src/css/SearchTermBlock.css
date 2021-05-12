@@ -2,3 +2,7 @@
     width: 30em;
     display: inline-block;
 }
+
+.SearchTermBlock .termBold {
+    font-weight: 500;
+}
