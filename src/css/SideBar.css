@@ -1,18 +1,14 @@
 .SideBar {
-    width: 23em;
-    text-align: left;
-}
-
-@media only screen and (max-width: 863px) {
-    .SideBar {
-        display: none;
-    }
+    width: 21em;
 }
 
 .SideBar .frontText {
     font-size: 1.1em;
     padding-bottom: .5em;
     padding-left: 3.5em;
+    top: 5em;
+    position: absolute;
+    top: -2em;
 }
 
 .SideBar .sections {
