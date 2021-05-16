@@ -11,14 +11,12 @@ const DrinksDisplay = ({ imageLoaded, loading, drinksData, unfilteredDrinksData 
 
     return (
         <div className='DrinksDisplay'>
-            <QueryTermBlock />
-
-
             <div style={{ display: loading ? "block" : "none" }}>
                 <Spinner />
             </div>
 
             <div style={{ display: loading ? "none" : "block" }}>
+                <QueryTermBlock />
                 <InformationTab drinksQuantity={drinksData.length} />
 
                 <div style={{ display: 'flex' }}>

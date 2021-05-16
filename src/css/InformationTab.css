@@ -1,6 +1,5 @@
 .InformationTab {
-    position: relative;
-    left: 23.3em;
+    position: absolute;
     top: -4.5em;
-    width: 50em;
+    left: 23.8em;
 }

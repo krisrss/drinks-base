@@ -52,7 +52,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, initialDat
     };
 
     return (
-        <>
+        <div className='ApplicationPage'>
             <Logo />
             {Object.values(urlTerm).length !== 0 ?
                 <>
@@ -76,7 +76,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, initialDat
                     </div>
                 </>
                 : <WelcomePage resetSpinner={resetSpinner} />}
-        </>
+        </div>
     );
 };
 
