@@ -3,3 +3,10 @@
     top: -4.5em;
     left: 21.8em;
 }
+
+.InformationTab-zero {
+    position: absolute;
+    top: -5.6em;
+    left: 11.3em;
+    background: white;
+}

@@ -51,6 +51,15 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, initialDat
         };
     };
 
+    const setBackground = () => {
+        if (drinksData.length !== 0 && loading === false) {
+            return 'main-content';
+        }
+        else {
+            return '';
+        };
+    };
+
     return (
         <div className='ApplicationPage'>
             <Logo />
@@ -64,7 +73,7 @@ const ApplicationPage = ({ drinksData, unfilteredDrinksData, urlTerm, initialDat
 
                     <div className='whitespace'></div>
 
-                    <div style={{ background: '#F4F9FE' }}>
+                    <div className={setBackground()}>
                         <DrinksDisplay
                             drinksData={drinksData}
                             unfilteredDrinksData={unfilteredDrinksData}
