@@ -8,6 +8,7 @@ const AutocompleteBar = ({ resetSpinner }) => {
     const [ingredient, setIngredient] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
     const [inputIndent, setInputIndent] = useState(0);
+    const [ingredientsArr, setIngredientsArr] = useState([]);
     const urlTerm = useParams();
     const history = useHistory();
     const urlTermsArr = Object.values(urlTerm);
@@ -22,6 +23,15 @@ const AutocompleteBar = ({ resetSpinner }) => {
         const index = tags.indexOf(item);
         tags.splice(index, 1);
         setSelectedItems(tags);
+
+        const ingrArr = [...ingredientsArr];
+
+        var ingrdient = {
+            title: item,
+        };
+
+        ingrArr.unshift(ingrdient);
+        setIngredientsArr(ingrArr);
     };
 
     const resetTextIndent = (item) => {
@@ -45,6 +55,7 @@ const AutocompleteBar = ({ resetSpinner }) => {
     };
 
     useEffect(() => {
+        setIngredientsArr(ingredientsList);
         let initialIndent = 0;
         if (urlTermsArr.length !== 0) {
             initialIndent += urlTermsArr.join('').length * 7;
@@ -81,7 +92,7 @@ const AutocompleteBar = ({ resetSpinner }) => {
                 <Autocomplete
                     value={ingredient}
                     inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent}px` } }}
-                    items={ingredientsList()}
+                    items={ingredientsArr}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
                     renderMenu={item => (
@@ -101,6 +112,11 @@ const AutocompleteBar = ({ resetSpinner }) => {
                         setSelectedItems(arr);
                         setIndent(val);
                         setIngredient('');
+
+                        const ingrArr = [...ingredientsArr];
+                        var index = ingrArr.findIndex(x => x.title === val);
+                        ingrArr.splice(index, 1);
+                        setIngredientsArr(ingrArr);
                     }}
                 />
                 <a className='button' onClick={onClickHandler}>
