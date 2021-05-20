@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/SearchBar.css';
 
-const SearchBar = ({ resetSpinner }) => {
+const SearchBar = ({ resetDrinkList, resetSpinner }) => {
 
     const [input, setInput] = useState('');
     const history = useHistory();
@@ -13,6 +13,7 @@ const SearchBar = ({ resetSpinner }) => {
     };
 
     const onClickHandler = () => {
+        resetDrinkList();
         resetSpinner();
     };
     const setPath = () => {

@@ -4,7 +4,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
 import InputTags from './InputTags';
 
-const AutocompleteBar = ({ resetSpinner }) => {
+const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
     const [inputIndent, setInputIndent] = useState(0);
@@ -80,6 +80,7 @@ const AutocompleteBar = ({ resetSpinner }) => {
     };
 
     const onClickHandler = () => {
+        resetDrinkList(urlTermsArr);
         resetSpinner(selectedItems);
         setSelectedItems([]);
         setPath();
