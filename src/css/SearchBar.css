@@ -1,29 +1,29 @@
-.SearchBarWrapper{
+.SearchBarWrapper {
     width: 40em;
     position: relative;
     text-align: center;
     margin: 0 auto;
 }
 
-.SearchBar{
-    width: 39.5em; 
+.SearchBar {
+    width: 39.5em;
     margin: 0 auto;
     padding-top: 1.65em;
 }
 
-.SearchBar input{
+.SearchBar input {
     width: 34em;
     padding: 0.66em;
     border: 1px solid #DDD;
 }
 
-.SearchBar .button{
+.SearchBar .button {
     padding: 0.72em;
     width: 5.5em;
     text-decoration: none;
     color: inherit;
     background: #A0C3CC;
-    float:right;
+    float: right;
 }
 
 .SearchBar .dropdown {
@@ -37,10 +37,10 @@
     border: 1px solid lightgrey;
     border-top: none;
     position: absolute;
-    z-index : 1;
+    z-index: 1;
 }
 
-.SearchBar .item  {
+.SearchBar .item {
     display: block;
     cursor: pointer;
     font-size: 14px;
