@@ -16,7 +16,24 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     useEffect(() => {
         const urlTerms = [...urlTermsArr];
         setSelectedItems(urlTerms);
+        setIngredientsArr(cleanArrFromSelected());
     }, [urlTerm]);
+
+    const cleanArrFromSelected = () => {
+        if(urlTermsArr.length === 0){
+            return ingredientsList;
+        }
+        else{
+            const ingrArr = [...ingredientsList()];
+
+            urlTermsArr.forEach(ingr => {
+                var index = ingrArr.findIndex(x => x.title === ingr);
+                ingrArr.splice(index, 1);
+            });
+    
+            return ingrArr; 
+        };
+    };
 
     const deleteTags = (item) => {
         const tags = [...selectedItems];
@@ -55,7 +72,6 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     };
 
     useEffect(() => {
-        setIngredientsArr(ingredientsList);
         let initialIndent = 0;
         if (urlTermsArr.length !== 0) {
             initialIndent += urlTermsArr.join('').length * 7;
