@@ -19,19 +19,28 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         setIngredientsArr(cleanArrFromSelected());
     }, [urlTerm]);
 
+    const setIngredientsListEmpty = () => {
+        if (selectedItems.length === 3) {
+            return []
+        }
+        else {
+            return ingredientsArr;
+        };
+    };
+
     const cleanArrFromSelected = () => {
-        if(urlTermsArr.length === 0){
+        if (urlTermsArr.length === 0) {
             return ingredientsList;
         }
-        else{
+        else {
             const ingrArr = [...ingredientsList()];
 
             urlTermsArr.forEach(ingr => {
                 var index = ingrArr.findIndex(x => x.title === ingr);
                 ingrArr.splice(index, 1);
             });
-    
-            return ingrArr; 
+
+            return ingrArr;
         };
     };
 
@@ -109,7 +118,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
                 <Autocomplete
                     value={ingredient}
                     inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent}px` } }}
-                    items={ingredientsArr}
+                    items={setIngredientsListEmpty()}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
                     renderMenu={item => (
