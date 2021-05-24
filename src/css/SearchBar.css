@@ -30,7 +30,7 @@
     width: 34em;
     padding: 0;
     text-align: left;
-    max-height: 25em;
+    max-height: 16em;
     overflow: hidden;
     overflow-y: auto;
     background-color: #ffffff;
@@ -50,4 +50,13 @@
 .SearchBar .item:hover {
     background-color: #0069ff;
     color: #FAFBFC;
+}
+
+.warning-max-ing {
+    position: absolute;
+    font-size: 0.9em;
+    left: 0.4em;
+    top: 0.25em;
+    color: black;
+    font-weight: 500;
 }

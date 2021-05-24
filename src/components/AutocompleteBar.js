@@ -104,6 +104,12 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         }
     };
 
+    const maxIngredientsWarning = () => {
+        if (selectedItems.length === 3) {
+            return <div className='warning-max-ing'>Note: You can select only up to 3 ingredients.</div>
+        }
+    }
+
     const onClickHandler = () => {
         resetDrinkList(urlTermsArr);
         resetSpinner(selectedItems);
@@ -113,6 +119,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
 
     return (
         <div>
+            {maxIngredientsWarning()}
             <InputTags selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
             <div className="SearchBar">
                 <Autocomplete
