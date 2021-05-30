@@ -45,18 +45,12 @@ export const filterByUrlTerms = (drinksData, ingredients) => {
     const ingrList = Object.values(ingredients);
     const ingrListLowerCase = ingrList.map(v => v.toLowerCase());
 
-
-    if (ingrListLowerCase.length > 1) {
-        for (let i = 0; i < drinksData.length; i++) {
-            if (ingrListLowerCase.every(elem => ingredientCount(drinksData, i).includes(elem))) {
-                tempDrinkStore.push(drinksData[i])
-            }
-        };
-        return tempDrinkStore;
-    }
-    else {
-        return drinksData;
-    }
+    for (let i = 0; i < drinksData.length; i++) {
+        if (ingrListLowerCase.every(elem => ingredientCount(drinksData, i).includes(elem))) {
+            tempDrinkStore.push(drinksData[i])
+        }
+    };
+    return tempDrinkStore;
 };
 
 
