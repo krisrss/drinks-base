@@ -111,7 +111,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     }
 
     const onClickHandler = () => {
-        resetDrinkList(urlTermsArr);
+        resetDrinkList(selectedItems);
         resetSpinner(selectedItems);
         setSelectedItems([]);
         setPath();
