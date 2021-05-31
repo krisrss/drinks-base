@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../components/Logo';
 import '../css/DrinkDetails.css';
+import { updateDrinkDataValues } from '../functions/Utils';
 
 const DrinkDetails = () => {
     const { drinkId } = useParams();
@@ -15,7 +16,10 @@ const DrinkDetails = () => {
                     i: drinkId
                 }
             });
-            setDrinkData(data.drinks[0]);
+
+            let dataUpdated = data.drinks;
+            updateDrinkDataValues(dataUpdated);
+            setDrinkData(dataUpdated[0]);
         };
         getDrink();
     }, [drinkId]);
@@ -24,13 +28,8 @@ const DrinkDetails = () => {
         <div>
             <Logo />
             <div className='DrinkDetails'>
-
                 <div className='title'>{drinkData.strDrink}</div>
-
-                {console.log(drinkData)}
-
                 <img alt='drink' src={drinkData.strDrinkThumb} />
-
             </div>
         </div>
 
