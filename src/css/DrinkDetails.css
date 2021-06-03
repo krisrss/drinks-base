@@ -54,7 +54,8 @@
 
 .ingr-text {
     color: black;
-    margin-left: 0.6em;
+    position: relative;
+    right: -0.6em;
 }
 
 .ingredients-title {
@@ -82,5 +83,6 @@
 
 .step-text {
     color: black;
-    margin-left: 0.6em;
+    position: relative;
+    right: -0.6em;
 }
