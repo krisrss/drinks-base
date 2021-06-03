@@ -52,6 +52,23 @@ const DrinkDetails = () => {
         )
     });
 
+
+    const instructionSteps = () => {
+
+        if (drinkData.strInstructions !== undefined) {
+            let steps = drinkData.strInstructions.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+
+            const stepsDisplay = steps.map((item) => {
+                return (
+                    <li className='step-item'><span>{item}</span></li>
+                )
+            })
+
+            return stepsDisplay;
+        }
+    }
+
+
     return (
         <div>
             <Logo />
@@ -79,9 +96,10 @@ const DrinkDetails = () => {
                                 {displayIngredients}
                             </ul>
 
-                            <div>Instructions:</div>
+                            <div className='ingredients-title'>Instructions:</div>
 
-                            <div>{drinkData.strInstructions}</div>
+                            <ul className='step-list'>{instructionSteps()}</ul>
+
 
 
                         </div>
