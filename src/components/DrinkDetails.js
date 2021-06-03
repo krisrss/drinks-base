@@ -37,7 +37,14 @@ const DrinkDetails = () => {
             if (ingr !== null && ingr !== undefined && ingr !== '') {
                 let ignWrap = [];
                 ignWrap.push(ingr)
-                ignWrap.push(amount)
+
+                if (amount === null) {
+                    ignWrap.push('as per preference')
+                }
+                else {
+                    ignWrap.push(amount)
+                }
+
                 ingredientsData.push(ignWrap)
             }
 
