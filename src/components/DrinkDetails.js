@@ -48,9 +48,7 @@ const DrinkDetails = () => {
 
     const displayIngredients = ingredientsList(drinkData).map((ingredient) => {
         return (
-            <div>
-                <span>{ingredient[0]}</span> - <span>{ingredient[1]}</span>
-            </div>
+            <li className='ingr-item'><span className='ingr-text'>{ingredient[0]} - {ingredient[1]}</span></li>
         )
     });
 
@@ -71,14 +69,27 @@ const DrinkDetails = () => {
                     <div className='content'>
                         <div className='main-image'><img alt='drink' src={drinkData.strDrinkThumb} /></div>
 
+
+
                         <div className='main-text'>
-                            <b>Ingredients:</b>
-                            {displayIngredients}
-                            <b>Instructions:</b>
-                            <p>{drinkData.strInstructions}</p>
+
+                            <div className='ingredients-title'>Ingredients:</div>
+
+                            <ul className='ingr-list'>
+                                {displayIngredients}
+                            </ul>
+
+                            <div>Instructions:</div>
+
+                            <div>{drinkData.strInstructions}</div>
+
+
                         </div>
 
+
+
                     </div>
+
                 </div>
                 : null
             }

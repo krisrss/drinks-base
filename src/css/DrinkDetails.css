@@ -1,5 +1,5 @@
 .DrinkDetails {
-    margin: 0 5em;
+    margin: 0 5em 5em 5em;
 }
 
 .DrinkDetails .title {
@@ -21,12 +21,46 @@
     font-size: 1em;
 }
 
-.DrinkDetails .content {}
-
-.DrinkDetails .main-image {}
-
-.DrinkDetails .main-image img {
-    width: 30em;
+.DrinkDetails .content {
+    width: 70em;
+    margin: 0 auto;
 }
 
-.DrinkDetails .main-text {}
+.DrinkDetails .main-image {
+    display: inline-block;
+    width: 40em;
+}
+
+.DrinkDetails .main-image img {
+    width: 100%;
+}
+
+.DrinkDetails .main-text {
+    display: inline-block;
+    vertical-align: top;
+    width: 26em;
+    margin-left: 2em;
+}
+
+.ingr-list {
+    padding-top: 0.7em;
+    list-style-type: square;
+}
+
+.ingr-item {
+    color: #749FC8;
+    font-size: 1.2em;
+}
+
+.ingr-text {
+    font-size: 1em;
+    color: black;
+    margin-left: 0.6em;
+}
+
+.ingredients-title {
+    font-size: 2em;
+    border-bottom-style: dashed;
+    border-color: #DDDDDD;
+    padding-bottom: 0.7em;
+}
