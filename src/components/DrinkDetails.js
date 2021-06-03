@@ -90,7 +90,7 @@ const DrinkDetails = () => {
                             <ul className='ingr-list'>
                                 {displayIngredients}
                             </ul>
-                            <div className='ingredients-title extra-space'>Instructions:</div>
+                            <div className='ingredients-title extra-space'>Steps to Make It:</div>
                             <ul className='step-list'>
                                 {instructionSteps()}
                             </ul>
