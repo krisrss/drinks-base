@@ -53,7 +53,6 @@
 }
 
 .ingr-text {
-    font-size: 1em;
     color: black;
     margin-left: 0.6em;
 }
@@ -63,4 +62,24 @@
     border-bottom-style: dashed;
     border-color: #DDDDDD;
     padding-bottom: 0.7em;
+    margin-top: 0.3em;
+}
+
+.extra-space {
+    margin-top: 1.4em;
+}
+
+.step-list {
+    list-style: decimal-leading-zero;
+    padding-top: 0.7em;
+}
+
+.step-item {
+    font-size: 1.2em;
+    color: #749FC8;
+    margin-bottom: 0.6em;
+}
+
+.step-text {
+    color: black;
 }

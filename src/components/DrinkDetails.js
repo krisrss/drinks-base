@@ -60,7 +60,7 @@ const DrinkDetails = () => {
 
             const stepsDisplay = steps.map((item) => {
                 return (
-                    <li className='step-item'><span>{item}</span></li>
+                    <li className='step-item'><span className='step-text'>{item}</span></li>
                 )
             })
 
@@ -85,29 +85,17 @@ const DrinkDetails = () => {
 
                     <div className='content'>
                         <div className='main-image'><img alt='drink' src={drinkData.strDrinkThumb} /></div>
-
-
-
                         <div className='main-text'>
-
                             <div className='ingredients-title'>Ingredients:</div>
-
                             <ul className='ingr-list'>
                                 {displayIngredients}
                             </ul>
-
-                            <div className='ingredients-title'>Instructions:</div>
-
-                            <ul className='step-list'>{instructionSteps()}</ul>
-
-
-
+                            <div className='ingredients-title extra-space'>Instructions:</div>
+                            <ul className='step-list'>
+                                {instructionSteps()}
+                            </ul>
                         </div>
-
-
-
                     </div>
-
                 </div>
                 : null
             }
