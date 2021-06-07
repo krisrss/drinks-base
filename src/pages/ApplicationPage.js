@@ -28,8 +28,8 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
     }, [currentPath]);
 
     useEffect(() => {
-        if (drinksData.length === 0 && initialData.length !== 0) {
-            setLoading(false);
+        if (drinksData.length === 0) {
+            setLoading(true);
         }
     });
 
