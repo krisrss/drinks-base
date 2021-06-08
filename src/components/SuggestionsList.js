@@ -7,7 +7,7 @@ const SuggestionsConfig = {
     byIngredients: ['Cider', 'Coffee', 'Beer and 7-up', 'Rum, Vodka and Tequila', 'Mint',]
 }
 
-const SuggestionsList = () => {
+const SuggestionsList = ({ resetDrinkList }) => {
     const history = useHistory();
     const termPresent = history.location.pathname.includes("ingredients");
 
@@ -36,7 +36,7 @@ const SuggestionsList = () => {
 
     const suggestions = setSuggestions(termPresent).map((suggestion) => {
         return (
-            <Link to={setPath(termPresent, suggestion)} className='suggestion'>
+            <Link onClick={resetDrinkList} to={setPath(termPresent, suggestion)} className='suggestion'>
                 {suggestion}
             </Link>
         )

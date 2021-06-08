@@ -29,7 +29,7 @@ const WelcomePage = ({ resetDrinkList, resetSpinner }) => {
                     </div>
 
                     <NavigationBar />
-                    <SuggestionsList />
+                    <SuggestionsList resetDrinkList={resetDrinkList} />
                 </div>
             </div>
         </>
