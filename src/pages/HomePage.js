@@ -38,17 +38,15 @@ const HomePage = () => {
     }, [urlTerm])
 
     useEffect(() => {
-        if (history.location.pathname !== '/') {
-            if (drinksData.length === 0) {
-                const getDrinks = async () => {
-                    const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
-                    updateDrinkDataValues(data.drinks);
-                    data.drinks ? setDrinksData(data.drinks) : resetDrinkList();
-                };
-                getDrinks();
-            }
+        if (urlTerm !== undefined) {
+            const getDrinks = async () => {
+                const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm);
+                updateDrinkDataValues(data.drinks);
+                data.drinks ? setDrinksData(data.drinks) : resetDrinkList();
+            };
+            getDrinks();
         }
-    }, [history.location.pathname, drinksData]);
+    }, [urlTerm]);
 
     return (
         <ApplicationPage resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={setUrlTerm()} initialData={drinksData} />
