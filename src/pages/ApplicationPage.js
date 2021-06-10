@@ -38,8 +38,10 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
 
 
     useEffect(() => {
-        console.log(dataLoaded)
         if (dataLoaded === false) {
+            setLoading(false);
+        }
+        else if (dataLoaded === true && drinksData.length === 0) {
             setLoading(false);
         }
     }, [dataLoaded])
