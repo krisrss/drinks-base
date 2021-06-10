@@ -14,6 +14,8 @@ const HomePage = () => {
 
     const filteredDrinksData = filterByQuery(drinksData, queryArray)
 
+    const [dataLoaded, setDataLoaded] = useState(null);
+
     const history = useHistory();
 
     const setUrlTerm = () => {
@@ -31,14 +33,24 @@ const HomePage = () => {
 
     const resetDrinkList = () => {
         setDrinksData([]);
+        setDataLoaded(null);
     };
 
     useEffect(() => {
         if (history.location.pathname !== '/') {
+            setDataLoaded(null);
             const getDrinks = async () => {
                 const data = await getDrinksbyName('https://www.thecocktaildb.com/api/json/v1/1/search.php', urlTerm.urlTerm);
-                updateDrinkDataValues(data.drinks);
-                setDrinksData(data.drinks);
+
+                if (data.drinks !== null) {
+                    updateDrinkDataValues(data.drinks);
+                    setDrinksData(data.drinks);
+                    setDataLoaded(true);
+                }
+                else {
+                    setDataLoaded(false);
+                    setDrinksData([]);
+                }
             };
             getDrinks();
         }
@@ -48,7 +60,7 @@ const HomePage = () => {
     }, [urlTerm]);
 
     return (
-        <ApplicationPage resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={setUrlTerm()} initialData={drinksData} />
+        <ApplicationPage dataLoaded={dataLoaded} resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={setUrlTerm()} initialData={drinksData} />
     )
 };
 

@@ -8,7 +8,7 @@ import WelcomePage from './WelcomePage';
 import Logo from '../components/Logo';
 import '../css/ApplicationPage.css';
 
-const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, initialData, currentTerm }) => {
+const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, initialData, currentTerm }) => {
     const history = useHistory();
     const currentPath = history.location.pathname;
     const [loading, setLoading] = useState(true);
@@ -27,12 +27,6 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
         }
     }, [currentPath]);
 
-    useEffect(() => {
-        if (drinksData.length === 0) {
-            setLoading(true);
-        }
-    });
-
     const resetSpinner = (selectedItems) => {
         if (selectedItems === undefined || selectedItems.length <= 1) {
             setLoading(true);
@@ -41,6 +35,14 @@ const ApplicationPage = ({ resetDrinkList, drinksData, unfilteredDrinksData, url
             setLoading(false);
         }
     };
+
+
+    useEffect(() => {
+        console.log(dataLoaded)
+        if (dataLoaded === false) {
+            setLoading(false);
+        }
+    }, [dataLoaded])
 
     const setSearchBar = () => {
         if (currentPath.includes('/ingredients')) {
