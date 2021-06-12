@@ -1,5 +1,15 @@
-.Logo{
-    border: 1px solid black;
-    padding: 1.7em;
-    text-align: center;
+.Logo {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 0.7em;
+}
+
+.Logo .img-wrapper {
+    width: 72em;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.Logo img {
+    width: 11em;
 }
