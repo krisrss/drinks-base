@@ -27,6 +27,10 @@
     cursor: pointer;
 }
 
+.SearchBar .button:hover {
+    background: #93b7c0;
+}
+
 .SearchBar .dropdown {
     width: 34em;
     padding: 0;
