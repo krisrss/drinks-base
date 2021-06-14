@@ -24,6 +24,7 @@
     color: inherit;
     background: #A0C3CC;
     float: right;
+    cursor: pointer;
 }
 
 .SearchBar .dropdown {
