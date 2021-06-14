@@ -73,11 +73,13 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     };
 
     const setPath = () => {
-        const constructedPath = selectedItems.join('/');
-        history.push({
-            pathname: `/ingredients/${constructedPath}`,
-            state: { data: selectedItems }
-        });
+        if (urlTermsArr.length !== 0 || selectedItems.length !== 0) {
+            const constructedPath = selectedItems.join('/');
+            history.push({
+                pathname: `/ingredients/${constructedPath}`,
+                state: { data: selectedItems }
+            });
+        }
     };
 
     useEffect(() => {
