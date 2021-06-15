@@ -42,6 +42,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
             <Link to={setPath} onClick={onClickHandler} className='button'>
                 SEARCH
             </Link>
+            <i class="fas fa-times clear-icon"></i>
         </div>
     );
 };

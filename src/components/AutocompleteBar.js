@@ -155,6 +155,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
                 <Link to={setPath} className='button' onClick={onClickHandler}>
                     SEARCH
                 </Link>
+                <i class="fas fa-times clear-icon"></i>
             </div>
         </div>
     );
