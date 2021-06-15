@@ -75,11 +75,10 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     const setPath = () => {
         if (urlTermsArr.length !== 0 || selectedItems.length !== 0) {
             const constructedPath = selectedItems.join('/');
-            history.push({
-                pathname: `/ingredients/${constructedPath}`,
-                state: { data: selectedItems }
-            });
-        }
+            let pathname = `/ingredients/${constructedPath}`;
+
+            return pathname;
+        };
     };
 
     useEffect(() => {
@@ -116,7 +115,6 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         resetDrinkList(selectedItems);
         resetSpinner(selectedItems);
         setSelectedItems([]);
-        setPath();
     };
 
     return (
@@ -154,9 +152,9 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
                         setIngredientsArr(ingrArr);
                     }}
                 />
-                <a className='button' onClick={onClickHandler}>
+                <Link to={setPath} className='button' onClick={onClickHandler}>
                     SEARCH
-                </a>
+                </Link>
             </div>
         </div>
     );
