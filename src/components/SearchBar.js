@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/SearchBar.css';
 
@@ -20,9 +20,25 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
         return `/${input}`;
     }
 
+    const setPlaceholder = () => {
+        if (currentPath === '/') {
+            return 'Search drinks by keyword...';
+        }
+        else {
+            return '';
+        };
+    };
+
+    useEffect(() => {
+        if (currentPath !== '/') {
+            const urlTerm = currentPath.split('/')[1];
+            setInput(urlTerm);
+        }
+    }, []);
+
     return (
         <div className='SearchBar'>
-            <input value={input} onChange={onChangeHandler} type='text' placeholder='Search drinks by keyword...' />
+            <input value={input} onChange={onChangeHandler} type='text' placeholder={setPlaceholder()} />
             <Link to={setPath} onClick={onClickHandler} className='button'>
                 SEARCH
             </Link>
