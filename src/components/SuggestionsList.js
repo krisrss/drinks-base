@@ -44,6 +44,7 @@ const SuggestionsList = ({ resetDrinkList }) => {
 
     return (
         <div className='SuggestionsList'>
+            <div className='suggestions-title'>Suggestions</div>
             <div>{suggestions}</div>
         </div>
 

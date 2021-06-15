@@ -18,3 +18,10 @@
 .SuggestionsList .suggestion:hover{
     background: #cad6e4;
 }
+
+.suggestions-title{
+    width: 6em;
+    margin: 0.5em auto 0.2em auto;
+    font-weight: 500;
+    font-size: 0.9em;
+}
