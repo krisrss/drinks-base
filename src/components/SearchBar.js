@@ -40,13 +40,22 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
         setInput('');
     }
 
+    const clearTextIcon = () => {
+        if (input === "" || input === undefined) {
+            return null;
+        }
+        else {
+            return <i onClick={clearInput} class="fas fa-times clear-icon"></i>
+        };
+    };
+    
     return (
         <div className='SearchBar'>
             <input value={input} onChange={onChangeHandler} type='text' placeholder={setPlaceholder()} />
             <Link to={setPath} onClick={onClickHandler} className='button'>
                 SEARCH
             </Link>
-            <i onClick={clearInput} class="fas fa-times clear-icon"></i>
+            {clearTextIcon()}
         </div>
     );
 };

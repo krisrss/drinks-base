@@ -12,6 +12,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     const urlTerm = useParams();
     const history = useHistory();
     const urlTermsArr = Object.values(urlTerm);
+    const currentPath = history.location.pathname;
 
     useEffect(() => {
         const urlTerms = [...urlTermsArr];
@@ -100,7 +101,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     };
 
     const setPlaceholder = () => {
-        if (selectedItems.length === 0 && (inputIndent === 0 || inputIndent === undefined)) {
+        if (currentPath === '/ingredients' && selectedItems.length === 0 || inputIndent === 0) {
             return 'Select an ingredient from list...'
         }
         else {
@@ -124,6 +125,15 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         setSelectedItems([]);
         setInputIndent(0);
     }
+
+    const clearTextIcon = () => {
+        if (selectedItems.length !== 0) {
+            return <i onClick={clearInput} class="fas fa-times clear-icon"></i>
+        }
+        else {
+            return null;
+        };
+    };
 
     return (
         <div>
@@ -163,7 +173,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
                 <Link to={setPath} className='button' onClick={onClickHandler}>
                     SEARCH
                 </Link>
-                <i onClick={clearInput} class="fas fa-times clear-icon"></i>
+                {clearTextIcon()}
             </div>
         </div>
     );
