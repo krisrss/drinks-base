@@ -4,7 +4,7 @@ import '../css/SearchBar.css';
 
 const SearchBar = ({ resetDrinkList, resetSpinner }) => {
 
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState(undefined);
     const history = useHistory();
     const currentPath = history.location.pathname;
 
@@ -21,7 +21,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
     }
 
     const setPlaceholder = () => {
-        if (currentPath === '/') {
+        if (currentPath === '/' || input === '') {
             return 'Search drinks by keyword...';
         }
         else {
@@ -36,13 +36,17 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
         }
     }, []);
 
+    const clearInput = () => {
+        setInput('');
+    }
+
     return (
         <div className='SearchBar'>
             <input value={input} onChange={onChangeHandler} type='text' placeholder={setPlaceholder()} />
             <Link to={setPath} onClick={onClickHandler} className='button'>
                 SEARCH
             </Link>
-            <i class="fas fa-times clear-icon"></i>
+            <i onClick={clearInput} class="fas fa-times clear-icon"></i>
         </div>
     );
 };
