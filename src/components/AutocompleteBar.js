@@ -7,7 +7,7 @@ import InputTags from './InputTags';
 const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
-    const [inputIndent, setInputIndent] = useState(0);
+    const [inputIndent, setInputIndent] = useState(undefined);
     const [ingredientsArr, setIngredientsArr] = useState([]);
     const urlTerm = useParams();
     const history = useHistory();
@@ -92,12 +92,15 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
 
     const setIndent = (item) => {
         let getValue = inputIndent;
+        if (getValue === undefined) {
+            getValue = 0;
+        }
         const setIndentSize = 45 + (item.length * 7);
         setInputIndent(getValue += setIndentSize);
     };
 
     const setPlaceholder = () => {
-        if (selectedItems.length === 0 && urlTermsArr.length === 0) {
+        if (selectedItems.length === 0 && (inputIndent === 0 || inputIndent === undefined)) {
             return 'Select an ingredient from list...'
         }
         else {
@@ -116,6 +119,11 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         resetSpinner(selectedItems);
         setSelectedItems([]);
     };
+
+    const clearInput = () => {
+        setSelectedItems([]);
+        setInputIndent(0);
+    }
 
     return (
         <div>
@@ -155,7 +163,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
                 <Link to={setPath} className='button' onClick={onClickHandler}>
                     SEARCH
                 </Link>
-                <i class="fas fa-times clear-icon"></i>
+                <i onClick={clearInput} class="fas fa-times clear-icon"></i>
             </div>
         </div>
     );
