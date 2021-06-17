@@ -4,32 +4,33 @@ import '../css/NavigationBar.css';
 
 const NavigationBar = () => {
     const history = useHistory();
-    const termPresent = history.location.pathname.includes("ingredients");
+    const termPresent = history.location.pathname.includes("/ingredients");
 
-    const [byName, setByName] = useState('nav-active');
-    const [byIngredients, setByIngredients] = useState('nav-inactive');
-
-    useEffect(() => {
-        const setButtonStatus = () => {
-            if (termPresent === false) {
-                setByName('nav-active');
-                setByIngredients('nav-inactive');
-            }
-            else {
-                setByName('nav-inactive');
-                setByIngredients('nav-active');
-            }
+    const setIngredientsNav = () => {
+        if (termPresent) {
+            return 'nav-active';
         }
-        setButtonStatus();
-    }, []);
+        else {
+            return 'nav-inactive';
+        };
+    };
 
+    const setKeywordNav = () => {
+        if (termPresent === false) {
+            return 'nav-active';
+        }
+        else {
+            return 'nav-inactive';
+        };
+    };
+    
     return (
         <div className='NavigationBar'>
-            <Link to={'/'} className={`navbutton ${byName}`}>
+            <Link to={'/'} className={`navbutton ${setKeywordNav()}`}>
                 By name
             </Link>
 
-            <Link to={'/ingredients'} className={`navbutton ${byIngredients}`}>
+            <Link to={'/ingredients'} className={`navbutton ${setIngredientsNav()}`}>
                 By ingredients
             </Link>
         </div>
