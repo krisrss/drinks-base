@@ -124,10 +124,11 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     const clearInput = () => {
         setSelectedItems([]);
         setInputIndent(0);
+        setIngredient('');
     }
 
     const clearTextIcon = () => {
-        if (selectedItems.length !== 0) {
+        if (selectedItems.length !== 0 || ingredient !== '') {
             return <i onClick={clearInput} class="fas fa-times clear-icon"></i>
         }
         else {
