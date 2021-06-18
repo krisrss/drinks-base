@@ -22,7 +22,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
 
     const setPlaceholder = () => {
         if (currentPath === '/' || input === '') {
-            return 'Search drinks by keyword...';
+            return 'Enter a name of a drink...';
         }
         else {
             return '';
