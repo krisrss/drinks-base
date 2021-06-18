@@ -28,7 +28,8 @@
 }
 
 .SearchBar .button:hover {
-    background: #93b7c0;
+    background: #6495A3;
+    color: white;
 }
 
 .SearchBar .dropdown {
