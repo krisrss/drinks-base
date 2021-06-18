@@ -34,3 +34,6 @@
   transform: rotate(180deg);
 }
 
+.disabled-link {
+  pointer-events: none;
+}

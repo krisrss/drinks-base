@@ -8,7 +8,7 @@ const NavigationBar = () => {
 
     const setIngredientsNav = () => {
         if (termPresent) {
-            return 'nav-active';
+            return 'disabled-link nav-active';
         }
         else {
             return 'nav-inactive';
@@ -17,7 +17,7 @@ const NavigationBar = () => {
 
     const setKeywordNav = () => {
         if (termPresent === false) {
-            return 'nav-active';
+            return 'disabled-link nav-active';
         }
         else {
             return 'nav-inactive';
