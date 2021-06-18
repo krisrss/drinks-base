@@ -16,9 +16,16 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
         resetDrinkList();
         resetSpinner();
     };
+
     const setPath = () => {
-        return `/${input}`;
-    }
+        if (input === undefined) {
+            return `/`;
+
+        }
+        else {
+            return `/${input}`;
+        };
+    };
 
     const setPlaceholder = () => {
         if (currentPath === '/' || input === '') {
@@ -48,7 +55,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
             return <i onClick={clearInput} class="fas fa-times clear-icon"></i>
         };
     };
-    
+
     return (
         <div className='SearchBar'>
             <input value={input} onChange={onChangeHandler} type='text' placeholder={setPlaceholder()} />
