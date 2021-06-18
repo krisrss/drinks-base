@@ -7,12 +7,9 @@
 .NavigationBar .navbutton{
     margin: 0.3em;
     text-decoration: none;
-}
-
-.navbutton{
-  position:relative;
-  color:black;
-  padding:5px;
+    position:relative;
+    color: inherit;
+    padding:5px;
 }
 
 .nav-inactive{
