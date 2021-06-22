@@ -15,8 +15,9 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
     const currentPath = history.location.pathname;
 
     useEffect(() => {
-        if (selectedItems.length !== 0) {
-            setInputIndent(0)
+        if (urlTermsArr.length === 0) {
+            console.log('Cleaned!');
+            setInputIndent(0);
         };
         
         const urlTerms = [...urlTermsArr];
