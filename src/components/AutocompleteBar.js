@@ -16,7 +16,6 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
 
     useEffect(() => {
         if (urlTermsArr.length === 0) {
-            console.log('Cleaned!');
             setInputIndent(0);
         };
         

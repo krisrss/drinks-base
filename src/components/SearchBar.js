@@ -20,7 +20,10 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
     const setPath = () => {
         if (input === undefined) {
             return `/`;
-
+        }
+        else if (input.includes('/') || input.includes('?') || input.includes('#') || input.includes('%')) {
+            setInput('')
+            return `/`;
         }
         else {
             return `/${input}`;
