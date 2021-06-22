@@ -26,7 +26,16 @@ const InformationTab = ({ drinksQuantity }) => {
 
     return (
         <div className={setTabPosition()}>
-            {drinksQuantity} {setDrinksWord()} found that match <SearchTermBlock searchTerm={searchTerm} />
+            {
+                drinksQuantity !== 0 ?
+                    <>
+                        {drinksQuantity} {setDrinksWord()} found that match <SearchTermBlock searchTerm={searchTerm} />
+                    </>
+                    :
+                    <>
+                        0 {setDrinksWord()} found that match <SearchTermBlock searchTerm={searchTerm} />
+                    </>
+            }
         </div>
     )
 };
