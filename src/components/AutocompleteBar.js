@@ -18,7 +18,7 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         if (urlTermsArr.length === 0) {
             setInputIndent(0);
         };
-        
+
         const urlTerms = [...urlTermsArr];
         setSelectedItems(urlTerms);
         setIngredientsArr(cleanArrFromSelected());
@@ -140,11 +140,21 @@ const AutocompleteBar = ({ resetDrinkList, resetSpinner }) => {
         };
     };
 
+    const handleKeyPress = (target) => {
+        resetDrinkList(selectedItems);
+        resetSpinner(selectedItems);
+        setSelectedItems([]);
+        
+        if (target.charCode == 13) {
+            history.push(setPath());
+        };
+    };
+
     return (
         <div>
             {maxIngredientsWarning()}
             <InputTags selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
-            <div className="SearchBar">
+            <div className="SearchBar" onKeyPress={(e) => handleKeyPress(e)}>
                 <Autocomplete
                     value={ingredient}
                     inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent}px` } }}

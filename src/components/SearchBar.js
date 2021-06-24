@@ -59,9 +59,17 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
         };
     };
 
+    const handleKeyPress = (target) => {
+        if (target.charCode == 13) {
+            resetDrinkList();
+            resetSpinner();
+            history.push(setPath());
+        }
+    };
+
     return (
         <div className='SearchBar'>
-            <input value={input} onChange={onChangeHandler} type='text' placeholder={setPlaceholder()} />
+            <input onKeyPress={(e) => handleKeyPress(e)} value={input} onChange={onChangeHandler} type='text' placeholder={setPlaceholder()} />
             <Link to={setPath} onClick={onClickHandler} className='button'>
                 SEARCH
             </Link>
