@@ -80,11 +80,12 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
                 value={filterData[0]}
                 onChange={setCheckboxQuery}
                 disabled={unlockCheckbox}
+                id={filterData[0]}
             />
-            <span>
+            <label for={filterData[0]}>
                 {setFilterName(filterData[0])}
                 {` ${drinkQuantity()}`}
-            </span>
+            </label>
         </div>
     );
 };

@@ -1,14 +1,16 @@
-.CheckBox{
+.CheckBox {
     padding: 0.1em 0;
     font-size: 1em;
     color: #555;
 }
 
-.CheckBox input{
+.CheckBox input {
     margin-right: 0.5em;
     margin-left: 0.5em;
-    color: red;
-    margin-bottom: 0.6em;
+}
+
+.CheckBox label {
+    margin-bottom: 0.1em;
 }
 
 input[type=checkbox] {
