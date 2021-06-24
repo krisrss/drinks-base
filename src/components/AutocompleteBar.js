@@ -142,7 +142,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
 
     const handleKeyPress = (target) => {
         if (target.charCode == 13) {
-            if (spinnerLoading === false) {
+            if (spinnerLoading === false || spinnerLoading === undefined) {
                 resetDrinkList(selectedItems);
                 resetSpinner(selectedItems);
                 setSelectedItems([]);
