@@ -48,7 +48,7 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
 
     const setSearchBar = () => {
         if (currentPath.includes('/ingredients')) {
-            return <AutocompleteBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
+            return <AutocompleteBar spinnerLoading={loading} resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
         }
         else {
             return <SearchBar resetDrinkList={resetDrinkList} resetSpinner={resetSpinner} />
