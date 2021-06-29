@@ -18,7 +18,7 @@ const DrinkThumbnail = ({ drink, imageLoaded }) => {
 
                     <div className='info'>
                         <div className='ingredients-tab'>
-                            <i class="fas fa-cocktail"></i>
+                            <i className="fas fa-cocktail"></i>
                             {` ${drink.ingredientCount[6]}`}
                             <div className='ing-text'>ingredients</div>
                         </div>

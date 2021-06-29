@@ -2,10 +2,10 @@ import React from 'react';
 import '../css/SearchTermBlock.css';
 import '../css/Tag.css';
 
-
 const SearchTermBlock = ({ searchTerm }) => {
     const termQuantity = (Object.values(searchTerm).length);
-    const searchTerms = Object.values(searchTerm).map((term, index) => {
+
+    const setSearchTerm = (term, index, termQuantity) => {
         if (termQuantity === 1) {
             return (
                 <span key={index}>
@@ -52,7 +52,15 @@ const SearchTermBlock = ({ searchTerm }) => {
                 )
             }
         };
-    })
+    };
+
+    const searchTerms = Object.values(searchTerm).map((term, index) => {
+        return (
+            <span key={term}>
+                {setSearchTerm(term, index, termQuantity)}
+            </span>
+        )
+    });
 
     return (
         <div className='SearchTermBlock'>

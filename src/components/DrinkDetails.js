@@ -55,7 +55,7 @@ const DrinkDetails = () => {
 
     const displayIngredients = ingredientsList(drinkData).map((ingredient) => {
         return (
-            <li className='ingr-item'><span className='ingr-text'>{ingredient[0]} - {ingredient[1]}</span></li>
+            <li key={ingredient} className='ingr-item'><span className='ingr-text'>{ingredient[0]} - {ingredient[1]}</span></li>
         )
     });
 
@@ -67,7 +67,7 @@ const DrinkDetails = () => {
 
             const stepsDisplay = steps.map((item) => {
                 return (
-                    <li className='step-item'><span className='step-text'>{item}</span></li>
+                    <li key={item} className='step-item'><span className='step-text'>{item}</span></li>
                 )
             })
 

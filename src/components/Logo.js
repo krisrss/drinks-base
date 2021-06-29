@@ -20,7 +20,7 @@ const Logo = () => {
         <div className='Logo'>
             <div className='img-wrapper'>
                 <Link to={setPath()}>
-                    <img src={mainLogo} />
+                    <img src={mainLogo} alt={'logo'} />
                 </Link>
             </div>
         </div>

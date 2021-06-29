@@ -36,7 +36,7 @@ const SuggestionsList = ({ resetDrinkList }) => {
 
     const suggestions = setSuggestions(termPresent).map((suggestion) => {
         return (
-            <Link onClick={resetDrinkList} to={setPath(termPresent, suggestion)} className='suggestion'>
+            <Link key={suggestion} onClick={resetDrinkList} to={setPath(termPresent, suggestion)} className='suggestion'>
                 {suggestion}
             </Link>
         )

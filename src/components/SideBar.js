@@ -45,9 +45,9 @@ const SideBar = ({ drinksData, unfilteredDrinksData }) => {
                 Refine your search:
 
                 {history.location.search !== '' ? 
-                <a onClick={clearAllQueries} className='clearAllButton'>
+                <span onClick={clearAllQueries} className='clearAllButton'>
                     clear all
-                </a> 
+                </span> 
                 : null}
 
             </div>

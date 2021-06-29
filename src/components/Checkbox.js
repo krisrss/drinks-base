@@ -19,10 +19,8 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
         setBoxClicked(!boxChecked);
     }, [queryList]);
 
-    const setCheckboxQuery = (event) => {
+    const setCheckboxQuery = () => {
         setBoxClicked(!boxClicked);
-        const value = event.target.value;
-
         const intitialQuery = `${mainPath}?${filterCategory}=${cleanFilterName(filterData[0])}`;
         const fullPathQuery = `${currentQuery}&${filterCategory}=${cleanFilterName(filterData[0])}`
 
@@ -82,7 +80,7 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
                 disabled={unlockCheckbox}
                 id={filterData[0]}
             />
-            <label for={filterData[0]}>
+            <label htmlFor={filterData[0]}>
                 {setFilterName(filterData[0])}
                 {` ${drinkQuantity()}`}
             </label>

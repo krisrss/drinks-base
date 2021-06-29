@@ -65,7 +65,7 @@ const FilterBlock = ({ type, drinksData, unfilteredDrinksData }) => {
 
     const setButton = () => {
         if (filters.length > 3) {
-            return <a onClick={() => setFilterStatus(!filterStatus)}>{buttonName}</a>
+            return <span onClick={() => setFilterStatus(!filterStatus)}>{buttonName}</span>
         }
         else {
             return null;

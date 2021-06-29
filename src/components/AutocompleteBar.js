@@ -105,7 +105,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     };
 
     const setPlaceholder = () => {
-        if (currentPath === '/ingredients' && selectedItems.length === 0 || inputIndent === 0) {
+        if (currentPath === '/ingredients' && (selectedItems.length === 0 || inputIndent === 0)) {
             return 'Select an ingredient from list...'
         }
         else {
@@ -133,7 +133,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
 
     const clearTextIcon = () => {
         if (selectedItems.length !== 0 || ingredient !== '') {
-            return <i onClick={clearInput} class="fas fa-times clear-icon"></i>
+            return <i onClick={clearInput} className="fas fa-times clear-icon"></i>
         }
         else {
             return null;
@@ -141,7 +141,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     };
 
     const handleKeyPress = (target) => {
-        if (target.charCode == 13) {
+        if (target.charCode === 13) {
             if (spinnerLoading === false || spinnerLoading === undefined) {
                 resetDrinkList(selectedItems);
                 resetSpinner(selectedItems);
@@ -168,7 +168,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
                         </div>
                     )}
                     renderItem={(item, isHighlighted) =>
-                        <div className={`item ${isHighlighted ? 'selected-item' : ''}`}>
+                        <div key={item.title} className={`item ${isHighlighted ? 'selected-item' : ''}`}>
                             {item.title}
                         </div>
                     }

@@ -11,7 +11,7 @@ const InputTags = ({ selectedItems, deleteTags, resetTextIndent }) => {
     };
 
     const setTags = selectedItems.map(item => (
-        <span onClick={() => onClickHandler(item)} className='Tag'>{item}</span>
+        <span key={item} onClick={() => onClickHandler(item)} className='Tag'>{item}</span>
     ));
     return (
         <div className='InputTags'>

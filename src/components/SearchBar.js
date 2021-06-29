@@ -55,12 +55,12 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
             return null;
         }
         else {
-            return <i onClick={clearInput} class="fas fa-times clear-icon"></i>
+            return <i onClick={clearInput} className="fas fa-times clear-icon"></i>
         };
     };
 
     const handleKeyPress = (target) => {
-        if (target.charCode == 13) {
+        if (target.charCode === 13) {
             resetDrinkList();
             resetSpinner();
             history.push(setPath());
