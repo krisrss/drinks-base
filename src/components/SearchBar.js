@@ -22,8 +22,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
         if (input === '') {
             return `/`;
         }
-        else if (input.includes('/') || input.includes('?') || input.includes('#') || input.includes('%')) {
-            setInput('')
+        else if (input.includes('%')) {
             return `/`;
         }
         else {
@@ -34,6 +33,10 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
     useEffect(() => {
         if (input === '') {
             setPlaceholderTxt('Enter a name of a drink...')
+        }
+
+        if (input.includes('/') || input.includes('?') || input.includes('#') || input.includes('%')) {
+            setInput('')
         }
     }, [input]);
 
