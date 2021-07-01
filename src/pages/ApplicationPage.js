@@ -25,7 +25,7 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
         if (Object.keys(urlTerm).length <= 1 || currentTerm !== urlTerm.ing1) {
             setLoading(true);
         }
-    }, [currentPath]);
+    }, [currentPath]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const resetSpinner = (selectedItems) => {
         if (selectedItems === undefined || selectedItems.length <= 1) {
@@ -44,7 +44,7 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
         else if (dataLoaded === true && drinksData.length === 0) {
             setLoading(false);
         }
-    }, [dataLoaded])
+    }, [dataLoaded]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const setSearchBar = () => {
         if (currentPath.includes('/ingredients')) {

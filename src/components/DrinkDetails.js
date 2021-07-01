@@ -22,7 +22,7 @@ const DrinkDetails = () => {
             setDrinkData(dataUpdated[0]);
         };
         getDrink();
-    }, []);
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
 
 

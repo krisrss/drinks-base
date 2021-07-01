@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import IngredientsPage from './pages/IngredientsPage';
 
 const App = () => {
+    console.warn = () => { };
     return (
         <>
             <Switch>

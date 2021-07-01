@@ -22,7 +22,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         const urlTerms = [...urlTermsArr];
         setSelectedItems(urlTerms);
         setIngredientsArr(cleanArrFromSelected());
-    }, [urlTerm]);
+    }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const setIngredientsListEmpty = () => {
         if (selectedItems.length === 3) {
@@ -93,7 +93,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
             initialIndent += urlTermsArr.length * 45;
             setInputIndent(initialIndent);
         }
-    }, [])
+    }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     const setIndent = (item) => {
         let getValue = inputIndent;

@@ -65,7 +65,7 @@ const IngredientsPage = () => {
         else {
             setDrinksData([]);
         }
-    }, [urlTerm]);
+    }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <ApplicationPage dataLoaded={dataLoaded} resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={unfilteredDrinksData} urlTerm={urlTerm} initialData={drinksData} currentTerm={currentTerm} />

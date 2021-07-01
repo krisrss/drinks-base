@@ -17,7 +17,7 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
         const mergeArr = Object.values(queryList).flat(1);
         const boxChecked = mergeArr.includes(cleanFilterName(filterData[0]));
         setBoxClicked(!boxChecked);
-    }, [queryList]);
+    }, [queryList]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const setCheckboxQuery = () => {
         setBoxClicked(!boxClicked);

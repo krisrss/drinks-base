@@ -57,7 +57,7 @@ const HomePage = () => {
         else {
             resetDrinkList();
         }
-    }, [urlTerm]);
+    }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <ApplicationPage dataLoaded={dataLoaded} resetDrinkList={resetDrinkList} drinksData={filteredDrinksData} unfilteredDrinksData={drinksData} urlTerm={setUrlTerm()} initialData={drinksData} />
