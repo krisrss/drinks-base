@@ -5,7 +5,12 @@ import '../css/DrinkThumbnail.css';
 
 const DrinkThumbnail = ({ drink, imageLoaded }) => {
     return (
-        <Link to={`/details/${drink.idDrink}`}>
+        <Link to={
+            {
+                pathname: `/details/${drink.idDrink}`,
+                state: { drink }
+            }
+        }>
             <div className='DrinkThumbnail'>
                 <div className='image-wrapper'>
                     <img onLoad={imageLoaded} src={`${drink.strDrinkThumb}/preview`} alt="Drink" />

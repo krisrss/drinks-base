@@ -35,7 +35,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
         if (input === '') {
             setPlaceholderTxt('Enter a name of a drink...')
         }
-    },[input]);
+    }, [input]);
 
     useEffect(() => {
         if (currentPath !== '/') {
