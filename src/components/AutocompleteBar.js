@@ -82,7 +82,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
             const constructedPath = selectedItems.join('/');
             let pathname = `/ingredients/${constructedPath}`;
 
-            return pathname;
+            history.push(pathname);
         };
     };
 
@@ -120,9 +120,12 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     }
 
     const onClickHandler = () => {
-        resetDrinkList(selectedItems);
-        resetSpinner(selectedItems);
-        setSelectedItems([]);
+        if (spinnerLoading === false || spinnerLoading === undefined) {
+            resetDrinkList(selectedItems);
+            resetSpinner(selectedItems);
+            setSelectedItems([]);
+            setPath();
+        }
     };
 
     const clearInput = () => {
@@ -186,9 +189,9 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
                         setIngredientsArr(ingrArr);
                     }}
                 />
-                <Link to={setPath} className='button' onClick={onClickHandler}>
+                <a className='button' onClick={onClickHandler}>
                     SEARCH
-                </Link>
+                </a>
                 {clearTextIcon()}
             </div>
         </div>
