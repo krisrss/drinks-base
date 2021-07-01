@@ -35,7 +35,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
             setPlaceholderTxt('Enter a name of a drink...')
         }
 
-        if (input.includes('/') || input.includes('?') || input.includes('#') || input.includes('%')) {
+        if (input.includes('/') || input.includes('?') || input.includes('#') || input.includes('%') || input.includes('details')) {
             setInput('')
         }
     }, [input]);
