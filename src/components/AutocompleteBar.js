@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Autocomplete from 'react-autocomplete';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
 import InputTags from './InputTags';
 
@@ -105,7 +105,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     };
 
     const setPlaceholder = () => {
-        if (currentPath === '/ingredients' && (selectedItems.length === 0 || inputIndent === 0)) {
+        if ((currentPath === '/ingredients' && selectedItems.length === 0) || inputIndent === 0) {
             return 'Select an ingredient from list...'
         }
         else {
@@ -189,9 +189,9 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
                         setIngredientsArr(ingrArr);
                     }}
                 />
-                <a className='button' onClick={onClickHandler}>
+                <span className='button' onClick={onClickHandler}>
                     SEARCH
-                </a>
+                </span>
                 {clearTextIcon()}
             </div>
         </div>
