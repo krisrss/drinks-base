@@ -3,3 +3,8 @@
     top: 2.8em;
     left: 1em;
 }
+
+.smaller-tags {
+    font-size: 14px;
+    top: 3.3em;
+}

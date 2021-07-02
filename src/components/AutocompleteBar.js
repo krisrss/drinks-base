@@ -157,7 +157,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     return (
         <div>
             {maxIngredientsWarning()}
-            <InputTags selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
+            <InputTags inputIndent={inputIndent} selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
             <div className="SearchBar" onKeyPress={(e) => handleKeyPress(e)}>
                 <Autocomplete
                     value={ingredient}
