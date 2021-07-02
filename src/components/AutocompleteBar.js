@@ -93,7 +93,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
             initialIndent += urlTermsArr.length * 45;
             setInputIndent(initialIndent);
         }
-    }, []); //eslint-disable-line react-hooks/exhaustive-deps
+    }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const setIndent = (item) => {
         let getValue = inputIndent;
