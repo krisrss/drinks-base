@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/Logo.css';
-import mainLogo from '../images/logo.png';
+import mainLogo from '../images/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 
 const Logo = () => {
