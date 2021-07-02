@@ -14,7 +14,9 @@ const QueryTermBlock = () => {
     const queryArray = Object.entries(queryList);
 
     const onClickHandler = (term) => {
-        var queryValue = currentQuery.replace(`${term[0]}=${term[1]}`, '');
+        const termToReplace = `${term[0]}=${term[1]}`;
+        const fixedQuery = currentQuery.replaceAll("%20", " ");
+        var queryValue = fixedQuery.replace(termToReplace, "");
         removeQueryTerm(history, queryValue, mainPath);
     };
 
@@ -27,7 +29,6 @@ const QueryTermBlock = () => {
     })
 
     return (
-
         <div className='QueryTermBlock'>
             <span className='title'>{queryArray.length !== 0 ? 'Sorted By:' : ''}</span>
             <span>{queryTerms}</span>
