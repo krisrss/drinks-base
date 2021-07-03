@@ -111,7 +111,7 @@ export const removeQueryTerm = (history, queryValue, mainPath) => {
 export const setStars = (nr) => {
     const stars = [];
     for (var i = 0; i < nr; i++) {
-        stars.push(<i key={i} style={{ color: '#F9E990', textShadow: '0 0 1px #000' }} className="fas fa-star"></i>);
+        stars.push(<i key={i} style={{ color: '#F9E990', textShadow: '0 0 0.06em #000' }} className="fas fa-star"></i>);
     };
 
     return (
@@ -129,11 +129,11 @@ export const setStarsFull = (nr) => {
     const stars = [];
     const maxStars = 3;
     for (var i = 0; i < nr; i++) {
-        stars.push(<i key={`first${i}`} style={{ color: '#F9E990', textShadow: '-1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000' }} className="fas fa-star"></i>);
+        stars.push(<i key={`first${i}`} style={{ color: '#F9E990', textShadow: '-0.06em 0 #000, 0 0.06em #000, 0.06em 0 #000, 0 -0.06em #000' }} className="fas fa-star"></i>);
     };
 
     for (var x = 0; x < maxStars - nr; x++) {
-        stars.push(<i key={`second${x}`} style={{ color: '#fff', textShadow: '-1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000' }} className="fas fa-star"></i>);
+        stars.push(<i key={`second${x}`} style={{ color: '#fff', textShadow: '-0.06em 0 #000, 0 0.06em #000, 0.06em 0 #000, 0 -0.06em #000' }} className="fas fa-star"></i>);
     }
 
     return (

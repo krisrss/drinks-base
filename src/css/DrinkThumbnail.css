@@ -2,7 +2,7 @@
     display: inline-block;
     margin: 0.7em;
     width: 13em;
-    box-shadow: 1px 1px 6px 0 rgb(0 0 0 / 9%);
+    box-shadow: 0.06em 0.06em 0.4em 0 rgb(0 0 0 / 9%);
 }
 
 .DrinkThumbnail:hover {

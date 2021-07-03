@@ -66,9 +66,9 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
 
     return (
         <div className='ApplicationPage'>
-            <Logo />
             {Object.values(urlTerm).length !== 0 ?
                 <>
+                    <Logo />
                     <div className='SearchBarWrapper' >
                         {setSearchBar()}
                     </div>

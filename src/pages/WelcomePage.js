@@ -5,6 +5,7 @@ import SuggestionsList from '../components/SuggestionsList';
 import AutocompleteBar from '../components/AutocompleteBar';
 import { useHistory } from 'react-router-dom';
 import '../css/WelcomePage.css';
+import Logo from '../components/Logo';
 
 const WelcomePage = ({ resetDrinkList, resetSpinner }) => {
     const history = useHistory();
@@ -21,7 +22,8 @@ const WelcomePage = ({ resetDrinkList, resetSpinner }) => {
 
     return (
         <>
-            <div className='jumbotron'>
+            <Logo />
+            <div className='WelcomePage-wrapper'>
                 <div className='WelcomePage'>
                     <div className='title'>What would you like to drink?</div>
                     <div className='SearchBarWrapper'>

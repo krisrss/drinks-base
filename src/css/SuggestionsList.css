@@ -6,7 +6,7 @@
 
 
 .SuggestionsList .suggestion{
-    border: 1px solid black;
+    border: 0.06em solid black;
     display: inline-block;
     margin: 0.3em;
     padding: 0.3em 0.8em;

@@ -14,7 +14,7 @@
 .SearchBar input {
     width: 34em;
     padding: 0.66em;
-    border: 1px solid #DDD;
+    border: 0.06em solid #DDD;
 }
 
 .SearchBar .button {
@@ -40,7 +40,7 @@
     overflow: hidden;
     overflow-y: auto;
     background-color: #ffffff;
-    border: 1px solid lightgrey;
+    border: 0.06em solid lightgrey;
     border-top: none;
     position: absolute;
     z-index: 1;
@@ -49,8 +49,8 @@
 .SearchBar .item {
     display: block;
     cursor: pointer;
-    font-size: 14px;
-    padding: 15px;
+    font-size: 0.87em;
+    padding: 1.1em;
 }
 
 .SearchBar .item:hover {
@@ -67,15 +67,15 @@
     font-weight: 500;
 }
 
-.SearchBar .clear-icon{
+.SearchBar .clear-icon {
     position: absolute;
     right: 6em;
     top: 3em;
-    color: #ccc;    
+    color: #ccc;
     padding: 0.5em 0.8em;
 }
 
-.SearchBar .clear-icon:hover{
+.SearchBar .clear-icon:hover {
     color: #333;
     cursor: pointer;
 }

@@ -4,7 +4,7 @@
     left: 4.1em;
     height: 8em;
     width: 17em;
-    font-size: 15px;
+    font-size: 0.9em;
 }
 
 .QueryTermBlock .title {
@@ -13,11 +13,5 @@
     display: block;
     color: #555;
     font-weight: 500;
-    font-size: 14px;
-}
-
-@media only screen and (max-width: 1049px) {
-    .QueryTermBlock {
-        display: none;
-    }
+    font-size: 1em;
 }

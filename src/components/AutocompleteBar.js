@@ -161,7 +161,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
             <div className="SearchBar" onKeyPress={(e) => handleKeyPress(e)}>
                 <Autocomplete
                     value={ingredient}
-                    inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent}px` } }}
+                    inputProps={{ placeholder: setPlaceholder(), style: { textIndent: `${inputIndent / 16}em` } }}
                     items={setIngredientsListEmpty()}
                     getItemValue={item => item.title}
                     shouldItemRender={renderIngredients}
