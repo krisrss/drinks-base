@@ -33,7 +33,8 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
             }
         }
         else {
-            var queryValue = currentQuery.replace(`${filterCategory}=${cleanFilterName(filterData[0])}`, '');
+            const fixedQuery = currentQuery.replaceAll("%20", " ");
+            var queryValue = fixedQuery.replace(`${filterCategory}=${cleanFilterName(filterData[0])}`, '');
             removeQueryTerm(history, queryValue, mainPath);
         }
     };
