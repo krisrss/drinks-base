@@ -24,8 +24,22 @@ const SideBar = ({ drinksData, unfilteredDrinksData }) => {
     const history = useHistory();
 
     const clearAllQueries = () => {
-        history.push(history.location.pathname)
+        history.push(`${history.location.pathname}?page=1`)
     };
+
+
+    const displayClearButton = () => {
+        const currentQuery = history.location.search;
+        const pageQueryPart = currentQuery.substring(0, 7);
+        let cleanedQuery = currentQuery.replace(pageQueryPart, '');
+
+        if (cleanedQuery !== '') {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 
     let filters = filterTypes.map((type, index) => {
         return (
@@ -44,11 +58,11 @@ const SideBar = ({ drinksData, unfilteredDrinksData }) => {
             <div className='frontText'>
                 Refine your search:
 
-                {history.location.search !== '' ? 
-                <span onClick={clearAllQueries} className='clearAllButton'>
-                    clear all
-                </span> 
-                : null}
+                {displayClearButton() ?
+                    <span onClick={clearAllQueries} className='clearAllButton'>
+                        clear all
+                    </span>
+                    : null}
 
             </div>
             <div className='sections'>

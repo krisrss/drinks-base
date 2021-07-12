@@ -3,7 +3,7 @@ import SearchTermBlock from '../components/SearchTermBlock';
 import { useParams } from 'react-router-dom';
 import '../css/InformationTab.css';
 
-const InformationTab = ({ drinksQuantity }) => {
+const InformationTab = ({drinksData, drinksQuantity }) => {
     const searchTerm = useParams();
 
     const setDrinksWord = () => {
@@ -16,7 +16,7 @@ const InformationTab = ({ drinksQuantity }) => {
     };
 
     const setTabPosition = () => {
-        if (drinksQuantity === 0) {
+        if (drinksData.length === 0) {
             return 'InformationTab-zero';
         }
         else {

@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import NavigationBar from '../components/NavigationBar';
 import DrinksDisplay from '../components/DrinksDisplay';
 import SearchBar from '../components/SearchBar';
 import AutocompleteBar from '../components/AutocompleteBar';
 import WelcomePage from './WelcomePage';
 import Logo from '../components/Logo';
+import queryString from 'query-string';
 import '../css/ApplicationPage.css';
 
 const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDrinksData, urlTerm, initialData, currentTerm }) => {
@@ -13,13 +14,30 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
     const currentPath = history.location.pathname;
     const [loading, setLoading] = useState(true);
     const counter = useRef(0);
+    const urlStats = useLocation();
+    const queryList = queryString.parse(urlStats.search);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [drinksPerPage] = useState(10);
+    const indexOfLastDrink = currentPage * drinksPerPage;
+    const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
+    const currentDrinks = drinksData.slice(indexOfFirstDrink, indexOfLastDrink);
 
     const imageLoaded = () => {
         counter.current += 1;
-        if (counter.current >= drinksData.length) {
+        if (counter.current >= currentDrinks.length) {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (queryList.page === undefined) {
+            setCurrentPage(1)
+        }
+        else {
+            setCurrentPage(queryList.page)
+        }
+    }, [queryList.page])
 
     useEffect(() => {
         if (Object.keys(urlTerm).length <= 1 || currentTerm !== urlTerm.ing1) {
@@ -41,7 +59,7 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
         if (dataLoaded === false) {
             setLoading(false);
         }
-        else if (dataLoaded === true && drinksData.length === 0) {
+        else if (dataLoaded === true && currentDrinks.length === 0) {
             setLoading(false);
         }
     }, [dataLoaded]); //eslint-disable-line react-hooks/exhaustive-deps
@@ -56,12 +74,16 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
     };
 
     const setBackground = () => {
-        if (drinksData.length !== 0 && loading === false) {
+        if (currentDrinks.length !== 0 && loading === false) {
             return 'main-content';
         }
         else {
             return '';
         };
+    };
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
     };
 
     return (
@@ -79,12 +101,16 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
 
                     <div className={setBackground()}>
                         <DrinksDisplay
-                            drinksData={drinksData}
+                            drinksData={currentDrinks}
+                            totalDrinksData={drinksData}
                             unfilteredDrinksData={unfilteredDrinksData}
                             initialData={initialData}
                             currentTerm={currentTerm}
                             loading={loading}
                             imageLoaded={imageLoaded}
+                            paginate={paginate}
+                            drinksPerPage={drinksPerPage}
+                            totalDrinks={drinksData}
                         />
                     </div>
                 </>

@@ -13,6 +13,20 @@ const QueryTermBlock = () => {
     const queryList = queryString.parse(urlStats.search);
     const queryArray = Object.entries(queryList);
 
+    const cleanedQueryArray = (arr) => {
+
+        let queryArr = arr;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (queryArr[i][0] === 'page') {
+                queryArr.splice(i, 1);
+            }
+        }
+
+        return queryArr;
+
+    }
+
     const onClickHandler = (term) => {
         const termToReplace = `${term[0]}=${term[1]}`;
         const fixedQuery = currentQuery.replaceAll("%20", " ");
@@ -37,7 +51,7 @@ const QueryTermBlock = () => {
         };
     };
 
-    const queryTerms = queryArray.map((term, index) => {
+    const queryTerms = cleanedQueryArray(queryArray).map((term, index) => {
         return (
             <span className='Tag' key={index} onClick={() => onClickHandler(term)}>
                 {term[0] === 'makeDifficulty' ? setStars(term[1][0]) : `${setFixedValues(term[1])}`}
@@ -47,7 +61,7 @@ const QueryTermBlock = () => {
 
     return (
         <div className='QueryTermBlock'>
-            <span className='title'>{queryArray.length !== 0 ? 'Sorted By:' : ''}</span>
+            <span className='title'>{cleanedQueryArray(queryArray).length !== 0 ? 'Sorted By:' : ''}</span>
             <span>{queryTerms}</span>
         </div>
     );

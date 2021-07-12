@@ -21,8 +21,12 @@ const Checkbox = ({ filterData, filterCategory, unlockCheckbox, prefilteredData 
 
     const setCheckboxQuery = () => {
         setBoxClicked(!boxClicked);
-        const intitialQuery = `${mainPath}?${filterCategory}=${cleanFilterName(filterData[0])}`;
-        const fullPathQuery = `${currentQuery}&${filterCategory}=${cleanFilterName(filterData[0])}`
+
+        const pageQueryPart = currentQuery.substring(0, 7);
+        const cleanedQuery = currentQuery.replace(pageQueryPart, '');
+
+        const intitialQuery = `${mainPath}?page=1&${filterCategory}=${cleanFilterName(filterData[0])}`;
+        const fullPathQuery = `?page=1${cleanedQuery}&${filterCategory}=${cleanFilterName(filterData[0])}`
 
         if (boxClicked === true) {
             if (currentQuery === "") {

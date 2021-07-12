@@ -16,7 +16,7 @@ export const filterByQuery = (drinksData, queryArray) => {
         drinkFilters.push(cleanFilterName(drink.strGlass));
         drinkFilters.push(cleanFilterName(drink.makeDifficulty));
 
-        const filterApplied = queryArray.every(v => drinkFilters.includes(v));
+        const filterApplied = queryArray.filter(k => !isNaN(k) === false).every(v => drinkFilters.includes(v));
         if (filterApplied === true) {
             resultArr.push(drink);
         }

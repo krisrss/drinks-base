@@ -5,9 +5,10 @@ import Spinner from './Spinner';
 import InformationTab from '../components/InformationTab';
 import '../css/DrinksDisplay.css';
 import QueryTermBlock from '../components/QueryTermBlock';
+import Pagination from '../components/Pagination';
 
 
-const DrinksDisplay = ({ imageLoaded, loading, drinksData, unfilteredDrinksData }) => {
+const DrinksDisplay = ({ paginate, drinksPerPage, totalDrinksData, imageLoaded, loading, drinksData, unfilteredDrinksData }) => {
 
     return (
         <div className='DrinksDisplay'>
@@ -16,16 +17,27 @@ const DrinksDisplay = ({ imageLoaded, loading, drinksData, unfilteredDrinksData 
             </div>
 
             <div style={{ display: loading ? "none" : "block" }}>
-                <QueryTermBlock />
-                <InformationTab drinksQuantity={drinksData.length} />
+
+                {
+                    drinksData.length !== 0 ?
+                        <QueryTermBlock />
+                        : null
+                }
+
+                <InformationTab drinksData={drinksData} drinksQuantity={totalDrinksData.length} />
 
                 <div style={{ display: 'flex' }}>
                     {drinksData.length !== 0 ?
-                        <SideBar drinksData={drinksData} unfilteredDrinksData={unfilteredDrinksData} />
+                        <SideBar drinksData={totalDrinksData} unfilteredDrinksData={unfilteredDrinksData} />
                         : null
                     }
                     <DrinksList drinksData={drinksData} imageLoaded={imageLoaded} />
                 </div>
+                {
+                    drinksData.length !== 0 ?
+                        <Pagination paginate={paginate} drinksPerPage={drinksPerPage} totalDrinks={totalDrinksData} />
+                        : null
+                }
             </div>
         </div>
 
