@@ -27,7 +27,7 @@ const InformationTab = ({drinksData, drinksQuantity }) => {
     return (
         <div className={setTabPosition()}>
             {
-                drinksQuantity !== 0 ?
+                drinksData.length !== 0 ?
                     <>
                         {drinksQuantity} {setDrinksWord()} found that match <SearchTermBlock searchTerm={searchTerm} />
                     </>
