@@ -5,11 +5,9 @@ import Spinner from './Spinner';
 import InformationTab from '../components/InformationTab';
 import '../css/DrinksDisplay.css';
 import QueryTermBlock from '../components/QueryTermBlock';
-import Pagination from '../components/Pagination';
 
 
 const DrinksDisplay = ({ paginate, drinksPerPage, totalDrinksData, imageLoaded, loading, drinksData, unfilteredDrinksData }) => {
-
     return (
         <div className='DrinksDisplay'>
             <div style={{ display: loading ? "block" : "none" }}>
@@ -31,13 +29,8 @@ const DrinksDisplay = ({ paginate, drinksPerPage, totalDrinksData, imageLoaded, 
                         <SideBar drinksData={totalDrinksData} unfilteredDrinksData={unfilteredDrinksData} />
                         : null
                     }
-                    <DrinksList drinksData={drinksData} imageLoaded={imageLoaded} />
+                    <DrinksList paginate={paginate} drinksPerPage={drinksPerPage} totalDrinksData={totalDrinksData} drinksData={drinksData} imageLoaded={imageLoaded} />
                 </div>
-                {
-                    drinksData.length !== 0 ?
-                        <Pagination paginate={paginate} drinksPerPage={drinksPerPage} totalDrinks={totalDrinksData} />
-                        : null
-                }
             </div>
         </div>
 
