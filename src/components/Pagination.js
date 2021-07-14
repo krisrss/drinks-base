@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+import '../css/Pagination.css';
 
 const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
     const pageNumbers = [];
@@ -14,26 +15,40 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
         pageNumbers.push(i);
     };
 
-    const onClickHandler = (number) => {
+    const onClickHandler = (e, number) => {
+        e.preventDefault()
         paginate(number);
         let cleanedQuery = currentQuery.replace(`?page=${queryList.page}`, '');
         history.push(`${mainPath}?page=${number}${cleanedQuery}`)
     };
 
+    const setActivePage = (number) => {
+        if (queryList.page === undefined && number === 1) {
+            return 'active-page';
+        }
+        else if (parseInt(queryList.page, 10) === number) {
+            return 'active-page'
+        }
+    };
+
     return (
-        <nav>
-            <ul className='pagination'>
-                {pageNumbers.map((number) => {
-                    return (
-                        <li key={number} className='page-item'>
-                            <a onClick={() => onClickHandler(number)} href='javascript:void(0)' className='page-link'>
-                                {number}
-                            </a>
-                        </li>
-                    )
-                })}
-            </ul>
-        </nav>
+        <div className='Pagination-wrap'>
+            <nav>
+                <ul className='pagination justify-content-center'>
+                    <li className="page-item"><a className="page-link page-nav-buttons" href={void (0)}>Prev</a></li>
+                    {pageNumbers.map((number) => {
+                        return (
+                            <li key={number} className='page-item page-nr'>
+                                <a onClick={(e) => onClickHandler(e, number)} href={void (0)} className={`page-link ${setActivePage(number)}`}>
+                                    <span>{number}</span>
+                                </a>
+                            </li>
+                        )
+                    })}
+                    <li className="page-item"><a className="page-link page-nav-buttons" href={void (0)}>Next</a></li>
+                </ul>
+            </nav>
+        </div>
     )
 };
 
