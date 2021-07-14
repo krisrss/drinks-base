@@ -32,3 +32,7 @@
 .page-nav-buttons:hover {
     color: white !important;
 }
+
+.pagination-btn-hidden {
+    display: none;
+}

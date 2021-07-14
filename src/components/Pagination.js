@@ -30,12 +30,25 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
             return 'active-page'
         }
     };
+    
+    const setPrevButton = () => {
+        if (queryList.page === undefined || parseInt(queryList.page, 10) === 1) {
+            return 'pagination-btn-hidden'
+        }
+    };
+
+    const setNextButton = () => {
+        const lastPage = Math.ceil(totalDrinks.length / drinksPerPage);
+        if (parseInt(queryList.page, 10) === lastPage) {
+            return 'pagination-btn-hidden'
+        }
+    };
 
     return (
         <div className='Pagination-wrap'>
             <nav>
                 <ul className='pagination justify-content-center'>
-                    <li className="page-item"><a className="page-link page-nav-buttons" href={void (0)}>Prev</a></li>
+                    <li className="page-item"><a className={`page-link page-nav-buttons ${setPrevButton()}`} href={void (0)}>Prev</a></li>
                     {pageNumbers.map((number) => {
                         return (
                             <li key={number} className='page-item page-nr'>
@@ -45,7 +58,7 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
                             </li>
                         )
                     })}
-                    <li className="page-item"><a className="page-link page-nav-buttons" href={void (0)}>Next</a></li>
+                    <li className="page-item"><a className={`page-link page-nav-buttons ${setNextButton()}`} href={void (0)}>Next</a></li>
                 </ul>
             </nav>
         </div>
