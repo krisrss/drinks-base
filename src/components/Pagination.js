@@ -25,7 +25,8 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
         e.preventDefault()
         paginate(number);
         let cleanedQuery = currentQuery.replace(`?page=${queryList.page}`, '');
-        history.push(`${mainPath}?page=${number}${cleanedQuery}`)
+        history.push(`${mainPath}?page=${number}${cleanedQuery}`);
+        window.scrollTo(0, 0);
     };
 
     const setActivePage = (number) => {
@@ -57,10 +58,12 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
         else {
             history.push(`${pageQuery}${pageNr + 1}${cleanedQuery}`)
         }
+        window.scrollTo(0, 0);
     };
 
     const prevButtonClickHandler = () => {
         history.push(`${pageQuery}${pageNr - 1}${cleanedQuery}`)
+        window.scrollTo(0, 0);
     };
 
     return (
