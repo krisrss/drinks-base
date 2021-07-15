@@ -16,8 +16,9 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
     let cleanedQuery = currentQuery.replace(pageQueryFull, '');
     let currentPageNumber = currentQuery[6];
     let pageNr = parseInt(currentPageNumber, 10);
+    const totalPageNr = Math.ceil(totalDrinks.length / drinksPerPage);
 
-    for (let i = 1; i <= Math.ceil(totalDrinks.length / drinksPerPage); i++) {
+    for (let i = 1; i <= totalPageNr; i++) {
         pageNumbers.push(i);
     };
 
@@ -45,7 +46,7 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
     };
 
     const setNextButton = () => {
-        const lastPage = Math.ceil(totalDrinks.length / drinksPerPage);
+        const lastPage = totalPageNr;
         if (parseInt(queryList.page, 10) === lastPage) {
             return 'pagination-btn-hidden'
         }
@@ -68,7 +69,7 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
 
     return (
         <>
-            {totalDrinks.length !== 0 ?
+            {totalPageNr > 1 ?
                 <div className='Pagination-wrap'>
                     <nav>
                         <ul className='pagination justify-content-center'>
