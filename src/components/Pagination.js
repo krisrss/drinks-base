@@ -11,6 +11,12 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
     const currentQuery = urlStats.search;
     const history = useHistory();
 
+    const pageQuery = '?page=';
+    const pageQueryFull = currentQuery.substring(0, 7);
+    let cleanedQuery = currentQuery.replace(pageQueryFull, '');
+    let currentPageNumber = currentQuery[6];
+    let pageNr = parseInt(currentPageNumber, 10);
+
     for (let i = 1; i <= Math.ceil(totalDrinks.length / drinksPerPage); i++) {
         pageNumbers.push(i);
     };
@@ -44,13 +50,26 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
         }
     };
 
+    const nextButtonClickHandler = () => {
+        if (currentPageNumber === undefined) {
+            history.push(`${pageQuery}2${cleanedQuery}`)
+        }
+        else {
+            history.push(`${pageQuery}${pageNr + 1}${cleanedQuery}`)
+        }
+    };
+
+    const prevButtonClickHandler = () => {
+        history.push(`${pageQuery}${pageNr - 1}${cleanedQuery}`)
+    };
+
     return (
         <>
             {totalDrinks.length !== 0 ?
                 <div className='Pagination-wrap'>
                     <nav>
                         <ul className='pagination justify-content-center'>
-                            <li className="page-item"><a className={`page-link page-nav-buttons ${setPrevButton()}`} href={void (0)}>Prev</a></li>
+                            <li onClick={prevButtonClickHandler} className="page-item"><a className={`page-link page-nav-buttons ${setPrevButton()}`} href={void (0)}>Prev</a></li>
                             {pageNumbers.map((number) => {
                                 return (
                                     <li key={number} className='page-item page-nr'>
@@ -60,7 +79,7 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
                                     </li>
                                 )
                             })}
-                            <li className="page-item"><a className={`page-link page-nav-buttons ${setNextButton()}`} href={void (0)}>Next</a></li>
+                            <li onClick={nextButtonClickHandler} className="page-item"><a className={`page-link page-nav-buttons ${setNextButton()}`} href={void (0)}>Next</a></li>
                         </ul>
                     </nav>
                 </div>
