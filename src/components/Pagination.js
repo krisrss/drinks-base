@@ -40,6 +40,15 @@ const Pagination = ({ resetSpinnerPag, drinksPerPage, totalDrinks, paginate }) =
         }
     };
 
+    const disablePage = (number) => {
+        if (queryList.page === undefined && number === 1) {
+            return 'disabled';
+        }
+        else if (parseInt(queryList.page, 10) === number) {
+            return 'disabled'
+        }
+    };
+
     const setPrevButton = () => {
         if (queryList.page === undefined || parseInt(queryList.page, 10) === 1) {
             return 'pagination-btn-hidden'
@@ -79,7 +88,7 @@ const Pagination = ({ resetSpinnerPag, drinksPerPage, totalDrinks, paginate }) =
                             <li onClick={prevButtonClickHandler} className="page-item"><a className={`page-link page-nav-buttons ${setPrevButton()}`} href={void (0)}>Prev</a></li>
                             {pageNumbers.map((number) => {
                                 return (
-                                    <li key={number} className='page-item page-nr'>
+                                    <li key={number} className={`page-item page-nr ${disablePage(number)}`}>
                                         <a onClick={(e) => onClickHandler(e, number)} href={void (0)} className={`page-link ${setActivePage(number)}`}>
                                             <span>{number}</span>
                                         </a>
