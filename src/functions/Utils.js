@@ -6,7 +6,12 @@ export const cleanFilterName = (category) => {
 }
 
 export const filterByQuery = (drinksData, queryArray) => {
-    const drinks = [...drinksData];
+    let drinks = [];
+
+    if (drinksData !== undefined) {
+        drinks = [...drinksData];
+    }
+
     const resultArr = [];
     drinks.forEach(drink => {
         const drinkFilters = [];
@@ -56,10 +61,16 @@ export const filterByUrlTerms = (drinksData, ingredients) => {
 
 
 export const updateDrinkDataValues = (dataSource) => {
-    Object.keys(dataSource).forEach(function (index) {
+    let dataSourceStore = [];
 
-        const ingredientQuantity = ingredientCount(dataSource, index).length;
-        dataSource[index].ingredientCount = `items-${ingredientQuantity}`;
+    if(dataSource !== undefined){
+        dataSourceStore = dataSource;
+    };
+
+    Object.keys(dataSourceStore).forEach(function (index) {
+
+        const ingredientQuantity = ingredientCount(dataSourceStore, index).length;
+        dataSourceStore[index].ingredientCount = `items-${ingredientQuantity}`;
 
         let difficulty = null;
 
@@ -73,16 +84,16 @@ export const updateDrinkDataValues = (dataSource) => {
             difficulty = '3-hard';
         }
 
-        dataSource[index].makeDifficulty = difficulty;
+        dataSourceStore[index].makeDifficulty = difficulty;
 
-        const secondGlassWord = dataSource[index].strGlass.split(' ')[1];
+        const secondGlassWord = dataSourceStore[index].strGlass.split(' ')[1];
 
         if (secondGlassWord !== undefined) {
             const lowerCaseWord = secondGlassWord.toLowerCase();
-            let glassArray = dataSource[index].strGlass.split(' ');
+            let glassArray = dataSourceStore[index].strGlass.split(' ');
             glassArray[1] = lowerCaseWord;
             const fixedGlassText = glassArray.join(' ')
-            dataSource[index].strGlass = fixedGlassText;
+            dataSourceStore[index].strGlass = fixedGlassText;
         }
 
     });
