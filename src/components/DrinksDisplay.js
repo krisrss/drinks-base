@@ -7,7 +7,7 @@ import '../css/DrinksDisplay.css';
 import QueryTermBlock from '../components/QueryTermBlock';
 
 
-const DrinksDisplay = ({ paginate, drinksPerPage, totalDrinksData, imageLoaded, loading, drinksData, unfilteredDrinksData }) => {
+const DrinksDisplay = ({ resetSpinnerPag, paginate, drinksPerPage, totalDrinksData, imageLoaded, loading, drinksData, unfilteredDrinksData }) => {
     return (
         <div className='DrinksDisplay'>
             <div style={{ display: loading ? "block" : "none" }}>
@@ -29,7 +29,7 @@ const DrinksDisplay = ({ paginate, drinksPerPage, totalDrinksData, imageLoaded, 
                         <SideBar drinksData={totalDrinksData} unfilteredDrinksData={unfilteredDrinksData} />
                         : null
                     }
-                    <DrinksList paginate={paginate} drinksPerPage={drinksPerPage} totalDrinksData={totalDrinksData} drinksData={drinksData} imageLoaded={imageLoaded} />
+                    <DrinksList resetSpinnerPag={resetSpinnerPag} paginate={paginate} drinksPerPage={drinksPerPage} totalDrinksData={totalDrinksData} drinksData={drinksData} imageLoaded={imageLoaded} />
                 </div>
             </div>
         </div>

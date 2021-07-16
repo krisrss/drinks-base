@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import '../css/Pagination.css';
 
-const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
+const Pagination = ({ resetSpinnerPag, drinksPerPage, totalDrinks, paginate }) => {
     const pageNumbers = [];
     const urlStats = useLocation();
     const queryList = queryString.parse(urlStats.search);
@@ -27,6 +27,7 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
         paginate(number);
         let cleanedQuery = currentQuery.replace(`?page=${queryList.page}`, '');
         history.push(`${mainPath}?page=${number}${cleanedQuery}`);
+        resetSpinnerPag();
         window.scrollTo(0, 0);
     };
 
@@ -58,12 +59,14 @@ const Pagination = ({ drinksPerPage, totalDrinks, paginate }) => {
         }
         else {
             history.push(`${pageQuery}${pageNr + 1}${cleanedQuery}`)
-        }
+        };
+        resetSpinnerPag();
         window.scrollTo(0, 0);
     };
 
     const prevButtonClickHandler = () => {
         history.push(`${pageQuery}${pageNr - 1}${cleanedQuery}`)
+        resetSpinnerPag();
         window.scrollTo(0, 0);
     };
 

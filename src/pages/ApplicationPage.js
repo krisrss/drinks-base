@@ -54,6 +54,10 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
         }
     };
 
+    const resetSpinnerPag = () => {
+        setLoading(true);
+    }
+
 
     useEffect(() => {
         if (dataLoaded === false) {
@@ -111,6 +115,7 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
                             paginate={paginate}
                             drinksPerPage={drinksPerPage}
                             totalDrinks={drinksData}
+                            resetSpinnerPag={resetSpinnerPag}
                         />
                     </div>
                 </>

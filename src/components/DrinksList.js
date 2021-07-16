@@ -4,7 +4,7 @@ import '../css/DrinksList.css';
 import Pagination from '../components/Pagination';
 
 
-const DrinksList = ({ drinksData, imageLoaded, paginate, drinksPerPage, totalDrinksData }) => {
+const DrinksList = ({ resetSpinnerPag, drinksData, imageLoaded, paginate, drinksPerPage, totalDrinksData }) => {
 
     const drinks = drinksData.map((drink) => {
         return (
@@ -19,7 +19,7 @@ const DrinksList = ({ drinksData, imageLoaded, paginate, drinksPerPage, totalDri
     return (
         <div className='DrinksList'>
             {drinks}
-            <Pagination paginate={paginate} drinksPerPage={drinksPerPage} totalDrinks={totalDrinksData} />
+            <Pagination resetSpinnerPag={resetSpinnerPag} paginate={paginate} drinksPerPage={drinksPerPage} totalDrinks={totalDrinksData} />
         </div>
     );
 };
