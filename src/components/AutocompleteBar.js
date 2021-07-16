@@ -133,6 +133,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         setSelectedItems([]);
         setInputIndent(0);
         setIngredient('');
+        setIngredientsArr(ingredientsList());
     }
 
     const clearTextIcon = () => {
