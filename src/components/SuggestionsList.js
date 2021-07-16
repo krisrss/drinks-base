@@ -22,7 +22,7 @@ const SuggestionsList = ({ resetDrinkList }) => {
 
     const setPath = (termCheck, suggestion) => {
         if (termCheck === false) {
-            return `${history.location.pathname}${suggestion}`
+            return `/${suggestion}`
         }
         else {
             const removeSpaces = suggestion.replaceAll(' ', '');
@@ -30,7 +30,7 @@ const SuggestionsList = ({ resetDrinkList }) => {
             const removeComma = removeAnds.replaceAll(',', '/');
             const strPath = removeComma;
 
-            return `${history.location.pathname}/${strPath}`
+            return `ingredients/${strPath}`
         };
     }
 
