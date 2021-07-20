@@ -18,7 +18,7 @@ const ApplicationPage = ({ dataLoaded, resetDrinkList, drinksData, unfilteredDri
     const queryList = queryString.parse(urlStats.search);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [drinksPerPage] = useState(10);
+    const [drinksPerPage] = useState(12);
     const indexOfLastDrink = currentPage * drinksPerPage;
     const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
     const currentDrinks = drinksData.slice(indexOfFirstDrink, indexOfLastDrink);
