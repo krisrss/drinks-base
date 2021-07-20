@@ -3,7 +3,6 @@ import Autocomplete from 'react-autocomplete';
 import { useHistory, useParams } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
 import InputTags from './InputTags';
-import ReactTooltip from "react-tooltip";
 
 const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState('');
@@ -196,12 +195,6 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
                 </span>
                 {clearTextIcon()}
             </div>
-
-            <i data-tip data-for="registerTip" className="fas fa-info-circle info-tooltip"></i>
-
-            <ReactTooltip id="registerTip" place="bottom" effect="solid">
-                You can select up to three different ingredients for your search.
-            </ReactTooltip>
         </div>
     );
 };

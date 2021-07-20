@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/NavigationBar.css';
+import ReactTooltip from "react-tooltip";
 
 const NavigationBar = () => {
     const history = useHistory();
@@ -23,7 +24,7 @@ const NavigationBar = () => {
             return 'nav-inactive';
         };
     };
-    
+
     return (
         <div className='NavigationBar'>
             <Link to={'/'} className={`navbutton ${setKeywordNav()}`}>
@@ -33,6 +34,16 @@ const NavigationBar = () => {
             <Link to={'/ingredients'} className={`navbutton ${setIngredientsNav()}`}>
                 By ingredients
             </Link>
+
+            {termPresent ?
+                <>
+                    <i data-tip data-for="registerTip" className="fas fa-info-circle info-tooltip"></i>
+                    <ReactTooltip id="registerTip" place="bottom" effect="solid">
+                        You can select up to three different ingredients for your search.
+                    </ReactTooltip>
+                </>
+                : null
+            }
         </div>
     )
 };
