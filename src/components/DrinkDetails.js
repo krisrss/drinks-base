@@ -82,10 +82,10 @@ const DrinkDetails = () => {
             {Object.entries(drinkData).length !== 0 ?
                 <div className='DrinkDetails'>
                     <div className='tags-list'>
-                        <span className='tag'>{drinkData.strCategory}</span>
-                        <span className='tag'>{drinkData.strAlcoholic}</span>
-                        <span className='tag'>{drinkData.strGlass}</span>
-                        <span className='tag'>{setStarsFull(drinkData.makeDifficulty === undefined ? [] : drinkData.makeDifficulty[0])}</span>
+                        <span className='tag' title='Category'>{drinkData.strCategory}</span>
+                        <span className='tag' title='Type'>{drinkData.strAlcoholic}</span>
+                        <span className='tag' title='Glass'>{drinkData.strGlass}</span>
+                        <span className='tag' title='Difficulty'>{setStarsFull(drinkData.makeDifficulty === undefined ? [] : drinkData.makeDifficulty[0])}</span>
                     </div>
 
                     <div className='title'>{drinkData.strDrink}</div>
