@@ -99,7 +99,7 @@ const Pagination = ({ resetSpinnerPag, drinksPerPage, totalDrinks, paginate }) =
                         </ul>
                     </nav>
                 </div>
-                : null
+                : <div className='pag-placeholder'></div>
             }
         </>
     )

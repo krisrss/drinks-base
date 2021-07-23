@@ -36,3 +36,7 @@
 .pagination-btn-hidden {
     display: none;
 }
+
+.pag-placeholder{
+    padding: 1.5em;
+}
