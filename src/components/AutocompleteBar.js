@@ -106,7 +106,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
 
     const setPlaceholder = () => {
         if ((currentPath === '/ingredients' && selectedItems.length === 0) || inputIndent === 0) {
-            return 'Select an ingredient from list...'
+            return 'Select an ingredient...'
         }
         else {
             return '';
