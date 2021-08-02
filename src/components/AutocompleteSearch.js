@@ -3,7 +3,11 @@ import '../css/SearchBar.css';
 
 const AutocompleteSearch = ({ ingredientsList }) => {
     const [filteredIngredients, setFilteredIngredients] = useState(ingredientsList());
-    const [dropdownActive, setDropdownActive] = useState(true);
+    const [dropdownActive, setDropdownActive] = useState(false);
+
+    const onInputBarFocus = () => {
+        setDropdownActive(true);
+    };
 
     const renderAutocomplete = () => {
         if (dropdownActive === true) {
@@ -25,7 +29,10 @@ const AutocompleteSearch = ({ ingredientsList }) => {
 
     return (
         <div className='SearchBar' >
-            <input type="text" />
+            <input
+                type="text"
+                onFocus={onInputBarFocus}
+            />
             {renderAutocomplete()}
             <span className='button'>
                 SEARCH
