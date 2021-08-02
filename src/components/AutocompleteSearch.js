@@ -7,6 +7,14 @@ const AutocompleteSearch = ({ ingredientsList }) => {
     const [input, setInput] = useState("");
 
     const onChangeHandler = (e) => {
+        const input = e.currentTarget.value;
+        const filteredIngredients = ingredientsList().filter(
+            ingredient =>
+                ingredient.title.toLowerCase().indexOf(input.toLowerCase()) > -1
+        );
+
+        setFilteredIngredients(filteredIngredients);
+        setDropdownActive(true);
         setInput(e.currentTarget.value)
     }
 
