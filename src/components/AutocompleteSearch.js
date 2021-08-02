@@ -16,7 +16,13 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         setFilteredIngredients(filteredIngredients);
         setDropdownActive(true);
         setInput(e.currentTarget.value)
-    }
+    };
+
+    const onClickHandler = (e) => {
+        setFilteredIngredients([]);
+        setDropdownActive(false);
+        setInput(e.currentTarget.innerText)
+    };
 
     const onInputBarFocus = () => {
         setDropdownActive(true);
@@ -28,7 +34,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
                 <ul className="dropdown">
                     {filteredIngredients.map((ingredient) => {
                         return (
-                            <li className='item' key={ingredient.title}>
+                            <li className='item' key={ingredient.title} onClick={onClickHandler}>
                                 {ingredient.title}
                             </li>
                         );
