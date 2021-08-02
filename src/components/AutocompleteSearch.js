@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import '../css/SearchBar.css';
 
 const AutocompleteSearch = ({ ingredientsList }) => {
     const [filteredIngredients, setFilteredIngredients] = useState(ingredientsList());
     const [dropdownActive, setDropdownActive] = useState(false);
     const [input, setInput] = useState("");
+    const wrapperRef = useRef(null);
+
+    useEffect(() => {
+        document.addEventListener('mousedown', outsideClickHandler);
+        return () => {
+            document.removeEventListener('mousedown', outsideClickHandler);
+        };
+    }, []);
+
+    const outsideClickHandler = (e) => {
+        const { current: contentWrap } = wrapperRef;
+        if (contentWrap && !contentWrap.contains(e.target)) {
+            setDropdownActive(false);
+        };
+    };
 
     const onChangeHandler = (e) => {
         const input = e.currentTarget.value;
@@ -47,7 +62,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
 
 
     return (
-        <div className='SearchBar' >
+        <div ref={wrapperRef} className='SearchBar' >
             <input
                 type="text"
                 onFocus={onInputBarFocus}
