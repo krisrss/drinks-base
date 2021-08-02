@@ -3,6 +3,7 @@ import Autocomplete from 'react-autocomplete';
 import { useHistory, useParams } from 'react-router-dom';
 import { ingredientsList } from '../functions/IngredientsList';
 import InputTags from './InputTags';
+import AutocompleteSearch from './AutocompleteSearch';
 
 const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState('');
@@ -157,6 +158,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
 
     return (
         <div>
+            <AutocompleteSearch />
             {maxIngredientsWarning()}
             <InputTags inputIndent={inputIndent} selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
             <div className="SearchBar" onKeyPress={(e) => handleKeyPress(e)}>
