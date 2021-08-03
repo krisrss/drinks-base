@@ -88,6 +88,12 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         }
     };
 
+    const maxIngredientsWarning = () => {
+        if (selectedItems.length === 3) {
+            return <div className='warning-max-ing'>Note: You can select only up to 3 ingredients.</div>
+        }
+    }
+
     //--------------------------------------------------------------
 
     useEffect(() => {
@@ -153,6 +159,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
     return (
         <div ref={wrapperRef} className='SearchBar' >
+            {maxIngredientsWarning()}
             <input
                 type="text"
                 onFocus={onInputBarFocus}

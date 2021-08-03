@@ -25,6 +25,8 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         setIngredientsArr(cleanArrFromSelected());
     }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
+
+    //dONE
     const setIngredientsListEmpty = () => {
         if (selectedItems.length === 3) {
             return []
@@ -50,6 +52,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         };
     };
 
+    //dONE
     const deleteTags = (item) => {
         const tags = [...selectedItems];
         const index = tags.indexOf(item);
@@ -66,18 +69,21 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         setIngredientsArr(ingrArr);
     };
 
+    //dONE
     const resetTextIndent = (item) => {
         let getValue = inputIndent;
         const setIndentSize = 45 + (item.length * 7);
         setInputIndent(getValue + - setIndentSize);
     };
 
+    //dONE
     const renderIngredients = (data, val) => {
         return (
             data.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
         );
     };
 
+    //dONE
     const setPath = () => {
         if (urlTermsArr.length !== 0 || selectedItems.length !== 0) {
             const constructedPath = selectedItems.join('/');
@@ -96,6 +102,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         }
     }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
+    //dONE
     const setIndent = (item) => {
         let getValue = inputIndent;
         if (getValue === undefined) {
@@ -105,6 +112,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         setInputIndent(getValue += setIndentSize);
     };
 
+    //dONE
     const setPlaceholder = () => {
         if ((currentPath === '/ingredients' && selectedItems.length === 0) || inputIndent === 0) {
             return 'Select an ingredient...'
@@ -114,6 +122,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         }
     };
 
+    //dONE
     const maxIngredientsWarning = () => {
         if (selectedItems.length === 3) {
             return <div className='warning-max-ing'>Note: You can select only up to 3 ingredients.</div>
