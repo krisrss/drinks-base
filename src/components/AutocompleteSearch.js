@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import '../css/SearchBar.css';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import InputTags from './InputTags';
 
-const AutocompleteSearch = ({ ingredientsList }) => {
+const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
     const [inputIndent, setInputIndent] = useState(undefined);
     const [ingredientsArr, setIngredientsArr] = useState([]);
     const urlTerm = useParams();
+    const history = useHistory();
+    const urlTermsArr = Object.values(urlTerm);
 
     const [dropdownActive, setDropdownActive] = useState(false);
     const wrapperRef = useRef(null);
@@ -56,6 +58,24 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         let getValue = inputIndent;
         const setIndentSize = 45 + (item.length * 7);
         setInputIndent(getValue + - setIndentSize);
+    };
+
+    const setPath = () => {
+        if (urlTermsArr.length !== 0 || selectedItems.length !== 0) {
+            const constructedPath = selectedItems.join('/');
+            let pathname = `/ingredients/${constructedPath}`;
+
+            history.push(pathname);
+        };
+    };
+
+    const onButtonClickHandler = () => {
+        if (spinnerLoading === false || spinnerLoading === undefined) {
+            resetDrinkList(selectedItems);
+            resetSpinner(selectedItems);
+            setSelectedItems([]);
+            setPath();
+        }
     };
 
     //--------------------------------------------------------------
@@ -131,7 +151,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
                 style={{ textIndent: `${inputIndent / 16}em` }}
             />
             {renderAutocomplete()}
-            <span className='button'>
+            <span className='button' onClick={onButtonClickHandler}>
                 SEARCH
             </span>
             <InputTags inputIndent={inputIndent} selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
