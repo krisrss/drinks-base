@@ -36,6 +36,28 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         setInputIndent(getValue += setIndentSize);
     };
 
+    const deleteTags = (item) => {
+        const tags = [...selectedItems];
+        const index = tags.indexOf(item);
+        tags.splice(index, 1);
+        setSelectedItems(tags);
+
+        const ingrArr = [...ingredientsArr];
+
+        var ingrdient = {
+            title: item,
+        };
+
+        ingrArr.unshift(ingrdient);
+        setIngredientsArr(ingrArr);
+    };
+
+    const resetTextIndent = (item) => {
+        let getValue = inputIndent;
+        const setIndentSize = 45 + (item.length * 7);
+        setInputIndent(getValue + - setIndentSize);
+    };
+
     //--------------------------------------------------------------
 
     useEffect(() => {
@@ -112,7 +134,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
             <span className='button'>
                 SEARCH
             </span>
-            <InputTags selectedItems={selectedItems} />
+            <InputTags inputIndent={inputIndent} selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
         </div >
     );
 }
