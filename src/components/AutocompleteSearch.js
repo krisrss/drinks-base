@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import '../css/SearchBar.css';
 import { useParams } from 'react-router-dom';
+import InputTags from './InputTags';
 
 const AutocompleteSearch = ({ ingredientsList }) => {
-    const [ingredientsArr, setIngredientsArr] = useState([]);
-    const [dropdownActive, setDropdownActive] = useState(false);
     const [ingredient, setIngredient] = useState("");
+    const [selectedItems, setSelectedItems] = useState([]);
+    const [ingredientsArr, setIngredientsArr] = useState([]);
+
+    const [dropdownActive, setDropdownActive] = useState(false);
     const wrapperRef = useRef(null);
+
     const urlTerm = useParams();
 
     useEffect(() => {
@@ -36,9 +40,13 @@ const AutocompleteSearch = ({ ingredientsList }) => {
     };
 
     const onDropdownSelectHandler = (e) => {
-        setIngredientsArr([]);
+        //setIngredientsArr([]);
         setDropdownActive(false);
         setIngredient(e.currentTarget.innerText)
+
+        const arr = [...selectedItems];
+        arr.push(e.currentTarget.innerText);
+        setSelectedItems(arr);
     };
 
     const onInputBarFocus = () => {
@@ -80,6 +88,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
             <span className='button'>
                 SEARCH
             </span>
+            <InputTags selectedItems={selectedItems} />
         </div >
     );
 }
