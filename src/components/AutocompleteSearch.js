@@ -11,6 +11,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     const urlTerm = useParams();
     const history = useHistory();
     const urlTermsArr = Object.values(urlTerm);
+    const currentPath = history.location.pathname;
 
     const [dropdownActive, setDropdownActive] = useState(false);
     const wrapperRef = useRef(null);
@@ -75,6 +76,15 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
             resetSpinner(selectedItems);
             setSelectedItems([]);
             setPath();
+        }
+    };
+
+    const setPlaceholder = () => {
+        if ((currentPath === '/ingredients' && selectedItems.length === 0) || inputIndent === 0) {
+            return 'Select an ingredient...'
+        }
+        else {
+            return '';
         }
     };
 
@@ -149,6 +159,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                 value={ingredient}
                 onChange={onChangeHandler}
                 style={{ textIndent: `${inputIndent / 16}em` }}
+                placeholder={setPlaceholder()}
             />
             {renderAutocomplete()}
             <span className='button' onClick={onButtonClickHandler}>
