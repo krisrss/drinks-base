@@ -12,7 +12,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
     const [dropdownActive, setDropdownActive] = useState(false);
     const wrapperRef = useRef(null);
 
-    
+
     useEffect(() => {
         setIngredientsArr(ingredientsList());
     }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
@@ -62,6 +62,11 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         const arr = [...selectedItems];
         arr.push(e.currentTarget.innerText);
         setSelectedItems(arr);
+
+        const ingrArr = [...ingredientsArr];
+        var index = ingrArr.findIndex(x => x.title === e.currentTarget.innerText);
+        ingrArr.splice(index, 1);
+        setIngredientsArr(ingrArr);
     };
 
     const onInputBarFocus = () => {
