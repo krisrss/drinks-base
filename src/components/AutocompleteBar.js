@@ -15,6 +15,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
     const urlTermsArr = Object.values(urlTerm);
     const currentPath = history.location.pathname;
 
+    //dONE
     useEffect(() => {
         if (urlTermsArr.length === 0) {
             setInputIndent(0);
@@ -36,6 +37,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         };
     };
 
+    //dONE
     const cleanArrFromSelected = () => {
         if (urlTermsArr.length === 0) {
             return ingredientsList;
@@ -93,6 +95,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         };
     };
 
+    //dONE
     useEffect(() => {
         let initialIndent = 0;
         if (urlTermsArr.length !== 0) {

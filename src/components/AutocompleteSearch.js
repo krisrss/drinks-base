@@ -18,6 +18,18 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
 
     useEffect(() => {
+        if (urlTermsArr.length === 0) {
+            setInputIndent(0);
+        };
+
+        let initialIndent = 0;
+        if (urlTermsArr.length !== 0) {
+            initialIndent += urlTermsArr.join('').length * 7;
+            initialIndent += urlTermsArr.length * 45;
+            setInputIndent(initialIndent);
+        }
+        const urlTerms = [...urlTermsArr];
+        setSelectedItems(urlTerms);
         setIngredientsArr(cleanedIngredientsArr());
     }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
