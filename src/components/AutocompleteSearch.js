@@ -7,11 +7,26 @@ const AutocompleteSearch = ({ ingredientsList }) => {
     const [ingredient, setIngredient] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
     const [ingredientsArr, setIngredientsArr] = useState([]);
+    const urlTerm = useParams();
 
     const [dropdownActive, setDropdownActive] = useState(false);
     const wrapperRef = useRef(null);
 
-    const urlTerm = useParams();
+    
+    useEffect(() => {
+        setIngredientsArr(ingredientsList());
+    }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
+
+    const limitedIngredientsArr = () => {
+        if (selectedItems.length === 3) {
+            return []
+        }
+        else {
+            return ingredientsArr;
+        };
+    };
+
+    //--------------------------------------------------------------
 
     useEffect(() => {
         document.addEventListener('mousedown', outsideClickHandler);
@@ -57,7 +72,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         if (dropdownActive === true) {
             return (
                 <ul className="dropdown">
-                    {ingredientsArr.map((ingredient) => {
+                    {limitedIngredientsArr().map((ingredient) => {
                         return (
                             <li className='item' key={ingredient.title} onClick={onDropdownSelectHandler}>
                                 {ingredient.title}
@@ -68,13 +83,6 @@ const AutocompleteSearch = ({ ingredientsList }) => {
             )
         };
     };
-
-    //--------------------------------------------------------------
-
-    useEffect(() => {
-        setIngredientsArr(ingredientsList());
-    }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
-
 
     return (
         <div ref={wrapperRef} className='SearchBar' >
