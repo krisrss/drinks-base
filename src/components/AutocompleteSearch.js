@@ -6,6 +6,7 @@ import InputTags from './InputTags';
 const AutocompleteSearch = ({ ingredientsList }) => {
     const [ingredient, setIngredient] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
+    const [inputIndent, setInputIndent] = useState(undefined);
     const [ingredientsArr, setIngredientsArr] = useState([]);
     const urlTerm = useParams();
 
@@ -24,6 +25,15 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         else {
             return ingredientsArr;
         };
+    };
+
+    const setIndent = (item) => {
+        let getValue = inputIndent;
+        if (getValue === undefined) {
+            getValue = 0;
+        }
+        const setIndentSize = 45 + (item.length * 7);
+        setInputIndent(getValue += setIndentSize);
     };
 
     //--------------------------------------------------------------
@@ -57,8 +67,8 @@ const AutocompleteSearch = ({ ingredientsList }) => {
     const onDropdownSelectHandler = (e) => {
         //setIngredientsArr([]);
         setDropdownActive(false);
-        setIngredient(e.currentTarget.innerText)
-
+        setIngredient('');
+        setIndent(e.currentTarget.innerText);
         const arr = [...selectedItems];
         arr.push(e.currentTarget.innerText);
         setSelectedItems(arr);
@@ -96,6 +106,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
                 onFocus={onInputBarFocus}
                 value={ingredient}
                 onChange={onChangeHandler}
+                style={{ textIndent: `${inputIndent / 16}em` }}
             />
             {renderAutocomplete()}
             <span className='button'>
