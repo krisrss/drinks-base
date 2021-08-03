@@ -18,7 +18,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
 
     useEffect(() => {
-        setIngredientsArr(ingredientsList());
+        setIngredientsArr(cleanedIngredientsArr());
     }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
     const limitedIngredientsArr = () => {
@@ -37,6 +37,22 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         }
         const setIndentSize = 45 + (item.length * 7);
         setInputIndent(getValue += setIndentSize);
+    };
+
+    const cleanedIngredientsArr = () => {
+        if (urlTermsArr.length === 0) {
+            return ingredientsList();
+        }
+        else {
+            const ingrArr = [...ingredientsList()];
+
+            urlTermsArr.forEach(ingr => {
+                var index = ingrArr.findIndex(x => x.title === ingr);
+                ingrArr.splice(index, 1);
+            });
+
+            return ingrArr;
+        };
     };
 
     const deleteTags = (item) => {
