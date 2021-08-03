@@ -5,9 +5,8 @@ import { useParams } from 'react-router-dom';
 const AutocompleteSearch = ({ ingredientsList }) => {
     const [ingredientsArr, setIngredientsArr] = useState([]);
     const [dropdownActive, setDropdownActive] = useState(false);
-    const [input, setInput] = useState("");
+    const [ingredient, setIngredient] = useState("");
     const wrapperRef = useRef(null);
-
     const urlTerm = useParams();
 
     useEffect(() => {
@@ -33,13 +32,13 @@ const AutocompleteSearch = ({ ingredientsList }) => {
 
         setIngredientsArr(filteredIngredients);
         setDropdownActive(true);
-        setInput(e.currentTarget.value)
+        setIngredient(e.currentTarget.value)
     };
 
-    const onClickHandler = (e) => {
+    const onDropdownSelectHandler = (e) => {
         setIngredientsArr([]);
         setDropdownActive(false);
-        setInput(e.currentTarget.innerText)
+        setIngredient(e.currentTarget.innerText)
     };
 
     const onInputBarFocus = () => {
@@ -52,7 +51,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
                 <ul className="dropdown">
                     {ingredientsArr.map((ingredient) => {
                         return (
-                            <li className='item' key={ingredient.title} onClick={onClickHandler}>
+                            <li className='item' key={ingredient.title} onClick={onDropdownSelectHandler}>
                                 {ingredient.title}
                             </li>
                         );
@@ -74,7 +73,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
             <input
                 type="text"
                 onFocus={onInputBarFocus}
-                value={input}
+                value={ingredient}
                 onChange={onChangeHandler}
             />
             {renderAutocomplete()}
