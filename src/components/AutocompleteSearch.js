@@ -92,7 +92,23 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         if (selectedItems.length === 3) {
             return <div className='warning-max-ing'>Note: You can select only up to 3 ingredients.</div>
         }
+    };
+
+    const clearInput = () => {
+        setSelectedItems([]);
+        setInputIndent(0);
+        setIngredient('');
+        setIngredientsArr(ingredientsList());
     }
+
+    const clearTextIcon = () => {
+        if (selectedItems.length !== 0 || ingredient !== '') {
+            return <i onClick={clearInput} className="fas fa-times clear-icon"></i>
+        }
+        else {
+            return null;
+        };
+    };
 
     //--------------------------------------------------------------
 
@@ -172,6 +188,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
             <span className='button' onClick={onButtonClickHandler}>
                 SEARCH
             </span>
+            {clearTextIcon()}
             <InputTags inputIndent={inputIndent} selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
         </div >
     );

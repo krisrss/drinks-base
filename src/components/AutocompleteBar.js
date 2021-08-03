@@ -129,6 +129,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         }
     }
 
+    //dONE
     const onClickHandler = () => {
         if (spinnerLoading === false || spinnerLoading === undefined) {
             resetDrinkList(selectedItems);
@@ -138,6 +139,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         }
     };
 
+    //dONE
     const clearInput = () => {
         setSelectedItems([]);
         setInputIndent(0);
@@ -145,6 +147,7 @@ const AutocompleteBar = ({ spinnerLoading, resetDrinkList, resetSpinner }) => {
         setIngredientsArr(ingredientsList());
     }
 
+    //dONE
     const clearTextIcon = () => {
         if (selectedItems.length !== 0 || ingredient !== '') {
             return <i onClick={clearInput} className="fas fa-times clear-icon"></i>
