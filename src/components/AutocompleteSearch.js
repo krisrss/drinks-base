@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import '../css/SearchBar.css';
+import { useParams } from 'react-router-dom';
 
 const AutocompleteSearch = ({ ingredientsList }) => {
-    const [filteredIngredients, setFilteredIngredients] = useState(ingredientsList());
+    const [ingredientsArr, setIngredientsArr] = useState([]);
     const [dropdownActive, setDropdownActive] = useState(false);
     const [input, setInput] = useState("");
     const wrapperRef = useRef(null);
+
+    const urlTerm = useParams();
 
     useEffect(() => {
         document.addEventListener('mousedown', outsideClickHandler);
@@ -28,13 +31,13 @@ const AutocompleteSearch = ({ ingredientsList }) => {
                 ingredient.title.toLowerCase().indexOf(input.toLowerCase()) > -1
         );
 
-        setFilteredIngredients(filteredIngredients);
+        setIngredientsArr(filteredIngredients);
         setDropdownActive(true);
         setInput(e.currentTarget.value)
     };
 
     const onClickHandler = (e) => {
-        setFilteredIngredients([]);
+        setIngredientsArr([]);
         setDropdownActive(false);
         setInput(e.currentTarget.innerText)
     };
@@ -47,7 +50,7 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         if (dropdownActive === true) {
             return (
                 <ul className="dropdown">
-                    {filteredIngredients.map((ingredient) => {
+                    {ingredientsArr.map((ingredient) => {
                         return (
                             <li className='item' key={ingredient.title} onClick={onClickHandler}>
                                 {ingredient.title}
@@ -59,6 +62,11 @@ const AutocompleteSearch = ({ ingredientsList }) => {
         };
     };
 
+    //--------------------------------------------------------------
+
+    useEffect(() => {
+        setIngredientsArr(ingredientsList());
+    }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
