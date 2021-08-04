@@ -202,17 +202,19 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     return (
-        <div ref={wrapperRef} className='SearchBar' >
-            {maxIngredientsWarning()}
-            <input
-                type="text"
-                onFocus={onInputBarFocus}
-                value={ingredient}
-                onChange={onChangeHandler}
-                style={{ textIndent: `${inputIndent / 16}em` }}
-                placeholder={setPlaceholder()}
-            />
-            {renderAutocomplete()}
+        <div className='SearchBar' >
+            <div ref={wrapperRef} className='SearchBar-wrapper'>
+                {maxIngredientsWarning()}
+                <input
+                    type="text"
+                    onFocus={onInputBarFocus}
+                    value={ingredient}
+                    onChange={onChangeHandler}
+                    style={{ textIndent: `${inputIndent / 16}em` }}
+                    placeholder={setPlaceholder()}
+                />
+                {renderAutocomplete()}
+            </div>
             <span className='button' onClick={onButtonClickHandler}>
                 SEARCH
             </span>

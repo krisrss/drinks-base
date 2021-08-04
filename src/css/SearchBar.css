@@ -79,3 +79,7 @@
     color: #333;
     cursor: pointer;
 }
+
+.SearchBar-wrapper{
+    display: inline-block;
+}
