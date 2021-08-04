@@ -15,6 +15,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
     const [dropdownActive, setDropdownActive] = useState(false);
     const wrapperRef = useRef(null);
+    const inputRef = useRef(null);
 
 
     useEffect(() => {
@@ -167,7 +168,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const onDropdownSelectHandler = (e) => {
-        //setIngredientsArr([]);
+        inputRef.current && inputRef.current.focus();
         setDropdownActive(false);
         setIngredient('');
         setIndent(e.currentTarget.innerText);
@@ -181,7 +182,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         setIngredientsArr(ingrArr);
     };
 
-    const onInputBarFocus = () => {
+    const onInputBarClick = () => {
         setDropdownActive(true);
     };
 
@@ -207,11 +208,12 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                 {maxIngredientsWarning()}
                 <input
                     type="text"
-                    onFocus={onInputBarFocus}
+                    onClick={onInputBarClick}
                     value={ingredient}
                     onChange={onChangeHandler}
                     style={{ textIndent: `${inputIndent / 16}em` }}
                     placeholder={setPlaceholder()}
+                    ref={inputRef}
                 />
                 {renderAutocomplete()}
             </div>
