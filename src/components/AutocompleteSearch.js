@@ -139,6 +139,18 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         };
     };
 
+    const handleKeyPress = (target) => {
+        if (target.charCode === 13) {
+            if (spinnerLoading === false || spinnerLoading === undefined) {
+                resetDrinkList(selectedItems);
+                resetSpinner(selectedItems);
+                setSelectedItems([]);
+                setDropdownActive(false);
+                history.push(setPath());
+            }
+        };
+    };
+
     //--------------------------------------------------------------
 
     useEffect(() => {
@@ -203,7 +215,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     return (
-        <div className='SearchBar' >
+        <div className='SearchBar' onKeyPress={(e) => handleKeyPress(e)}>
             <div ref={wrapperRef} className='SearchBar-wrapper'>
                 {maxIngredientsWarning()}
                 <input
