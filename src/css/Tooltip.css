@@ -1,0 +1,36 @@
+.info-tooltip {
+    font-size: 0.8em;
+    color: #e4965f;
+    position: absolute;
+    top: 0.6em;
+}
+
+.tooltip-text {
+    font-size: 0.8em;
+    border-radius: 0.5em;
+    white-space: nowrap;
+    padding: 0.6em 1.5em;
+    background-color: #363637;
+    color: white;
+    position: absolute;
+    opacity: 0.95;
+    left: 3.5em;
+    top: 2.5em;
+    display: none;
+}
+
+.up-arrow:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 13.5em;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border: 0.55em solid transparent;
+    border-bottom-color: #363637;
+}
+
+.info-tooltip:hover+.tooltip-text {
+    display: block;
+}

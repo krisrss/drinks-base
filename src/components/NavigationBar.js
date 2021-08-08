@@ -36,19 +36,10 @@ const NavigationBar = () => {
                 By ingredients
             </Link>
 
-
             {termPresent ?
-                <>
-                    <i data-tip data-for="registerTip" className="fas fa-info-circle info-tooltip"></i>
-                    <ReactTooltip id="registerTip" place="bottom" effect="solid">
-                        You can select up to three different ingredients for your search.
-                    </ReactTooltip>
-                </>
+                <Tooltip />
                 : null
             }
-
-            <Tooltip />
-
         </div>
     )
 };
