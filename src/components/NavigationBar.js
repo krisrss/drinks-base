@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/NavigationBar.css';
 import ReactTooltip from "react-tooltip";
+import Tooltip from '../components/Tooltip';
 
 const NavigationBar = () => {
     const history = useHistory();
@@ -35,6 +36,7 @@ const NavigationBar = () => {
                 By ingredients
             </Link>
 
+
             {termPresent ?
                 <>
                     <i data-tip data-for="registerTip" className="fas fa-info-circle info-tooltip"></i>
@@ -44,6 +46,9 @@ const NavigationBar = () => {
                 </>
                 : null
             }
+
+            <Tooltip />
+
         </div>
     )
 };
