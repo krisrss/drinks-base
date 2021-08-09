@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../css/NavigationBar.css';
-import ReactTooltip from "react-tooltip";
 import Tooltip from '../components/Tooltip';
 
 const NavigationBar = () => {
