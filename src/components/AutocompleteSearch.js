@@ -117,12 +117,6 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         }
     };
 
-    const maxIngredientsWarning = () => {
-        if (selectedItems.length === 3) {
-            return <div className='warning-max-ing'>Note: You can select only up to 3 ingredients.</div>
-        }
-    };
-
     const clearInput = () => {
         setSelectedItems([]);
         setInputIndent(0);
@@ -217,7 +211,6 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     return (
         <div className='SearchBar' onKeyPress={(e) => handleKeyPress(e)}>
             <div ref={wrapperRef} className='SearchBar-wrapper'>
-                {maxIngredientsWarning()}
                 <input
                     type="text"
                     onClick={onInputBarClick}
