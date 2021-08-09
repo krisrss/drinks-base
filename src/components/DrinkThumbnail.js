@@ -4,6 +4,12 @@ import { setStarsFull } from '../functions/Utils';
 import '../css/DrinkThumbnail.css';
 
 const DrinkThumbnail = ({ drink, imageLoaded }) => {
+
+    const ingredientCount = (term) => {
+        let ingrQuantity = term.replace('items-', '')
+        return ingrQuantity;
+    }
+
     return (
         <Link to={
             {
@@ -24,7 +30,7 @@ const DrinkThumbnail = ({ drink, imageLoaded }) => {
                     <div className='info'>
                         <div className='ingredients-tab'>
                             <i className="fas fa-cocktail"></i>
-                            {` ${drink.ingredientCount[6]}`}
+                            {` ${ingredientCount(drink.ingredientCount)}`}
                             <div className='ing-text'>ingredients</div>
                         </div>
 
