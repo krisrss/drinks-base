@@ -23,14 +23,46 @@
     content: '';
     display: block;
     position: absolute;
-    left: 14em;
-    bottom: 100%;
+    left: 13.9em;
+    bottom: 97%;
     width: 0;
     height: 0;
-    border: 0.55em solid transparent;
+    border: 0.7em solid transparent;
     border-bottom-color: #363637;
 }
 
 .info-tooltip:hover+.tooltip-text {
     display: block;
 }
+
+@media only screen and (max-width: 720px) {
+    .tooltip-text {
+        width: 27em;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    .tooltip-text {
+        width: 24em;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .tooltip-text {
+        width: 21em;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .tooltip-text {
+        width: 18em;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .tooltip-text {
+        width: 17em;
+    }
+}
+
+

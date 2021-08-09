@@ -16,3 +16,18 @@
     text-shadow: 0.05em 0.1em 0.07em rgba(0, 0, 0, 0.2);
     -webkit-text-stroke: 0.015em #326472;
 }
+
+@media only screen and (max-width: 600px) {
+    .WelcomePage .title {
+        padding-left: 0.6em;
+        padding-right: 0.6em;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .WelcomePage .title {
+        font-size: 2em;
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+    }
+}

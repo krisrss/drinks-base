@@ -13,3 +13,10 @@
 .Logo img {
     width: 11em;
 }
+
+@media only screen and (max-width: 1179px) {
+    .Logo .img-wrapper {
+        width: 10em;
+        text-align: center;
+    }
+}
