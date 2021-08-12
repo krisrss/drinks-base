@@ -11,6 +11,14 @@
     padding-top: 2.5em;
 }
 
+.SearchBar .input-bar-custom {
+    padding: 0.66em;
+    width: 34em;
+    background: white;
+    text-align: left;
+    border: 0.06em solid #DDD;
+}
+
 .SearchBar input {
     width: 34em;
     padding: 0.66em;
@@ -73,109 +81,4 @@
 
 .SearchBar-wrapper {
     display: inline-block;
-}
-
-@media only screen and (max-width: 750px) {
-    .SearchBarWrapper {
-        width: 37em;
-    }
-    .SearchBar {
-        width: 36.5em;
-    }
-    .SearchBar input {
-        width: 31em;
-    }
-    .SearchBar .dropdown {
-        width: 31em;
-    }
-}
-
-@media only screen and (max-width: 650px) {
-    .SearchBarWrapper {
-        width: 34em;
-    }
-    .SearchBar {
-        width: 33.5em;
-    }
-    .SearchBar input {
-        width: 28em;
-    }
-    .SearchBar .dropdown {
-        width: 28em;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .SearchBarWrapper {
-        width: 31em;
-    }
-    .SearchBar {
-        width: 30.5em;
-    }
-    .SearchBar input {
-        width: 25em;
-    }
-    .SearchBar .dropdown {
-        width: 25em;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    .SearchBarWrapper {
-        width: 28em;
-    }
-    .SearchBar {
-        width: 27.5em;
-    }
-    .SearchBar input {
-        width: 22em;
-    }
-    .SearchBar .dropdown {
-        width: 22em;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .SearchBarWrapper {
-        width: 25em;
-    }
-    .SearchBar {
-        width: 24.5em;
-    }
-    .SearchBar input {
-        width: 19em;
-    }
-    .SearchBar .dropdown {
-        width: 19em;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-    .SearchBarWrapper {
-        width: 22em;
-    }
-    .SearchBar {
-        width: 21.5em;
-    }
-    .SearchBar input {
-        width: 16em;
-    }
-    .SearchBar .dropdown {
-        width: 16em;
-    }
-}
-
-@media only screen and (max-width: 400px) {
-    .SearchBarWrapper {
-        width: 19em;
-    }
-    .SearchBar {
-        width: 18.5em;
-    }
-    .SearchBar input {
-        width: 13em;
-    }
-    .SearchBar .dropdown {
-        width: 13em;
-    }
 }

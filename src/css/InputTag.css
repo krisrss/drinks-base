@@ -1,0 +1,15 @@
+.InputTag {
+    padding: 0.1em 0.6em;
+    background-color: #d8e2ed;
+    color: black;
+    margin: 0.4em 0.4em 0 0;
+    font-size: 0.9em;
+    border: 0.06em solid black;
+}
+
+.InputTag::after {
+    content: "\f057";
+    font-family: "Font Awesome 5 Free";
+    margin-left: 0.3em;
+    font-size: 0.8em;
+}

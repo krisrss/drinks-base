@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import '../css/SearchBar.css';
 import { useHistory, useParams } from 'react-router-dom';
 import InputTags from './InputTags';
+import InputTag from "./InputTag";
 
 const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState("");
@@ -162,7 +163,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const onChangeHandler = (e) => {
-        const input = e.currentTarget.value;
+        const input = e.currentTarget.textContent;
         const filteredIngredients = ingredientsList().filter(
             ingredient =>
                 ingredient.title.toLowerCase().indexOf(input.toLowerCase()) > -1
@@ -170,7 +171,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
         setIngredientsArr(filteredIngredients);
         setDropdownActive(true);
-        setIngredient(e.currentTarget.value)
+        setIngredient(e.currentTarget.textContent)
     };
 
     const onDropdownSelectHandler = (e) => {
@@ -208,25 +209,30 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         };
     };
 
+    const setTags = selectedItems.map(item => (
+        <InputTag tagName={item} key={item} />
+    ));
+
     return (
         <div className='SearchBar' onKeyPress={(e) => handleKeyPress(e)}>
             <div ref={wrapperRef} className='SearchBar-wrapper'>
-                <input
-                    type="text"
+
+                <div
+                    className='input-bar-custom'
+                    suppressContentEditableWarning={true}
+                    contentEditable="true"
                     onClick={onInputBarClick}
-                    value={ingredient}
-                    onChange={onChangeHandler}
-                    style={{ textIndent: `${inputIndent / 16}em` }}
-                    placeholder={setPlaceholder()}
-                    ref={inputRef}
-                />
+                    onInput={e => onChangeHandler(e)}
+                >
+                    {setTags}<i></i>
+                </div>
+
                 {renderAutocomplete()}
             </div>
             <span className='button' onClick={onButtonClickHandler}>
                 SEARCH
             </span>
             {clearTextIcon()}
-            <InputTags inputIndent={inputIndent} selectedItems={selectedItems} deleteTags={deleteTags} resetTextIndent={resetTextIndent} />
         </div >
     );
 }
