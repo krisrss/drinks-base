@@ -7,7 +7,6 @@ import InputTag from "./InputTag";
 const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, resetSpinner }) => {
     const [ingredient, setIngredient] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
-    const [inputIndent, setInputIndent] = useState(undefined);
     const [ingredientsArr, setIngredientsArr] = useState([]);
     const urlTerm = useParams();
     const history = useHistory();
@@ -20,16 +19,6 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
 
     useEffect(() => {
-        if (urlTermsArr.length === 0) {
-            setInputIndent(0);
-        };
-
-        let initialIndent = 0;
-        if (urlTermsArr.length !== 0) {
-            initialIndent += urlTermsArr.join('').length * 7;
-            initialIndent += urlTermsArr.length * 45;
-            setInputIndent(initialIndent);
-        }
         const urlTerms = [...urlTermsArr];
         setSelectedItems(urlTerms);
         setIngredientsArr(cleanedIngredientsArr());
@@ -42,15 +31,6 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         else {
             return ingredientsArr;
         };
-    };
-
-    const setIndent = (item) => {
-        let getValue = inputIndent;
-        if (getValue === undefined) {
-            getValue = 0;
-        }
-        const setIndentSize = 45 + (item.length * 7);
-        setInputIndent(getValue += setIndentSize);
     };
 
     const cleanedIngredientsArr = () => {
@@ -85,12 +65,6 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         setIngredientsArr(ingrArr);
     };
 
-    const resetTextIndent = (item) => {
-        let getValue = inputIndent;
-        const setIndentSize = 45 + (item.length * 7);
-        setInputIndent(getValue + - setIndentSize);
-    };
-
     const setPath = () => {
         if (urlTermsArr.length !== 0 || selectedItems.length !== 0) {
             const constructedPath = selectedItems.join('/');
@@ -109,18 +83,8 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         }
     };
 
-    const setPlaceholder = () => {
-        if ((currentPath === '/ingredients' && selectedItems.length === 0) || inputIndent === 0) {
-            return 'Select an ingredient...'
-        }
-        else {
-            return '';
-        }
-    };
-
     const clearInput = () => {
         setSelectedItems([]);
-        setInputIndent(0);
         setIngredient('');
         setIngredientsArr(ingredientsList());
     }
@@ -175,10 +139,8 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const onDropdownSelectHandler = (e) => {
-        inputRef.current && inputRef.current.focus();
         setDropdownActive(false);
         setIngredient('');
-        setIndent(e.currentTarget.innerText);
         const arr = [...selectedItems];
         arr.push(e.currentTarget.innerText);
         setSelectedItems(arr);
@@ -223,6 +185,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                     contentEditable="true"
                     onClick={onInputBarClick}
                     onInput={e => onChangeHandler(e)}
+                    ref={inputRef}
                 >
                     {setTags}<i></i>
                 </div>
