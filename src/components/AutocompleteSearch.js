@@ -110,6 +110,16 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         };
     };
 
+
+    const setPlaceholder = () => {
+        if (currentPath === '/ingredients' && selectedItems.length === 0) {
+            return 'Select an ingredient...'
+        }
+        else {
+            return '';
+        }
+    };
+
     //--------------------------------------------------------------
 
     useEffect(() => {
@@ -183,7 +193,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                     <div className='search-wrapper'>
                         <div className='search-tags'>
                             {setTags}
-                            <span data-placeholder='Select an ingredient...' className='search-input' contentEditable='true'></span>
+                            <span data-placeholder={setPlaceholder()} className='search-input' contentEditable='true'></span>
                         </div>
                     </div>
                 </div>

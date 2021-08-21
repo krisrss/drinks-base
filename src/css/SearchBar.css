@@ -115,7 +115,5 @@
 
 .search-wrapper span:empty::before {
     content: attr(data-placeholder);
-    display: block;
-    height: 100%;
     color: #757575;
 }
