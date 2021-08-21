@@ -2,9 +2,10 @@
     padding: 0.1em 0.6em;
     background-color: #d8e2ed;
     color: black;
-    margin: 0.4em 0.4em 0 0;
+    margin: 0.2em;
     font-size: 0.9em;
     border: 0.06em solid black;
+    display: inline-block;
 }
 
 .InputTag::after {

@@ -82,3 +82,33 @@
 .SearchBar-wrapper {
     display: inline-block;
 }
+
+.search-background {
+    padding: 0.4em 0;
+    text-align: left;
+    width: 34em;
+    background-color: white;
+    border: 0.06em solid #DDD;
+}
+
+.search-wrapper {
+    width: 31.5em;
+    min-height: 2.02em;
+    display: flex;
+    align-items: center;
+}
+
+.search-tags {
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.search-input {
+    display: inline-block;
+    margin-left: 0.2em;
+    word-break: break-word;
+}
+
+[contenteditable] {
+    outline: 0px solid transparent;
+}

@@ -179,15 +179,13 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         <div className='SearchBar' onKeyPress={(e) => handleKeyPress(e)}>
             <div ref={wrapperRef} className='SearchBar-wrapper'>
 
-                <div
-                    className='input-bar-custom'
-                    suppressContentEditableWarning={true}
-                    contentEditable="true"
-                    onClick={onInputBarClick}
-                    onInput={e => onChangeHandler(e)}
-                    ref={inputRef}
-                >
-                    {setTags}<i></i>
+                <div className='search-background'>
+                    <div className='search-wrapper'>
+                        <div className='search-tags'>
+                            {setTags}
+                            <div className='search-input' contentEditable='true'></div>
+                        </div>
+                    </div>
                 </div>
 
                 {renderAutocomplete()}
