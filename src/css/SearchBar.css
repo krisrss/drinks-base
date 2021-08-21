@@ -105,10 +105,17 @@
 
 .search-input {
     display: inline-block;
-    margin-left: 0.2em;
+    margin-left: 0.16em;
     word-break: break-word;
 }
 
 [contenteditable] {
     outline: 0px solid transparent;
+}
+
+.search-wrapper span:empty::before {
+    content: attr(data-placeholder);
+    display: block;
+    height: 100%;
+    color: #757575;
 }

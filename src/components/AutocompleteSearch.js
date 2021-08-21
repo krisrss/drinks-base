@@ -183,7 +183,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                     <div className='search-wrapper'>
                         <div className='search-tags'>
                             {setTags}
-                            <div className='search-input' contentEditable='true'></div>
+                            <span data-placeholder='Select an ingredient...' className='search-input' contentEditable='true'></span>
                         </div>
                     </div>
                 </div>
