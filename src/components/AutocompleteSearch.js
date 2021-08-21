@@ -163,6 +163,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
     const onInputBarClick = () => {
         setDropdownActive(true);
+        inputRef.current && inputRef.current.focus();
     };
 
     const renderAutocomplete = () => {
@@ -189,11 +190,11 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         <div className='SearchBar' onKeyPress={(e) => handleKeyPress(e)}>
             <div ref={wrapperRef} className='SearchBar-wrapper'>
 
-                <div className='search-background'>
-                    <div className='search-wrapper'>
+                <div className='search-background' onClick={onInputBarClick}>
+                    <div className='search-wrapper' >
                         <div className='search-tags'>
                             {setTags}
-                            <span data-placeholder={setPlaceholder()} className='search-input' contentEditable='true'></span>
+                            <span ref={inputRef} data-placeholder={setPlaceholder()} className='search-input' contentEditable='true'></span>
                         </div>
                     </div>
                 </div>
