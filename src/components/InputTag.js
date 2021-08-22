@@ -1,14 +1,11 @@
 import React from 'react';
 import '../css/InputTag.css';
 
-const InputTag = ({ tagName }) => {
+const InputTag = ({ tagName, deleteTags }) => {
     return (
-        <>
-            <span key={tagName} suppressContentEditableWarning={true} className='InputTag' contentEditable="false">
-                {tagName}
-            </span>
-            <i></i>
-        </>
+        <span key={tagName} className='InputTag' onClick={() => deleteTags(tagName)}>
+            {tagName}
+        </span>
     )
 };
 

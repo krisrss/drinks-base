@@ -190,7 +190,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const setTags = selectedItems.map(item => (
-        <InputTag tagName={item} key={item} />
+        <InputTag tagName={item} key={item} deleteTags={deleteTags}/>
     ));
 
     return (
