@@ -172,7 +172,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         if (dropdownActive === true) {
 
             const input = ingredient;
-            const filteredIngredients = ingredientsArr.filter(
+            const filteredIngredients = limitedIngredientsArr().filter(
                 ingredient =>
                     ingredient.title.toLowerCase().indexOf(input.toLowerCase()) > -1
             );
