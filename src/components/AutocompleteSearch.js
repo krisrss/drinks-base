@@ -110,13 +110,14 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         };
     };
 
-
     const setPlaceholder = () => {
-        if (currentPath === '/ingredients' && selectedItems.length === 0) {
-            return 'Select an ingredient...'
-        }
-        else {
-            return '';
+        if (inputRef.current) {
+            if (inputRef.current.innerText === '' && selectedItems.length === 0) {
+                return 'Select an ingredient...'
+            }
+            else {
+                return '';
+            }
         }
     };
 
