@@ -49,6 +49,12 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         };
     };
 
+    const clearInputArea = () => {
+        if (inputRef.current) {
+            inputRef.current.innerText = '';
+        };
+    }
+
     const deleteTags = (item) => {
         const tags = [...selectedItems];
         const index = tags.indexOf(item);
@@ -87,6 +93,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         setSelectedItems([]);
         setIngredient('');
         setIngredientsArr(ingredientsList());
+        clearInputArea();
     }
 
     const clearTextIcon = () => {
@@ -138,13 +145,6 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const onChangeHandler = (e) => {
-        const input = e.currentTarget.textContent;
-        const filteredIngredients = ingredientsList().filter(
-            ingredient =>
-                ingredient.title.toLowerCase().indexOf(input.toLowerCase()) > -1
-        );
-
-        setIngredientsArr(filteredIngredients);
         setDropdownActive(true);
         setIngredient(e.currentTarget.textContent)
     };
@@ -160,6 +160,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         var index = ingrArr.findIndex(x => x.title === e.currentTarget.innerText);
         ingrArr.splice(index, 1);
         setIngredientsArr(ingrArr);
+        clearInputArea();
     };
 
     const onInputBarClick = () => {
@@ -169,9 +170,16 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
     const renderAutocomplete = () => {
         if (dropdownActive === true) {
+
+            const input = ingredient;
+            const filteredIngredients = ingredientsArr.filter(
+                ingredient =>
+                    ingredient.title.toLowerCase().indexOf(input.toLowerCase()) > -1
+            );
+
             return (
                 <ul className="dropdown">
-                    {limitedIngredientsArr().map((ingredient) => {
+                    {filteredIngredients.map((ingredient) => {
                         return (
                             <li className='item' key={ingredient.title} onClick={onDropdownSelectHandler}>
                                 {ingredient.title}
@@ -195,7 +203,13 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                     <div className='search-wrapper' >
                         <div className='search-tags'>
                             {setTags}
-                            <span ref={inputRef} data-placeholder={setPlaceholder()} className='search-input' contentEditable='true'></span>
+                            <span
+                                onInput={e => onChangeHandler(e)}
+                                ref={inputRef}
+                                data-placeholder={setPlaceholder()}
+                                className='search-input'
+                                contentEditable='true'>
+                            </span>
                         </div>
                     </div>
                 </div>
