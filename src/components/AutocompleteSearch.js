@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import '../css/SearchBar.css';
 import { useHistory, useParams } from 'react-router-dom';
-import InputTags from './InputTags';
 import InputTag from "./InputTag";
 
 const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, resetSpinner }) => {
@@ -11,7 +10,6 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     const urlTerm = useParams();
     const history = useHistory();
     const urlTermsArr = Object.values(urlTerm);
-    const currentPath = history.location.pathname;
 
     const [dropdownActive, setDropdownActive] = useState(false);
     const wrapperRef = useRef(null);
