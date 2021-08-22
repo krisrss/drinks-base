@@ -14,3 +14,8 @@
     margin-left: 0.3em;
     font-size: 0.8em;
 }
+
+.InputTag:hover {
+    background-color: #A0C3CC;
+    cursor: pointer;
+}
