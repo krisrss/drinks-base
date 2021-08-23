@@ -175,22 +175,36 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                     ingredient.title.toLowerCase().indexOf(input.toLowerCase()) > -1
             );
 
-            return (
-                <ul className="dropdown">
-                    {filteredIngredients.map((ingredient) => {
-                        return (
-                            <li className='item' key={ingredient.title} onClick={onDropdownSelectHandler}>
-                                {ingredient.title}
-                            </li>
-                        );
-                    })}
-                </ul>
-            )
+            if (filteredIngredients.length) {
+                return (
+                    <ul className="dropdown">
+                        {filteredIngredients.map((ingredient) => {
+                            return (
+                                <li className='item' key={ingredient.title} onClick={onDropdownSelectHandler}>
+                                    {ingredient.title}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )
+            }
+            else {
+                return (
+
+                    <div className="no-autocomplete">
+                        {
+                            selectedItems.length < 3 ?
+                                <span>No options</span>
+                                : <span>Too many selected</span>
+                        }
+                    </div>
+                );
+            }
         };
     };
 
     const setTags = selectedItems.map(item => (
-        <InputTag tagName={item} key={item} deleteTags={deleteTags}/>
+        <InputTag tagName={item} key={item} deleteTags={deleteTags} />
     ));
 
     return (

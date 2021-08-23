@@ -117,3 +117,21 @@
     content: attr(data-placeholder);
     color: #757575;
 }
+
+.no-autocomplete {
+    border: 0.06em solid #DDD;
+    background-color: white;
+    border-top: none;
+    padding: 0.7em;
+    color: grey;
+    position: absolute;
+    width: 34em;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.no-autocomplete ::selection {
+    color: none;
+    background: none;
+}
