@@ -159,6 +159,10 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         ingrArr.splice(index, 1);
         setIngredientsArr(ingrArr);
         clearInputArea();
+
+        if (selectedItems.length < 2) {
+            inputRef.current && inputRef.current.focus();
+        }
     };
 
     const onInputBarClick = () => {
