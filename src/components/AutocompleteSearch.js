@@ -115,6 +115,12 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         };
     };
 
+    const lockInputEnter = (e) => {
+        if (e.charCode === 13) {
+            e.preventDefault();
+        };
+    };
+
     const setPlaceholder = () => {
         if (inputRef.current) {
             if (inputRef.current.innerText === '' && selectedItems.length === 0) {
@@ -220,6 +226,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                         <div className='search-tags'>
                             {setTags}
                             <span
+                                onKeyPress={(e) => lockInputEnter(e)}
                                 onInput={e => onChangeHandler(e)}
                                 ref={inputRef}
                                 data-placeholder={setPlaceholder()}
