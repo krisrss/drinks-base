@@ -16,9 +16,15 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     const wrapperRef = useRef(null);
     const inputRef = useRef(null);
 
+    const [placeholderTxt, setPlaceholderTxt] = useState('');
+
+    useEffect(() => {
+        setPlaceholder();
+    }, [ingredient, selectedItems]); //eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         const urlTerms = [...urlTermsArr];
+        setPlaceholderTxt('');
         setSelectedItems(urlTerms);
         setIngredientsArr(cleanedIngredientsArr());
     }, [urlTerm]); //eslint-disable-line react-hooks/exhaustive-deps
@@ -125,12 +131,11 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const setPlaceholder = () => {
-        if (currentPath === '/ingredients' && ingredient === '' && selectedItems.length === 0 ||
-            ingredient === '' && selectedItems.length === 0 && spinnerLoading === false) {
-            return 'Select an ingredient...'
+        if (ingredient === '' && selectedItems.length === 0) {
+            setPlaceholderTxt('Select an ingredient...')
         }
         else {
-            return '';
+            setPlaceholderTxt('');
         }
     };
 
@@ -233,7 +238,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                                 onKeyPress={(e) => lockInputEnter(e)}
                                 onInput={e => onChangeHandler(e)}
                                 ref={inputRef}
-                                data-placeholder={setPlaceholder()}
+                                data-placeholder={placeholderTxt}
                                 className='search-input'
                                 contentEditable='true'>
                             </span>
