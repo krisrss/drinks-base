@@ -67,6 +67,8 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
 
         ingrArr.unshift(ingrdient);
         setIngredientsArr(ingrArr);
+
+        inputRef.current && inputRef.current.focus();
     };
 
     const setPath = () => {
