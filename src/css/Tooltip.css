@@ -17,6 +17,7 @@
     top: 2.5em;
     display: none;
     width: 31em;
+    z-index: 10;
 }
 
 .up-arrow:after {
