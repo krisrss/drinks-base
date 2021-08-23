@@ -147,6 +147,8 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         const { current: contentWrap } = wrapperRef;
         if (contentWrap && !contentWrap.contains(e.target)) {
             setDropdownActive(false);
+            clearInputArea();
+            setIngredient('');
         };
     };
 
