@@ -79,12 +79,15 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const setPath = () => {
-        if (urlTermsArr.length !== 0 || selectedItems.length !== 0) {
+        if (selectedItems.length === 0) {
+            history.push('/ingredients');
+        }
+        else if (urlTermsArr.length !== 0 || selectedItems.length !== 0) {
             const constructedPath = selectedItems.join('/');
             let pathname = `/ingredients/${constructedPath}`;
 
             history.push(pathname);
-        };
+        }
     };
 
     const onButtonClickHandler = () => {
@@ -181,13 +184,13 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const onInputBarClick = () => {
-        if(dropdownActive === false){
+        if (dropdownActive === false) {
             setDropdownActive(true);
         }
-        else{
+        else {
             setDropdownActive(false);
         };
-        
+
         inputRef.current && inputRef.current.focus();
     };
 
