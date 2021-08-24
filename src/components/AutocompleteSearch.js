@@ -181,7 +181,13 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     };
 
     const onInputBarClick = () => {
-        setDropdownActive(true);
+        if(dropdownActive === false){
+            setDropdownActive(true);
+        }
+        else{
+            setDropdownActive(false);
+        };
+        
         inputRef.current && inputRef.current.focus();
     };
 
