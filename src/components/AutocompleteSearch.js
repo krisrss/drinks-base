@@ -142,6 +142,17 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
         }
     };
 
+    const tagBackspaceDelete = (e) => {
+        if (ingredient === '') {
+            if (e.keyCode === 8) {
+                if (selectedItems.length > 0) {
+                    var lastElement = selectedItems[selectedItems.length - 1];
+                    deleteTags(lastElement)
+                }
+            }
+        }
+    }
+
     //--------------------------------------------------------------
 
     useEffect(() => {
@@ -236,7 +247,7 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
     ));
 
     return (
-        <div className='SearchBar' onKeyPress={(e) => handleKeyPress(e)}>
+        <div className='SearchBar' onKeyDown={tagBackspaceDelete} onKeyPress={(e) => handleKeyPress(e)}>
             <div ref={wrapperRef} className='SearchBar-wrapper'>
 
                 <div className='search-background' onClick={onInputBarClick}>
