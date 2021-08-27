@@ -135,3 +135,17 @@
     color: none;
     background: none;
 }
+
+.mobile-btn-txt{
+    display: none;
+}
+
+@media only screen and (max-width: 690px) {
+    .mobile-btn-txt{
+        display: block;
+    }
+
+    .default-btn-txt{
+        display: none;
+    }
+}

@@ -269,7 +269,8 @@ const AutocompleteSearch = ({ ingredientsList, spinnerLoading, resetDrinkList, r
                 {renderAutocomplete()}
             </div>
             <span className='button' onClick={onButtonClickHandler}>
-                SEARCH
+                <span className='default-btn-txt'>SEARCH</span>
+                <span className='mobile-btn-txt'><i class="fas fa-search"></i></span>
             </span>
             {clearTextIcon()}
         </div >
