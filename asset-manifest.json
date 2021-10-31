@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/krisrss/drinks-base/static/css/main.fb68c3c2.chunk.css",
+    "main.js": "/krisrss/drinks-base/static/js/main.7e9a35ab.chunk.js",
+    "main.js.map": "/krisrss/drinks-base/static/js/main.7e9a35ab.chunk.js.map",
+    "runtime-main.js": "/krisrss/drinks-base/static/js/runtime-main.3e5a9971.js",
+    "runtime-main.js.map": "/krisrss/drinks-base/static/js/runtime-main.3e5a9971.js.map",
+    "static/js/2.36beb1de.chunk.js": "/krisrss/drinks-base/static/js/2.36beb1de.chunk.js",
+    "static/js/2.36beb1de.chunk.js.map": "/krisrss/drinks-base/static/js/2.36beb1de.chunk.js.map",
+    "index.html": "/krisrss/drinks-base/index.html",
+    "static/css/main.fb68c3c2.chunk.css.map": "/krisrss/drinks-base/static/css/main.fb68c3c2.chunk.css.map",
+    "static/js/2.36beb1de.chunk.js.LICENSE.txt": "/krisrss/drinks-base/static/js/2.36beb1de.chunk.js.LICENSE.txt",
+    "static/media/logo.06fb4724.svg": "/krisrss/drinks-base/static/media/logo.06fb4724.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3e5a9971.js",
+    "static/js/2.36beb1de.chunk.js",
+    "static/css/main.fb68c3c2.chunk.css",
+    "static/js/main.7e9a35ab.chunk.js"
+  ]
+}
