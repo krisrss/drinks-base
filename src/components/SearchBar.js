@@ -73,7 +73,7 @@ const SearchBar = ({ resetDrinkList, resetSpinner }) => {
             <input onKeyPress={(e) => handleKeyPress(e)} value={input} onChange={onChangeHandler} type='text' placeholder={placeholderTxt} />
             <Link to={setPath} onClick={onClickHandler} className='button'>
                 <span className='default-btn-txt'>SEARCH</span>
-                <span className='mobile-btn-txt'><i class="fas fa-search"></i></span>            </Link>
+                <span className='mobile-btn-txt'><i className="fas fa-search"></i></span>            </Link>
             {clearTextIcon()}
         </div>
     );
