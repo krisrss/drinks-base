@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/drinks-base/static/css/main.fb68c3c2.chunk.css",
-    "main.js": "/drinks-base/static/js/main.63ae454b.chunk.js",
-    "main.js.map": "/drinks-base/static/js/main.63ae454b.chunk.js.map",
+    "main.js": "/drinks-base/static/js/main.0debbf7f.chunk.js",
+    "main.js.map": "/drinks-base/static/js/main.0debbf7f.chunk.js.map",
     "runtime-main.js": "/drinks-base/static/js/runtime-main.71409be5.js",
     "runtime-main.js.map": "/drinks-base/static/js/runtime-main.71409be5.js.map",
     "static/js/2.9d5f2c92.chunk.js": "/drinks-base/static/js/2.9d5f2c92.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.71409be5.js",
     "static/js/2.9d5f2c92.chunk.js",
     "static/css/main.fb68c3c2.chunk.css",
-    "static/js/main.63ae454b.chunk.js"
+    "static/js/main.0debbf7f.chunk.js"
   ]
 }
