@@ -49,7 +49,7 @@ const App = () => {
                 <Route
                     path="/details/:drinkId"
                     render={(props) => (
-                        <Page title={`${props.location.state.drink.strDrink} Recipe`}>
+                        <Page title={`Drinks ID [${props.match.params.drinkId}] Recipe`}>
                             <DrinkDetails {...props} />
                         </Page>
                     )}
