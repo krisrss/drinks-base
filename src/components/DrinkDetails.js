@@ -20,6 +20,7 @@ const DrinkDetails = () => {
             let dataUpdated = data.drinks;
             updateDrinkDataValues(dataUpdated);
             setDrinkData(dataUpdated[0]);
+            document.title = `${dataUpdated[0].strDrink} Recipe from Drinks Base`;
         };
         getDrink();
     }, []); //eslint-disable-line react-hooks/exhaustive-deps
